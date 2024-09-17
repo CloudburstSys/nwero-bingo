@@ -1,3 +1,18 @@
+@font-face {
+    font-family: FirstCoffee;
+    src: url(/FirstCoffee.otf) format("opentype");
+    ascent-override:120%
+}
+
+body {
+    background-color: #f58796;
+    font-family: FirstCoffee!important
+}
+
+.bingo-container {
+    width: fit-content;
+}
+
 .bingo-row {
     user-select: none;
     display: flex;
@@ -11,12 +26,12 @@
     flex: 0 0 auto;
     width: 20%;
     max-width: 100%;
-    padding-right: calc(0 * 0.5);
-    padding-left: calc(0 * 0.5);
+    padding: 5px;
     margin-top: 1.5rem;
     min-height: 130px;
     min-width: 140px;
     max-width: 140px;
+    background-color: #ffffff;
     border-style: solid;
     border-width: 2px;
     border-color: gray;
