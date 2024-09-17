@@ -1,0 +1,5 @@
+services:
+  nwero-bingo:
+    container_name: nwero-bingo
+    build: .
+    restart: unless-stopped
