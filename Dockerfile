@@ -1,11 +1,6 @@
-FROM node:18-alpine
-WORKDIR .
+FROM node:20-alpine
 COPY . /app
 WORKDIR /app
 RUN npm install
-RUN npm install -g typescript ts-loader webpack sass
-RUN tsc
-RUN npx webpack --config webpack.config.js
-RUN sass src-web/index.scss public/bundle.css
-WORKDIR /app
-CMD ["node", "dist/index.js"]
+RUN npm run build
+CMD ["npm", "start"]
