@@ -7,5 +7,5 @@ RUN npm install -g typescript ts-loader webpack sass
 RUN tsc
 RUN npx webpack --config webpack.config.js
 RUN sass src-web/index.scss public/bundle.css
-WORKDIR /app/dist
+WORKDIR /app
 CMD ["node", "dist/index.js"]
