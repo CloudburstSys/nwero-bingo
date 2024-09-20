@@ -16,7 +16,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc && npx webpack --config webpack.config.js && sass src-web/index.scss public/bundle.css",
+    "build": "tsc && npx webpack --config webpack.config.js && sass src-web/index.scss public/bundle.css && sass src-web/dark.scss public/dark.css",
     "web": "npm run build && node dist/index.js"
   },
   "author": "",

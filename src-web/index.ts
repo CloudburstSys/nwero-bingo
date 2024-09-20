@@ -1,10 +1,18 @@
-import BingoCard, { BingoCardItem } from "./BingoBoard";
+import BingoCard, { BingoCardFreeSpace, BingoCardItem, BingoItemCategory } from "./BingoBoard";
+import Emote from "./Emote";
 import SavedCard, { SavedCardItem } from "./SavedState";
 
 // Holy fuck this is so scuffed.
 // TODO: Basically just... redo this entirely. Throw it all out and redo.
 
-const boardKey = "n-D>dnfo8I^u%8+`-;gJ`]E!YA:)80Lo45y}@\"vrmt?yiN>DbISt)XgTlh(~fHcs"
+(document.getElementsByClassName("bingo-container")[0] as HTMLElement).addEventListener("contextmenu", (e: MouseEvent) => e?.cancelable && e.preventDefault() );
+
+const boardKey = "neurototallywontbeabandonedagainclueless";
+const freeSpace = new BingoCardFreeSpace("/neuro_toma_zoo.jpg", "Neuro-Sama, holding a plushie, and Toma standing in a zoo surrounded by giraffe plushies, with a low-res image of a tiger in the background.", "borzoi_rizz", "https://discord.com/channels/574720535888396288/1286561951018778675/1286561951018778675", true);
+
+setTimeout(() => {
+    document.getElementById("bingo-artwork-credit-below")!.innerHTML = `Center artwork credit: <a href="${freeSpace.sourceUrl}" target="_blank">${freeSpace.artistName}</a>`;
+});
 
 if (window.localStorage.getItem("board-state") != null) {
     let data = JSON.parse(window.localStorage.getItem("board-state") as string) as SavedCard;
@@ -13,8 +21,8 @@ if (window.localStorage.getItem("board-state") != null) {
         generateNewBoard();
     else {
         // generate board from state
-        let boardState = data.data.map((row: SavedCardItem[]) => row.map((item: SavedCardItem) => new BingoCardItem(item.text, item.state)));
-        boardState[2][2] = new BingoCardItem("Imagine a cool artwork here. This is a free space", true, false);
+        let boardState = data.data.map((row: SavedCardItem[]) => row.map((item: SavedCardItem) => new BingoCardItem(item.name, item.description, item.category, item.state)));
+        boardState[2][2] = freeSpace;
 
         const bingCard = new BingoCard(boardState);
 
@@ -23,7 +31,9 @@ if (window.localStorage.getItem("board-state") != null) {
             data: bingCard.data.map(row => {
                 return row.map(item => {
                     return {
-                        text: item.text,
+                        name: item.name,
+                        description: item.description,
+                        category: item.category,
                         state: item.state
                     }
                 })
@@ -39,18 +49,18 @@ if (window.localStorage.getItem("board-state") != null) {
 }
 
 function generateNewBoard() {
-    fetch("/boards/evil_solo.json").then(async data => await data.json()).then((prompts: string[]) => {
+    fetch("/boards/neuro_zoo.json").then(async data => await data.json()).then((prompts: { name: string, description: string, category: string }[]) => {
 
         shuffleArray(prompts);
 
         console.log(prompts);
 
         const bingCard = new BingoCard([
-            [ new BingoCardItem(prompts[0]), new BingoCardItem(prompts[1]), new BingoCardItem(prompts[2]), new BingoCardItem(prompts[3]), new BingoCardItem(prompts[4]) ],
-            [ new BingoCardItem(prompts[5]), new BingoCardItem(prompts[6]), new BingoCardItem(prompts[7]), new BingoCardItem(prompts[8]), new BingoCardItem(prompts[9]) ],
-            [ new BingoCardItem(prompts[10]), new BingoCardItem(prompts[11]), new BingoCardItem("Imagine a cool artwork here. This is a free space.", true, false), new BingoCardItem(prompts[12]), new BingoCardItem(prompts[13]) ],
-            [ new BingoCardItem(prompts[14]), new BingoCardItem(prompts[15]), new BingoCardItem(prompts[16]), new BingoCardItem(prompts[17]), new BingoCardItem(prompts[18]) ],
-            [ new BingoCardItem(prompts[19]), new BingoCardItem(prompts[20]), new BingoCardItem(prompts[21]), new BingoCardItem(prompts[22]), new BingoCardItem(prompts[23]) ]
+            [ BingoCardItem.fromBoardJSON(prompts[0]),  BingoCardItem.fromBoardJSON(prompts[1]),  BingoCardItem.fromBoardJSON(prompts[2]),  BingoCardItem.fromBoardJSON(prompts[3]),  BingoCardItem.fromBoardJSON(prompts[4])  ],
+            [ BingoCardItem.fromBoardJSON(prompts[5]),  BingoCardItem.fromBoardJSON(prompts[6]),  BingoCardItem.fromBoardJSON(prompts[7]),  BingoCardItem.fromBoardJSON(prompts[8]),  BingoCardItem.fromBoardJSON(prompts[9])  ],
+            [ BingoCardItem.fromBoardJSON(prompts[10]), BingoCardItem.fromBoardJSON(prompts[11]),                  freeSpace              , BingoCardItem.fromBoardJSON(prompts[12]), BingoCardItem.fromBoardJSON(prompts[13]) ],
+            [ BingoCardItem.fromBoardJSON(prompts[14]), BingoCardItem.fromBoardJSON(prompts[15]), BingoCardItem.fromBoardJSON(prompts[16]), BingoCardItem.fromBoardJSON(prompts[17]), BingoCardItem.fromBoardJSON(prompts[18]) ],
+            [ BingoCardItem.fromBoardJSON(prompts[19]), BingoCardItem.fromBoardJSON(prompts[20]), BingoCardItem.fromBoardJSON(prompts[21]), BingoCardItem.fromBoardJSON(prompts[22]), BingoCardItem.fromBoardJSON(prompts[23]) ]
         ]);
 
         let saver = () => window.localStorage.setItem("board-state", JSON.stringify({
@@ -58,7 +68,9 @@ function generateNewBoard() {
             data: bingCard.data.map(row => {
                 return row.map(item => {
                     return {
-                        text: item.text,
+                        name: item.name,
+                        description: item.description,
+                        category: item.category,
                         state: item.state
                     }
                 })

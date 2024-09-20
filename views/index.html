@@ -8,6 +8,8 @@
         <meta property="og:title" content="Nwero Bingo">
         <meta property="og:url" content="https://nwero.net/">
         <meta property="og:description" content="A fun game to play during neuro streams!">
+        <meta name="og:image" itemprop="image" content="/logo.webp">
+        <link rel="shortcut icon" href="/logo.webp" type="image/webp">
 
         <link rel="manifest" href="/manifest.json" />
         <link rel="stylesheet" href="/bundle.css" />
@@ -16,11 +18,38 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     </head>
     <body>
-        hi i'm a bingo website. i will look better soon please trust<br/>
-        currently not optimised for mobile but i literally built this<br/>
-        between the dev stream and this stream. pls be patient!
-        
+        <section class="modal hidden">
+            <button class="modal-close">X</button>
+            <div class="modal-content">
+                <h2 class="modal-prompt">prompt you have selected</h2>
+                <h3>This prompt is fulfilled when</h3>
+                <span class="modal-description">prompt description</span>
+                <div class="modal-bottom">
+                    <h3>Reminder</h3>
+                    <span>Do not lazily bait the sisters into fulfilling bingo prompts! This is meant to be something to do while watching, not a competition or TODO list.</span>
+                    <br/><br/>
+                    <span>Prompts fulfilled from lazily baiting the sisters into them do NOT count.</span>
+                </div>
+            </div>
+        </section>
+        <div class="overlay hidden"></div>
+
+        <header>
+            <a href="/">
+                <img src="/logo.webp" alt="nwero" />
+                <span>Nwero Bingo</span>
+            </a>
+            <ul>
+                <li>
+                    <a href="/">Current Board</a>
+                </li>
+            </ul>
+        </header>
+
+        <h1 class="bingo-title">Neuro and Toma Zoo Collab</h1>
+        <span class="bingo-instructions">Left click (mouse) / Tap (touchscreen) to mark, Right click (mouse) / Hold (touchscreen) for prompt explanation.</span>
         <div class="bingo-container"></div>
+        <span class="bingo-instructions" id="bingo-artwork-credit-below">Center artwork credit: </span>
         <script src="/bundle.js"></script>
     </body>
 </html>

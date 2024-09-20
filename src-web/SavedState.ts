@@ -1,9 +1,13 @@
+import { BingoItemCategory } from "./BingoBoard"
+
 export default interface SavedCard {
     stateKey: string,
     data: SavedCardItem[][]
 }
 
 export interface SavedCardItem {
-    text: string,
+    name: string,
+    description: string,
+    category: BingoItemCategory,
     state: boolean
 }

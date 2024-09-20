@@ -6,11 +6,163 @@
 
 body {
     background-color: #f58796;
-    font-family: FirstCoffee!important
+    font-family: FirstCoffee!important;
+    margin: 0;
+    padding: 0;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(3px);
+    z-index: 1;
+}
+
+.overlay.active {
+    display: initial;
+}
+
+.modal {
+    display: none;
+    flex-direction: column;
+    gap: 0.4rem;
+    width: 450px;
+    padding: 1.3rem;
+    min-height: 300px;
+    position: absolute;
+    top: calc(50% - (300px / 2));
+    left: calc(50% - (450px / 2));
+    background-color: #ffe2ec;
+    border: 3px solid #d1a2b3;
+    border-radius: 30px;
+    z-index: 2;
+    text-align: center;
+}
+
+
+.modal.active {
+    display: flex;
+}
+
+@media (max-width: 550px) {
+    .modal {
+        width: 300px;
+        left: calc(50% - (300px / 1.7142857142857142));
+    }
+}
+
+.modal-close {
+    position: absolute;
+    right: -2%;
+    top: -3%;
+
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+    background-color: #ffccdd;
+    border: 3px solid #d1a2b3;
+    font-family: FirstCoffee!important;
+    border-radius: 100%;
+}
+
+.modal-content > * {
+    margin: 4px;
+    padding: 2px;
+}
+
+.modal-prompt {
+    border-bottom: 3px solid #d1a2b3;
+}
+
+.modal-bottom {
+    border-top: 3px solid #d1a2b3;
+}
+
+.modal-bottom > * {
+    margin: 4px;
+    padding: 2px;
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: #f25a6e;
+}
+
+header a {
+    display: flex;
+    color: RGBA(0, 0, 0, 1);
+    align-items: center;
+    text-decoration: none;
+}
+
+@media (min-width: 768px) {
+    header a {
+        margin-right: auto;
+        margin-bottom: 0;
+    }
+}
+
+header a img {
+    width: 32px;
+    height: 32px;
+    padding: 5px;
+}
+
+header a span {
+    font-size: calc(1.275rem + .3vw)
+}
+
+@media (min-width: 1200px) {
+    header a span {
+        font-size: 1.5rem;
+    }
+}
+
+header ul {
+    display: flex;
+    margin-top: 0;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+header ul li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s;
+}
+
+.bingo-title {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.bingo-instructions {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 1.28em;
 }
 
 .bingo-container {
     width: fit-content;
+    font-size: 1.5rem;
+
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .bingo-row {
@@ -26,12 +178,11 @@ body {
     flex: 0 0 auto;
     width: 20%;
     max-width: 100%;
-    padding: 5px;
+    padding: 0 5px;
     margin-top: 1.5rem;
     min-height: 130px;
-    min-width: 140px;
-    max-width: 140px;
-    background-color: #ffffff;
+    min-width: 200px;
+    max-width: 200px;
     border-style: solid;
     border-width: 2px;
     border-color: gray;
@@ -40,8 +191,48 @@ body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: background-color .15s ease-in-out;
 }
 
+.bingo-item:has(.bingo-image) {
+    background-color: white !important;
+}
+
+.bingo-image {
+    overflow: hidden;
+    height: 130px;
+}
+
+.bingo-image.stretch {
+    object-fit: fill;
+    width: 100%;
+}
+
+.bingo-item:has(.bingo-image.stretch) {
+    padding: 0;
+    min-width: 210px;
+    max-width: 210px;
+}
+
+.emote {
+    height: 32px;
+    position: relative;
+    top: 8px;
+}
+
+// Credit: Cornlakes (megacornflakes) [https://github.com/megacornflakes]
+.bingo-item {
+    background-color: var(--bg-light);
+    --bg-light: #ffe2ec;
+    --bg-dark: #ffccdd;
+}
+  
 .bingo-item.active {
-    background-color: rgb(122, 255, 122);
+    --bg-light: rgb(122, 255, 122);
+    --bg-dark: rgb(122, 255, 122);
+}
+
+.bingo-row:nth-child(odd) .bingo-item:nth-child(odd),
+.bingo-row:nth-child(even) .bingo-item:nth-child(even) {
+      background-color: var(--bg-dark);
 }
