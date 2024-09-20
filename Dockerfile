@@ -8,4 +8,4 @@ RUN tsc
 RUN npx webpack --config webpack.config.js
 RUN sass src-web/index.scss public/bundle.css
 WORKDIR /app/dist
-CMD ["npm", "run", "web"]
+CMD ["node", "dist/index.js"]
