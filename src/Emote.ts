@@ -17,9 +17,7 @@ export default class Emote {
     let result = emoteRegex.exec(str);
 
     if (result != null) {
-      let isReal = await fetch(`/assets/emotes/${result[1]}.webp`).then((res) =>
-        res.status != 200 ? false : true
-      );
+      let isReal = await fetch(`/assets/emotes/${result[1]}.webp`).then((res) => (res.status != 200 ? false : true));
 
       if (isReal) return new this(result[1]);
     }
