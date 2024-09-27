@@ -17,7 +17,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   </head>
   <body>
-    <section class="modal hidden">
+    <section class="modal-container">
+    <div class="modal">
       <button class="modal-close">X</button>
       <div class="modal-content">
         <h2 class="modal-prompt">prompt you have selected</h2>
@@ -33,11 +34,12 @@
           <span>Prompts fulfilled from lazily baiting the sisters into them do NOT count.</span>
         </div>
       </div>
+      </div>
     </section>
-    <div class="overlay hidden"></div>
+    <div class="overlay"></div>
 
     <header>
-      <a href="/">
+      <a class="logo" href="/">
         <img src="/assets/logo.webp" alt="nwero" />
         <span>Nwero Bingo</span>
       </a>
@@ -45,10 +47,15 @@
         <li>
           <a href="/">Current Board</a>
         </li>
+        <li>
+          <a class="theme-switcher">
+            <img alt="Switch to Dark theme" src="/assets/dark.svg" />
+          </a>
+        </li>
       </ul>
     </header>
 
-    <h1 class="bingo-title">Neuro and Toma Zoo Collab</h1>
+    <h1 class="bingo-title">Nwero Bingo</h1>
     <span class="bingo-instructions"
       >Left click (mouse) / Tap (touchscreen) to mark, Right click (mouse) / Hold (touchscreen) for prompt
       explanation.</span

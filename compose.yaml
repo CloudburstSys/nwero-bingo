@@ -3,3 +3,5 @@ services:
     container_name: nwero-bingo
     build: .
     restart: unless-stopped
+    volumes:
+      - ./public/data:/app/public/data:ro

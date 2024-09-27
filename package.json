@@ -6,8 +6,8 @@
   "scripts": {
     "format": "prettier --write .",
     "build": "vite build",
-    "dev": "vite dev",
-    "start": "sirv dist --single"
+    "dev": "vite dev --host",
+    "start": "sirv dist --single --host"
   },
   "author": "",
   "license": "ISC",
@@ -18,5 +18,8 @@
     "sirv-cli": "^2.0.2",
     "typescript": "^5.6.2",
     "vite": "^5.4.7"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
   }
 }

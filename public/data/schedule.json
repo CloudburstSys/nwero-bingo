@@ -1,1 +1,29 @@
-{}
+{
+  "2024-09-27": {
+    "name": "Twin Pirate Stream",
+    "prompts": "twin_pirate.json",
+    "boardWidth": 5,
+    "boardHeight": 5,
+    "multipleFreeSpacesBehaviour": "theme",
+    "freeSpaces": [
+      {
+        "pos": [2, 2],
+        "src": "/assets/neuro_pirate.jpg",
+        "alt": "Neuro-sama dressed in a pirate outfit, looking upset, while holding a dead fish.",
+        "credit": {
+          "name": "PTITSA (commissioned by nicoGG)",
+          "source": "https://discord.com/channels/574720535888396288/1261935581756391494/1261935581756391494"
+        }
+      },
+      {
+        "pos": [2, 2],
+        "src": "/assets/evil_pirate.jpg",
+        "alt": "Evil Neuro dressed in a pirate outfit, holding a cutlass and drinking rum.",
+        "credit": {
+          "name": "PTITSA (commissioned by nicoGG)",
+          "source": "https://discord.com/channels/574720535888396288/1261935581756391494/1261935581756391494"
+        }
+      }
+    ]
+  }
+}

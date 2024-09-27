@@ -4,6 +4,6 @@ export default defineConfig({
   publicDir: "public",
   appType: "spa",
   server: {
-    port: 3000,
-  },
+    port: 80,
+  }
 });

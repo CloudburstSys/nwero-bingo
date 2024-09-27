@@ -49,7 +49,10 @@
     "name": "chat spams :annylebronjam:",
     "description": "chat spams the :annylebronjam: emote at any point during the stream"
   },
-  { "name": "neuro wants to eat animals", "description": "Neuro mentions eating animals and says she wants to do so" },
+  {
+    "name": "neuro wants to eat animals",
+    "description": "Neuro mentions eating animals and says she wants to do so"
+  },
   { "name": "neuro wants to leave early", "description": "Neuro asks Toma if they can leave early" },
   {
     "name": "other streamer appears IRL including :tutel:",

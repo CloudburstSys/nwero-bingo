@@ -3,11 +3,11 @@
   "name": "Nwero Bingo",
   "icons": [
     {
-      "src": "logo.webp",
+      "src": "/assets/logo.webp",
       "sizes": "128x128",
       "type": "image/webp"
     }
   ],
   "start_url": "/",
-  "display": "fullscreen"
+  "display": "standalone"
 }

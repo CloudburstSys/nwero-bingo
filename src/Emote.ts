@@ -13,7 +13,7 @@ export default class Emote {
    * @returns The Emote created, or null if invalid.
    */
   static async fromString(str: string): Promise<Emote | null> {
-    let emoteRegex = /:([a-z]{3,}):/g;
+    let emoteRegex = /:([a-z]{3,}):/gi;
     let result = emoteRegex.exec(str);
 
     if (result != null) {

@@ -1,152 +1,177 @@
 import "./index.scss";
+// TODO: This file should take schedule data and figure stuff out from there.
+import "./Dark";
+import BingoCard, { BingoCardFreeSpace, BingoCardItem, BingoCardMultipleFreeSpaces } from "./BingoCard";
+import SavedState from "./SavedState";
+import { onClassChange, shuffleArray } from "./Utils";
 
-import BingoCard, { BingoCardFreeSpace, BingoCardItem, BingoItemCategory } from "./BingoBoard";
-import Emote from "./Emote";
-import SavedCard, { SavedCardItem } from "./SavedState";
+let card: BingoCard | null;
+let cardSaveInterval = null;
 
-// Holy fuck this is so scuffed.
-// TODO: Basically just... redo this entirely. Throw it all out and redo.
+// Remove old storage name
+window.localStorage.removeItem("board-state");
 
-(document.getElementsByClassName("bingo-container")[0] as HTMLElement).addEventListener(
-  "contextmenu",
-  (e: MouseEvent) => e?.cancelable && e.preventDefault(),
-);
+// Fetch schedule JSON
+fetch("/data/schedule.json")
+  .then(async (data) => await data.json())
+  .then(async (schedule: Schedule) => {
+    let scheduleDays = [];
 
-const boardKey = "neurototallywontbeabandonedagainclueless";
-const freeSpace = new BingoCardFreeSpace(
-  "/assets/neuro_toma_zoo.jpg",
-  "Neuro-Sama, holding a plushie, and Toma standing in a zoo surrounded by giraffe plushies, with a low-res image of a tiger in the background.",
-  "borzoi_rizz",
-  "https://discord.com/channels/574720535888396288/1286561951018778675/1286561951018778675",
-  true,
-);
+    for (let key in schedule) {
+      let start = schedule[key].override?.start || new Date(`${key}T12:00:00Z`);
+      let end = schedule[key].override?.end || new Date(`${key}T12:00:00Z`);
+      if (!schedule[key].override?.end) end.setDate(end.getDate() + 1);
 
-setTimeout(() => {
-  document.getElementById("bingo-artwork-credit-below")!.innerHTML =
-    `Center artwork credit: <a href="${freeSpace.sourceUrl}" target="_blank">${freeSpace.artistName}</a>`;
-});
+      scheduleDays.push({
+        key,
+        start,
+        end,
+      });
+    }
 
-if (window.localStorage.getItem("board-state") != null) {
-  let data = JSON.parse(window.localStorage.getItem("board-state") as string) as SavedCard;
+    let day = scheduleDays.filter((day) => Date.now() >= day.start.getTime() && Date.now() < day.end.getTime())[0];
 
-  if (data.stateKey != boardKey) generateNewBoard();
-  else {
-    // generate board from state
-    let boardState = data.data.map((row: SavedCardItem[]) =>
-      row.map((item: SavedCardItem) => new BingoCardItem(item.name, item.description, item.category, item.state)),
-    );
-    boardState[2][2] = freeSpace;
+    // Check if stored card info needs to expire, if not restore from it, else generate a new card.
+    if (window.localStorage.getItem("card-state") != null) {
+      try {
+        let cardState = JSON.parse(window.localStorage.getItem("card-state") as string) as SavedState;
+        if (Date.now() <= new Date(cardState.expiry).getTime() || day == undefined) {
+          // Card hasn't expired yet or there's no stream after an expired card, keep this one.
+          card = BingoCard.fromSavedState(cardState);
+          card.render(document.getElementsByClassName("bingo-container")[0] as HTMLElement);
 
-    const bingCard = new BingoCard(boardState);
+          document.getElementsByClassName("bingo-title")[0].innerHTML = card.name;
 
-    let saver = () =>
-      window.localStorage.setItem(
-        "board-state",
-        JSON.stringify({
-          stateKey: boardKey,
-          data: bingCard.data.map((row) => {
-            return row.map((item) => {
-              return {
-                name: item.name,
-                description: item.description,
-                category: item.category,
-                state: item.state,
-              };
-            });
-          }),
-        } as SavedCard),
-      );
+          cardSaveInterval = setInterval(() => saveState(card as BingoCard, cardState.expiry), 1000);
 
-    setInterval(() => saver(), 1000);
+          return;
+        }
+        // Board has expired, let it go down to the code below.
+      } catch (err: any) {
+        console.error("Encountered error while trying to parse JSON from board state in local storage: " + err.stack);
+      }
+    }
 
-    bingCard.render(document.getElementsByClassName("bingo-container")[0] as HTMLElement);
-  }
-} else {
-  generateNewBoard();
-}
+    // Board state is either null, expired, or errored out. We generate a new one here.
 
-function generateNewBoard() {
-  fetch("/data/boards/neuro_zoo.json")
-    .then(async (data) => await data.json())
-    .then((prompts: { name: string; description: string; category: string }[]) => {
-      shuffleArray(prompts);
+    if (day == undefined) {
+      // There's no content for today? Mkay then.
+      // TODO: Tell the user there's no content, or have a default prompt? Maybe EvilZyzz and NeuroZyzz?
+      document.getElementsByClassName("bingo-title")[0].innerHTML = "No stream ongoing";
+      let board = new BingoCard("No stream ongoing", 5, 5);
 
-      console.log(prompts);
+      board.render(document.getElementsByClassName("bingo-container")[0] as HTMLElement);
+      return;
+    }
 
-      const bingCard = new BingoCard([
-        [
-          BingoCardItem.fromBoardJSON(prompts[0]),
-          BingoCardItem.fromBoardJSON(prompts[1]),
-          BingoCardItem.fromBoardJSON(prompts[2]),
-          BingoCardItem.fromBoardJSON(prompts[3]),
-          BingoCardItem.fromBoardJSON(prompts[4]),
-        ],
-        [
-          BingoCardItem.fromBoardJSON(prompts[5]),
-          BingoCardItem.fromBoardJSON(prompts[6]),
-          BingoCardItem.fromBoardJSON(prompts[7]),
-          BingoCardItem.fromBoardJSON(prompts[8]),
-          BingoCardItem.fromBoardJSON(prompts[9]),
-        ],
-        [
-          BingoCardItem.fromBoardJSON(prompts[10]),
-          BingoCardItem.fromBoardJSON(prompts[11]),
-          freeSpace,
-          BingoCardItem.fromBoardJSON(prompts[12]),
-          BingoCardItem.fromBoardJSON(prompts[13]),
-        ],
-        [
-          BingoCardItem.fromBoardJSON(prompts[14]),
-          BingoCardItem.fromBoardJSON(prompts[15]),
-          BingoCardItem.fromBoardJSON(prompts[16]),
-          BingoCardItem.fromBoardJSON(prompts[17]),
-          BingoCardItem.fromBoardJSON(prompts[18]),
-        ],
-        [
-          BingoCardItem.fromBoardJSON(prompts[19]),
-          BingoCardItem.fromBoardJSON(prompts[20]),
-          BingoCardItem.fromBoardJSON(prompts[21]),
-          BingoCardItem.fromBoardJSON(prompts[22]),
-          BingoCardItem.fromBoardJSON(prompts[23]),
-        ],
-      ]);
+    let boardInfo = schedule[day.key];
 
-      let saver = () =>
-        window.localStorage.setItem(
-          "board-state",
-          JSON.stringify({
-            stateKey: boardKey,
-            data: bingCard.data.map((row) => {
-              return row.map((item) => {
-                return {
-                  name: item.name,
-                  description: item.description,
-                  category: item.category,
-                  state: item.state,
-                };
-              });
-            }),
-          } as SavedCard),
+    document.getElementsByClassName("bingo-title")[0].innerHTML = boardInfo.name;
+
+    let request = await fetch(`/data/boards/${boardInfo.prompts}`);
+    let prompts: { name: string; description: string }[] = await request.json();
+    shuffleArray(prompts);
+
+    console.log(prompts);
+
+    let j = 0;
+
+    let board = new BingoCard(boardInfo.name, boardInfo.boardWidth, boardInfo.boardHeight);
+
+    for (let i = 0; i <= boardInfo.boardWidth * boardInfo.boardHeight; i++) {
+      if (i == boardInfo.boardWidth * boardInfo.boardHeight) {
+        console.log(board);
+
+        saveState(board, day.end);
+        cardSaveInterval = setInterval(() => saveState(board, day.end), 1000);
+
+        board.render(document.getElementsByClassName("bingo-container")[0] as HTMLElement);
+        return;
+      }
+      let column = i % boardInfo.boardHeight;
+      let row = Math.floor(i / boardInfo.boardHeight);
+
+      let freeSpacesForSpace = boardInfo.freeSpaces.filter((freeSpace) => (freeSpace.pos[0] == row && freeSpace.pos[1] == column));
+      let freeSpace: BingoCardFreeSpace | BingoCardMultipleFreeSpaces | null = null;
+
+      if (freeSpacesForSpace.length > 1) {
+        // There's multiple. Figure out what to do.
+        if (boardInfo.multipleFreeSpacesBehaviour === "theme")
+          if (freeSpacesForSpace.length > 2)
+            console.warn(`There are more than 2 free spaces for space [${row}, ${column}] while multiple free space behaviour is set to "theme". Only the first 2 free spaces are considered in this mode. The extra free spaces will be ignored.`);
+
+        let spaces = freeSpacesForSpace.map(freeSpace => new BingoCardFreeSpace(
+          freeSpace.src,
+          freeSpace.alt,
+          freeSpace.credit.name,
+          freeSpace.credit.source,
+          freeSpace.stretch
+        ));
+
+        freeSpace = new BingoCardMultipleFreeSpaces(boardInfo.multipleFreeSpacesBehaviour, spaces);
+        freeSpace.update(document.body.classList.contains("dark") ? "dark" : "light");
+
+        onClassChange(document.body, (body) => {
+          (freeSpace as BingoCardMultipleFreeSpaces).update(body.classList.contains("dark") ? "dark" : "light");
+        });
+        j++;
+      } else if (freeSpacesForSpace.length == 1) {
+        freeSpace = new BingoCardFreeSpace(
+          freeSpacesForSpace[0].src,
+          freeSpacesForSpace[0].alt,
+          freeSpacesForSpace[0].credit.name,
+          freeSpacesForSpace[0].credit.source,
+          freeSpacesForSpace[0].stretch
         );
+      }
 
-      saver();
+      if (freeSpace != null)
+        board.setItem(
+          row,
+          column,
+          freeSpace,
+        );
+      else {
+        if (prompts[i-j] != undefined)
+          board.setItem(row, column, new BingoCardItem(prompts[i-j].name, prompts[i-j].description));
+      }
+    }
+  });
 
-      setInterval(() => saver(), 1000);
-
-      bingCard.render(document.getElementsByClassName("bingo-container")[0] as HTMLElement);
-    });
+function saveState(card: BingoCard, expiry: Date) {
+  window.localStorage.setItem(
+    "card-state",
+    JSON.stringify({
+      expiry,
+      card: card.toJSON(),
+    }),
+  );
 }
 
-function shuffleArray(array: any[]) {
-  let currentIndex = array.length;
+interface Schedule {
+  [key: string]: ScheduledDay;
+}
 
-  // While there remain elements to shuffle...
-  while (currentIndex != 0) {
-    // Pick a remaining element...
-    let randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
+interface ScheduledDay {
+  name: string;
+  prompts: string;
+  boardWidth: number;
+  boardHeight: number;
+  override?: {
+    start?: Date;
+    end?: Date;
+  },
+  multipleFreeSpacesBehaviour: "random" | "theme",
+  freeSpaces: FreeSpace[];
+}
 
-    // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
-  }
+interface FreeSpace {
+  pos: [number, number];
+  src: string;
+  alt: string;
+  credit: {
+    name: string;
+    source: string;
+  };
+  stretch?: boolean;
 }
