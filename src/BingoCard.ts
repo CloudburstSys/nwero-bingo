@@ -276,15 +276,15 @@ export class BingoCardMultipleFreeSpaces extends BingoCardItem {
         this.description = this.freeSpaces[0].description;
         this.element.innerHTML = `<img class="bingo-image${this.freeSpaces[0].stretched ? " stretch" : ""}" src="${this.freeSpaces[0].imageUrl}" alt="${this.freeSpaces[0].altText}" />`;
         
-        document.getElementById("bingo-artwork-credit-below")!.innerHTML =
-          `Center artwork credit: <a href="${this.freeSpaces[0].sourceUrl}" target="_blank">${this.freeSpaces[0].artistName}</a>`;
+        //document.getElementById("bingo-artwork-credit-below")!.innerHTML =
+          //`Center artwork credit: <a href="${this.freeSpaces[0].sourceUrl}" target="_blank">${this.freeSpaces[0].artistName}</a>`;
       } else {
         this.name = this.freeSpaces[1].name;
         this.description = this.freeSpaces[1].description;
         this.element.innerHTML = `<img class="bingo-image${this.freeSpaces[1].stretched ? " stretch" : ""}" src="${this.freeSpaces[1].imageUrl}" alt="${this.freeSpaces[1].altText}" />`;
 
-        document.getElementById("bingo-artwork-credit-below")!.innerHTML =
-          `Center artwork credit: <a href="${this.freeSpaces[1].sourceUrl}" target="_blank">${this.freeSpaces[1].artistName}</a>`;
+        //document.getElementById("bingo-artwork-credit-below")!.innerHTML =
+          //`Center artwork credit: <a href="${this.freeSpaces[1].sourceUrl}" target="_blank">${this.freeSpaces[1].artistName}</a>`;
       }
     } else {
       let randomFreeSpace = this.freeSpaces[Math.floor(Math.random() * this.freeSpaces.length)];
@@ -293,8 +293,8 @@ export class BingoCardMultipleFreeSpaces extends BingoCardItem {
       this.description = randomFreeSpace.description;
       this.element.innerHTML = `<img class="bingo-image${randomFreeSpace.stretched ? " stretch" : ""}" src="${randomFreeSpace.imageUrl}" alt="${randomFreeSpace.altText}" />`;
 
-      document.getElementById("bingo-artwork-credit-below")!.innerHTML =
-      `Center artwork credit: <a href="${randomFreeSpace.sourceUrl}" target="_blank">${randomFreeSpace.artistName}</a>`;
+      //document.getElementById("bingo-artwork-credit-below")!.innerHTML =
+      //`Center artwork credit: <a href="${randomFreeSpace.sourceUrl}" target="_blank">${randomFreeSpace.artistName}</a>`;
     }
   }
 }
