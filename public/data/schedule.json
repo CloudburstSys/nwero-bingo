@@ -16,11 +16,11 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/neuro_gymbag.png",
-        "alt": "Neuro-sama, wearing her usual outfit minus the jumper/blazer, with a gymbag over her shoulder.",
+        "src": "/assets/therapy.png",
+        "alt": "Neuro-sama, wearing her usual outfit, sitting next to (presumably) Vedal, with Lucy Pyre standing over him.",
         "credit": {
-          "name": "chairzard_5818",
-          "source": "https://discord.com/channels/574720535888396288/1285359250205442162/1285359250205442162"
+          "name": "borzoi_rizz",
+          "source": "https://discord.com/channels/574720535888396288/1289998540935790744/1289998540935790744"
         }
       }
     ]
