@@ -3,7 +3,7 @@ import "./index.scss";
 import "./Dark";
 import BingoCard, { BingoCardFreeSpace, BingoCardItem, BingoCardMultipleFreeSpaces } from "./BingoCard";
 import SavedState from "./SavedState";
-import { onClassChange, shuffleArray } from "./Utils";
+import { loadPrompts, onClassChange, saveState, shuffleArray } from "./Utils";
 
 let card: BingoCard | null;
 let cardSaveInterval = null;
@@ -64,22 +64,27 @@ fetch("/data/schedule.json")
       return;
     }
 
-    let boardInfo = schedule[day.key];
+    let cardInfo = schedule[day.key];
 
-    document.getElementsByClassName("bingo-title")[0].innerHTML = boardInfo.name;
+    document.getElementsByClassName("bingo-title")[0].innerHTML = cardInfo.name;
 
-    let request = await fetch(`/data/boards/${boardInfo.prompts}`);
-    let prompts: { name: string; description: string }[] = await request.json();
+    // TODO: Implement prompt bucket system
+    let freeSpaces: [number, number][] = [];
+    cardInfo.freeSpaces.forEach(freeSpace => {
+      if (freeSpaces.includes(freeSpace.pos)) return;
+      freeSpaces.push(freeSpace.pos);
+    });
+    let prompts = await loadPrompts(cardInfo.customBuckets, cardInfo.weights, (cardInfo.boardHeight * cardInfo.boardWidth) - freeSpaces.length);
     shuffleArray(prompts);
 
     console.log(prompts);
 
     let j = 0;
 
-    let board = new BingoCard(boardInfo.name, boardInfo.boardWidth, boardInfo.boardHeight);
+    let board = new BingoCard(cardInfo.name, cardInfo.boardWidth, cardInfo.boardHeight);
 
-    for (let i = 0; i <= boardInfo.boardWidth * boardInfo.boardHeight; i++) {
-      if (i == boardInfo.boardWidth * boardInfo.boardHeight) {
+    for (let i = 0; i <= cardInfo.boardWidth * cardInfo.boardHeight; i++) {
+      if (i == cardInfo.boardWidth * cardInfo.boardHeight) {
         console.log(board);
 
         saveState(board, day.end);
@@ -88,15 +93,15 @@ fetch("/data/schedule.json")
         board.render(document.getElementsByClassName("bingo-container")[0] as HTMLElement);
         return;
       }
-      let column = i % boardInfo.boardHeight;
-      let row = Math.floor(i / boardInfo.boardHeight);
+      let column = i % cardInfo.boardHeight;
+      let row = Math.floor(i / cardInfo.boardHeight);
 
-      let freeSpacesForSpace = boardInfo.freeSpaces.filter((freeSpace) => (freeSpace.pos[0] == row && freeSpace.pos[1] == column));
+      let freeSpacesForSpace = cardInfo.freeSpaces.filter((freeSpace) => (freeSpace.pos[0] == row && freeSpace.pos[1] == column));
       let freeSpace: BingoCardFreeSpace | BingoCardMultipleFreeSpaces | null = null;
 
       if (freeSpacesForSpace.length > 1) {
         // There's multiple. Figure out what to do.
-        if (boardInfo.multipleFreeSpacesBehaviour === "theme")
+        if (cardInfo.multipleFreeSpacesBehaviour === "theme")
           if (freeSpacesForSpace.length > 2)
             console.warn(`There are more than 2 free spaces for space [${row}, ${column}] while multiple free space behaviour is set to "theme". Only the first 2 free spaces are considered in this mode. The extra free spaces will be ignored.`);
 
@@ -108,7 +113,7 @@ fetch("/data/schedule.json")
           freeSpace.stretch
         ));
 
-        freeSpace = new BingoCardMultipleFreeSpaces(boardInfo.multipleFreeSpacesBehaviour, spaces);
+        freeSpace = new BingoCardMultipleFreeSpaces(cardInfo.multipleFreeSpacesBehaviour, spaces);
         freeSpace.update(document.body.classList.contains("dark") ? "dark" : "light");
 
         onClassChange(document.body, (body) => {
@@ -123,6 +128,7 @@ fetch("/data/schedule.json")
           freeSpacesForSpace[0].credit.source,
           freeSpacesForSpace[0].stretch
         );
+        j++;
       }
 
       if (freeSpace != null)
@@ -132,21 +138,13 @@ fetch("/data/schedule.json")
           freeSpace,
         );
       else {
-        if (prompts[i-j] != undefined)
-          board.setItem(row, column, new BingoCardItem(prompts[i-j].name, prompts[i-j].description));
+        if (prompts[i-j] != null)
+          board.setItem(row, column, new BingoCardItem(prompts[i-j]!.name, prompts[i-j]!.description));
+        else
+          console.warn(`Encountered null prompt at prompt number ${i-j}, row ${row} column ${column}. This usually means there's not enough prompts somewhere. Check above for more details.`);
       }
     }
   });
-
-function saveState(card: BingoCard, expiry: Date) {
-  window.localStorage.setItem(
-    "card-state",
-    JSON.stringify({
-      expiry,
-      card: card.toJSON(),
-    }),
-  );
-}
 
 interface Schedule {
   [key: string]: ScheduledDay;
@@ -154,7 +152,8 @@ interface Schedule {
 
 interface ScheduledDay {
   name: string;
-  prompts: string;
+  customBuckets: { [name: string]: string },
+  weights: { [name: string]: number },
   boardWidth: number;
   boardHeight: number;
   override?: {

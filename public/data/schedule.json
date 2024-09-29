@@ -1,27 +1,26 @@
 {
-  "2024-09-27": {
-    "name": "Twin Pirate Stream",
-    "prompts": "twin_pirate.json",
+  "2024-09-29": {
+    "name": "Lucy Pyre and Neuro collab",
+    "customBuckets": {
+      "c_lucy": "collabs/therapy_lucy-pyre.json",
+      "c_neuro": "collabs/therapy_neuro.json"
+    },
+    "weights": {
+      "c_lucy": 9,
+      "c_neuro": 9,
+      "chat": 6
+    },
     "boardWidth": 5,
     "boardHeight": 5,
     "multipleFreeSpacesBehaviour": "theme",
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/neuro_pirate.jpg",
-        "alt": "Neuro-sama dressed in a pirate outfit, looking upset, while holding a dead fish.",
+        "src": "/assets/neuro_gymbag.png",
+        "alt": "Neuro-sama, wearing her usual outfit minus the jumper/blazer, with a gymbag over her shoulder.",
         "credit": {
-          "name": "PTITSA (commissioned by nicoGG)",
-          "source": "https://discord.com/channels/574720535888396288/1261935581756391494/1261935581756391494"
-        }
-      },
-      {
-        "pos": [2, 2],
-        "src": "/assets/evil_pirate.jpg",
-        "alt": "Evil Neuro dressed in a pirate outfit, holding a cutlass and drinking rum.",
-        "credit": {
-          "name": "PTITSA (commissioned by nicoGG)",
-          "source": "https://discord.com/channels/574720535888396288/1261935581756391494/1261935581756391494"
+          "name": "chairzard_5818",
+          "source": "https://discord.com/channels/574720535888396288/1285359250205442162/1285359250205442162"
         }
       }
     ]
