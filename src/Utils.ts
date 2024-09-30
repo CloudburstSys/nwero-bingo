@@ -77,11 +77,11 @@ export async function loadPrompts(customBuckets: { [name: string]: string }, wei
   let output: ({ name: string; description: string } | null)[] = [];
   
   const defaultBuckets: { [name: string]: string } = {
-    "neuro": "neuro.json",
-    "evil": "evil.json",
-    "vedal": "vedal.json",
+    //"neuro": "neuro.json",
+    //"evil": "evil.json",
+    //"vedal": "vedal.json",
     "chat": "chat.json",
-    "partner": "partner.json"
+    //"partner": "partner.json"
   };
   const buckets: { [name: string]: { name: string; description: string }[] } = {};
 
