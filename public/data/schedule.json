@@ -1,14 +1,14 @@
 {
-  "2024-09-29": {
-    "name": "Lucy Pyre and Neuro collab",
+  "2024-09-30": {
+    "name": "Dev Stream",
     "customBuckets": {
-      "c_lucy": "collabs/therapy_lucy-pyre.json",
-      "c_neuro": "collabs/therapy_neuro.json"
+      "neuro": "streams/dev/neuro.json",
+      "vedal": "streams/dev/vedal.json"
     },
     "weights": {
-      "c_lucy": 9,
-      "c_neuro": 9,
-      "chat": 6
+      "neuro": 10,
+      "vedal": 10,
+      "chat": 4
     },
     "boardWidth": 5,
     "boardHeight": 5,
@@ -16,11 +16,11 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/therapy.png",
-        "alt": "Neuro-sama, wearing her usual outfit, sitting next to (presumably) Vedal, with Lucy Pyre standing over him.",
+        "src": "/assets/neuro_gymbag.png",
+        "alt": "Neuro-sama, wearing her usual outfit minus the jumper/blazer/cardigan, with a red and white gymbag over her shoulder.",
         "credit": {
-          "name": "borzoi_rizz",
-          "source": "https://discord.com/channels/574720535888396288/1289998540935790744/1289998540935790744"
+          "name": "chairzard_5818",
+          "source": "https://discord.com/channels/574720535888396288/1285359250205442162/1285359250205442162"
         }
       }
     ]
