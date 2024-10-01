@@ -1,13 +1,11 @@
 {
-  "2024-09-30": {
-    "name": "Dev Stream",
+  "2024-10-01": {
+    "name": "Evil Solo",
     "customBuckets": {
-      "neuro": "streams/dev/neuro.json",
-      "vedal": "streams/dev/vedal.json"
+      "evil": "streams/solo/evil.json"
     },
     "weights": {
-      "neuro": 10,
-      "vedal": 10,
+      "evil": 20,
       "chat": 4
     },
     "boardWidth": 5,
@@ -16,11 +14,11 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/neuro_gymbag.png",
-        "alt": "Neuro-sama, wearing her usual outfit minus the jumper/blazer/cardigan, with a red and white gymbag over her shoulder.",
+        "src": "/assets/artworks/evil_desk.png",
+        "alt": "Evil Neuro weating her usual outfit, sitting at a desk.",
         "credit": {
           "name": "chairzard_5818",
-          "source": "https://discord.com/channels/574720535888396288/1285359250205442162/1285359250205442162"
+          "source": "https://discord.com/channels/574720535888396288/1290327929649233940/1290327929649233940"
         }
       }
     ]
