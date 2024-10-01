@@ -4,4 +4,5 @@ services:
     build: .
     restart: unless-stopped
     volumes:
-      - ./public/data:/app/public/data:ro
+      - ./public/data:/app/dist/data:ro
+      - ./public/assets/artworks:/app/dist/assets/artworks:ro
