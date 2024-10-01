@@ -67,6 +67,20 @@ export function objectToArray(object: any): {key: string, value: any}[] {
 }
 
 /**
+ * Parses a prompt file into an array.
+ * Uses objectToArray internally
+ * @param promptObject The prompt object to parse 
+ * @returns The parsed prompt array
+ */
+export function parsePrompts(promptObject: { [name: string]: string }): { name: string, description: string }[] {
+  if (promptObject instanceof Array)
+    return promptObject; // Support old format
+  return objectToArray(promptObject).map(obj => {
+    return { name: obj.key, description: obj.value as string }
+  });
+}
+
+/**
  * Loads the prompts in using the weighted prompt bucket system
  * @param customBuckets Any custom buckets to import
  * @param weights The weights for the requested buckets
@@ -93,7 +107,8 @@ export async function loadPrompts(customBuckets: { [name: string]: string }, wei
       return [];
     }
     let request = await fetch(`/data/boards/${combinedBuckets[key]}`);
-    let prompts: { name: string; description: string }[] = await request.json();
+    let prompts: { name: string; description: string }[] = parsePrompts(await request.json());
+    console.log(prompts);
     shuffleArray(prompts);
     buckets[key] = prompts;
   }
