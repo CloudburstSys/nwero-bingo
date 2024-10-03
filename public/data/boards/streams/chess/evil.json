@@ -6,5 +6,5 @@
   "evil castles": "Evil makes the king move 2 spaces towards a rook on the same rank, and then moves the rook to the square the king passed over",
   "evil makes a strange noise": "Evil's voice model outputs a weird sound compared to subtitle output",
   "evil calls herself a god/goddess": "Evil refers to herself as a god or goddess",
-  "evil gloats while losing": "Evil gloats despite actually losing the game at the time"
+  "evil gloats while losing": "Evil gloats despite actually losing the game at the time. Losing is considered to be having less pieces and/or being in check"
 }

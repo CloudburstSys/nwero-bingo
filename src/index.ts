@@ -155,6 +155,11 @@ fetch("/data/schedule.json")
     }
   });
 
+document.getElementsByClassName("bingo-reset")[0].addEventListener("click", () => {
+  localStorage.removeItem("card-state");
+  location.reload();
+});
+
 interface Schedule {
   [key: string]: ScheduledDay;
 }
