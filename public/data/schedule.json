@@ -1,17 +1,32 @@
 {
-  "2024-10-01": {
-    "name": "Evil Solo",
+  "2024-10-03": {
+    "name": "Neuro vs Evil chess",
     "customBuckets": {
-      "evil": "streams/solo/evil.json"
+      "neuro": "streams/chess/neuro.json",
+      "evil": "streams/chess/evil.json",
+      "both": "streams/chess/both.json",
+      "win": "streams/chess/win.json"
     },
     "weights": {
-      "evil": 20,
+      "neuro": 7,
+      "evil": 7,
+      "both": 5,
+      "win": 1,
       "chat": 4
     },
     "boardWidth": 5,
     "boardHeight": 5,
     "multipleFreeSpacesBehaviour": "theme",
     "freeSpaces": [
+      {
+        "pos": [2, 2],
+        "src": "/assets/artworks/neuro_gymbag.png",
+        "alt": "Neuro weating her usual outfit minus the blazer/jacket/cardigan, with a gymbag over her shoulder.",
+        "credit": {
+          "name": "chairzard_5818",
+          "source": "https://discord.com/channels/574720535888396288/1285359250205442162/1285359250205442162"
+        }
+      },
       {
         "pos": [2, 2],
         "src": "/assets/artworks/evil_desk.png",
