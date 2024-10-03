@@ -16,4 +16,5 @@ export function hideModal() {
 document.getElementsByClassName("modal-close")[0].addEventListener("click", () => hideModal());
 document.getElementsByClassName("overlay")[0].addEventListener("click", () => hideModal());
 document.getElementsByClassName("overlay")[0].addEventListener("contextmenu", (e) => e.preventDefault());
+document.getElementsByClassName("modal-container")[0].addEventListener("click", () => hideModal());
 document.getElementsByClassName("modal-container")[0].addEventListener("contextmenu", (e) => e.preventDefault());
