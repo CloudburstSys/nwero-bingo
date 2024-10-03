@@ -70,11 +70,16 @@ fetch("/data/schedule.json")
 
     // TODO: Implement prompt bucket system
     let freeSpaces: [number, number][] = [];
-    cardInfo.freeSpaces.forEach(freeSpace => {
-      if (freeSpaces.includes(freeSpace.pos)) return;
+    cardInfo.freeSpaces.forEach((freeSpace) => {
+      if (freeSpaces.some((space) => space[0] == freeSpace.pos[0] && space[1] == freeSpace.pos[1])) return;
       freeSpaces.push(freeSpace.pos);
     });
-    let prompts = await loadPrompts(cardInfo.customBuckets, cardInfo.weights, (cardInfo.boardHeight * cardInfo.boardWidth) - freeSpaces.length);
+    console.log(freeSpaces);
+    let prompts = await loadPrompts(
+      cardInfo.customBuckets,
+      cardInfo.weights,
+      cardInfo.boardHeight * cardInfo.boardWidth - freeSpaces.length,
+    );
     shuffleArray(prompts);
 
     console.log(prompts);
@@ -96,22 +101,29 @@ fetch("/data/schedule.json")
       let column = i % cardInfo.boardHeight;
       let row = Math.floor(i / cardInfo.boardHeight);
 
-      let freeSpacesForSpace = cardInfo.freeSpaces.filter((freeSpace) => (freeSpace.pos[0] == row && freeSpace.pos[1] == column));
+      let freeSpacesForSpace = cardInfo.freeSpaces.filter(
+        (freeSpace) => freeSpace.pos[0] == row && freeSpace.pos[1] == column,
+      );
       let freeSpace: BingoCardFreeSpace | BingoCardMultipleFreeSpaces | null = null;
 
       if (freeSpacesForSpace.length > 1) {
         // There's multiple. Figure out what to do.
         if (cardInfo.multipleFreeSpacesBehaviour === "theme")
           if (freeSpacesForSpace.length > 2)
-            console.warn(`There are more than 2 free spaces for space [${row}, ${column}] while multiple free space behaviour is set to "theme". Only the first 2 free spaces are considered in this mode. The extra free spaces will be ignored.`);
+            console.warn(
+              `There are more than 2 free spaces for space [${row}, ${column}] while multiple free space behaviour is set to "theme". Only the first 2 free spaces are considered in this mode. The extra free spaces will be ignored.`,
+            );
 
-        let spaces = freeSpacesForSpace.map(freeSpace => new BingoCardFreeSpace(
-          freeSpace.src,
-          freeSpace.alt,
-          freeSpace.credit.name,
-          freeSpace.credit.source,
-          freeSpace.stretch
-        ));
+        let spaces = freeSpacesForSpace.map(
+          (freeSpace) =>
+            new BingoCardFreeSpace(
+              freeSpace.src,
+              freeSpace.alt,
+              freeSpace.credit.name,
+              freeSpace.credit.source,
+              freeSpace.stretch,
+            ),
+        );
 
         freeSpace = new BingoCardMultipleFreeSpaces(cardInfo.multipleFreeSpacesBehaviour, spaces);
         freeSpace.update(document.body.classList.contains("dark") ? "dark" : "light");
@@ -126,22 +138,19 @@ fetch("/data/schedule.json")
           freeSpacesForSpace[0].alt,
           freeSpacesForSpace[0].credit.name,
           freeSpacesForSpace[0].credit.source,
-          freeSpacesForSpace[0].stretch
+          freeSpacesForSpace[0].stretch,
         );
         j++;
       }
 
-      if (freeSpace != null)
-        board.setItem(
-          row,
-          column,
-          freeSpace,
-        );
+      if (freeSpace != null) board.setItem(row, column, freeSpace);
       else {
-        if (prompts[i-j] != null)
-          board.setItem(row, column, new BingoCardItem(prompts[i-j]!.name, prompts[i-j]!.description));
+        if (prompts[i - j] != null)
+          board.setItem(row, column, new BingoCardItem(prompts[i - j]!.name, prompts[i - j]!.description));
         else
-          console.warn(`Encountered null prompt at prompt number ${i-j}, row ${row} column ${column}. This usually means there's not enough prompts somewhere. Check above for more details.`);
+          console.warn(
+            `Encountered null prompt at prompt number ${i - j}, row ${row} column ${column}. This usually means there's not enough prompts somewhere. Check above for more details.`,
+          );
       }
     }
   });
@@ -152,15 +161,15 @@ interface Schedule {
 
 interface ScheduledDay {
   name: string;
-  customBuckets: { [name: string]: string },
-  weights: { [name: string]: number },
+  customBuckets: { [name: string]: string };
+  weights: { [name: string]: number };
   boardWidth: number;
   boardHeight: number;
   override?: {
     start?: Date;
     end?: Date;
-  },
-  multipleFreeSpacesBehaviour: "random" | "theme",
+  };
+  multipleFreeSpacesBehaviour: "random" | "theme";
   freeSpaces: FreeSpace[];
 }
 

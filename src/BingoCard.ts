@@ -38,24 +38,26 @@ export default class BingoCard {
     );
     state.card.freeSpaces.forEach((freeSpace) => {
       if (freeSpace.type === "multiple") {
-        let space = new BingoCardMultipleFreeSpaces(freeSpace.mode, freeSpace.freeSpaces.map(freeSpace => new BingoCardFreeSpace(
-          freeSpace.src,
-          freeSpace.alt,
-          freeSpace.credit.name,
-          freeSpace.credit.source,
-          freeSpace.stretch
-        )));
+        let space = new BingoCardMultipleFreeSpaces(
+          freeSpace.mode,
+          freeSpace.freeSpaces.map(
+            (freeSpace) =>
+              new BingoCardFreeSpace(
+                freeSpace.src,
+                freeSpace.alt,
+                freeSpace.credit.name,
+                freeSpace.credit.source,
+                freeSpace.stretch,
+              ),
+          ),
+        );
 
         space.update(document.body.classList.contains("dark") ? "dark" : "light");
         onClassChange(document.body, (body) => {
           (space as BingoCardMultipleFreeSpaces).update(body.classList.contains("dark") ? "dark" : "light");
         });
 
-        card.setItem(
-          freeSpace.pos[0],
-          freeSpace.pos[1],
-          space
-        );
+        card.setItem(freeSpace.pos[0], freeSpace.pos[1], space);
       } else {
         card.setItem(
           freeSpace.pos[0],
@@ -85,9 +87,9 @@ export default class BingoCard {
       element.appendChild(rowElement);
       for (let j = 0; j < row.length; j++) {
         if (i == 0 && j == 0) row[j].addTopLeftCurve(30);
-        if (i == 0 && j == (this.width - 1)) row[j].addTopRightCurve(30);
-        if (i == (this.height - 1) && j == 0) row[j].addBottomLeftCurve(30);
-        if (i == (this.height - 1) && j == (this.width - 1)) row[j].addBottomRightCurve(30);
+        if (i == 0 && j == this.width - 1) row[j].addTopRightCurve(30);
+        if (i == this.height - 1 && j == 0) row[j].addBottomLeftCurve(30);
+        if (i == this.height - 1 && j == this.width - 1) row[j].addBottomRightCurve(30);
 
         row[j].render(rowElement);
       }
@@ -109,14 +111,14 @@ export default class BingoCard {
               name: (this.data[row][column] as BingoCardFreeSpace).artistName,
               source: (this.data[row][column] as BingoCardFreeSpace).sourceUrl,
             },
-            stretch: (this.data[row][column] as BingoCardFreeSpace).stretched
+            stretch: (this.data[row][column] as BingoCardFreeSpace).stretched,
           });
         } else if (this.data[row][column] instanceof BingoCardMultipleFreeSpaces) {
           freeSpaces.push({
             type: "multiple",
             pos: [row, column],
             mode: (this.data[row][column] as BingoCardMultipleFreeSpaces).mode,
-            freeSpaces: (this.data[row][column] as BingoCardMultipleFreeSpaces).freeSpaces.map(freeSpace => {
+            freeSpaces: (this.data[row][column] as BingoCardMultipleFreeSpaces).freeSpaces.map((freeSpace) => {
               return {
                 type: "single",
                 pos: [row, column],
@@ -124,11 +126,11 @@ export default class BingoCard {
                 alt: freeSpace.altText,
                 credit: {
                   name: freeSpace.artistName,
-                  source: freeSpace.sourceUrl
+                  source: freeSpace.sourceUrl,
                 },
-                stretch: freeSpace.stretched
-              }
-            })
+                stretch: freeSpace.stretched,
+              };
+            }),
           });
         }
       }
@@ -260,9 +262,9 @@ export class BingoCardMultipleFreeSpaces extends BingoCardItem {
   constructor(mode: "theme" | "random", freeSpaces: BingoCardFreeSpace[]) {
     super(
       "Multiple Free Space",
-      `the stream starts (selected automatically)<br/><br/>This should have changed ${mode === "random" ? "randomly": "in accordance with the theme"} but something went wrong.`,
+      `the stream starts (selected automatically)<br/><br/>This should have changed ${mode === "random" ? "randomly" : "in accordance with the theme"} but something went wrong.`,
       true,
-      false
+      false,
     );
 
     this.mode = mode;
@@ -275,16 +277,16 @@ export class BingoCardMultipleFreeSpaces extends BingoCardItem {
         this.name = this.freeSpaces[0].name;
         this.description = this.freeSpaces[0].description;
         this.element.innerHTML = `<img class="bingo-image${this.freeSpaces[0].stretched ? " stretch" : ""}" src="${this.freeSpaces[0].imageUrl}" alt="${this.freeSpaces[0].altText}" />`;
-        
+
         //document.getElementById("bingo-artwork-credit-below")!.innerHTML =
-          //`Center artwork credit: <a href="${this.freeSpaces[0].sourceUrl}" target="_blank">${this.freeSpaces[0].artistName}</a>`;
+        //`Center artwork credit: <a href="${this.freeSpaces[0].sourceUrl}" target="_blank">${this.freeSpaces[0].artistName}</a>`;
       } else {
         this.name = this.freeSpaces[1].name;
         this.description = this.freeSpaces[1].description;
         this.element.innerHTML = `<img class="bingo-image${this.freeSpaces[1].stretched ? " stretch" : ""}" src="${this.freeSpaces[1].imageUrl}" alt="${this.freeSpaces[1].altText}" />`;
 
         //document.getElementById("bingo-artwork-credit-below")!.innerHTML =
-          //`Center artwork credit: <a href="${this.freeSpaces[1].sourceUrl}" target="_blank">${this.freeSpaces[1].artistName}</a>`;
+        //`Center artwork credit: <a href="${this.freeSpaces[1].sourceUrl}" target="_blank">${this.freeSpaces[1].artistName}</a>`;
       }
     } else {
       let randomFreeSpace = this.freeSpaces[Math.floor(Math.random() * this.freeSpaces.length)];

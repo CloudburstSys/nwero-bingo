@@ -11,9 +11,15 @@ body {
   --header-bg: #f25a6e;
   --modal-bg: #ffe2ec;
   --modal-border: #d1a2b3;
-  --card-bg-light: #ffe2ec;
-  --card-bg-dark: #ffccdd;
+  //--card-bg-light: #ffe2ec;
+  //--card-bg-dark: #ffccdd;
+  --card-bg-light: #000000;
+  --card-bg-dark: #ffffff;
+  --card-text-light: white;
+  //--card-text-light: black;
+  --card-text-dark: black;
   --card-bg-active: #7aff7a;
+  --card-text-active: black;
   --card-bg-artwork: #ffffff;
   --card-border: #d1a2b3;
   --link-color: rgb(0, 0, 238);
@@ -26,10 +32,14 @@ body.dark {
   --modal-bg: #4d001b;
   //--modal-border: #24000c;
   --modal-border: #0f0005;
-  --card-bg-light: #4d001b;
-  --card-bg-dark: #390014;
+  //--card-bg-light: #4d001b;
+  //--card-bg-dark: #390014;
+  //--card-text-light: white;
+  //--card-text-dark: white;
   --card-bg-active: green;
-  --card-bg-artwork: #000000;
+  --card-text-active: white;
+  //--card-bg-artwork: #000000;
+  --card-bg-artwork: white;
   --card-border: #0f0005;
   --link-color: aqua;
 }
@@ -202,7 +212,6 @@ header ul li .theme-switcher img {
   padding: 0;
   width: 32px;
   height: 32px;
-
 }
 
 .bingo-title {
@@ -252,7 +261,9 @@ header ul li .theme-switcher img {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.15s ease-in-out;
+  transition:
+    background-color 0.15s ease-in-out,
+    color 0.15s ease-in-out;
 }
 
 .bingo-item:has(.bingo-image) {
@@ -284,16 +295,20 @@ header ul li .theme-switcher img {
 // Credit: Cornlakes (megacornflakes) [https://github.com/megacornflakes]
 .bingo-item {
   background-color: var(--card-bg-light);
+  color: var(--card-text-light);
 }
 
 .bingo-item.active {
   --card-bg-light: var(--card-bg-active);
   --card-bg-dark: var(--card-bg-active);
+  --card-text-light: var(--card-text-active);
+  --card-text-dark: var(--card-text-active);
 }
 
 .bingo-row:nth-child(odd) .bingo-item:nth-child(odd),
 .bingo-row:nth-child(even) .bingo-item:nth-child(even) {
   background-color: var(--card-bg-dark);
+  color: var(--card-text-dark);
 }
 
 a {

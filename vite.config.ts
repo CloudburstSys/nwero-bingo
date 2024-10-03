@@ -5,5 +5,5 @@ export default defineConfig({
   appType: "spa",
   server: {
     port: 80,
-  }
+  },
 });

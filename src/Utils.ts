@@ -28,10 +28,7 @@ export function shuffleArray(array: any[]) {
 export function onClassChange(element: HTMLElement, callback: (element: HTMLElement) => void) {
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
-      if (
-        mutation.type === 'attributes' &&
-        mutation.attributeName === 'class'
-      ) {
+      if (mutation.type === "attributes" && mutation.attributeName === "class") {
         callback(mutation.target as HTMLElement);
       }
     });
@@ -60,7 +57,7 @@ export function saveState(card: BingoCard, expiry: Date) {
  * @param object The object to convert
  * @returns An array of the objects keys and values.
  */
-export function objectToArray(object: any): {key: string, value: any}[] {
+export function objectToArray(object: any): { key: string; value: any }[] {
   let output = [];
   for (let key in object) output.push({ key, value: object[key] });
   return output;
@@ -69,14 +66,18 @@ export function objectToArray(object: any): {key: string, value: any}[] {
 /**
  * Parses a prompt file into an array.
  * Uses objectToArray internally
- * @param promptObject The prompt object to parse 
+ * @param promptObject The prompt object to parse
  * @returns The parsed prompt array
  */
-export function parsePrompts(promptObject: { [name: string]: string }): { name: string, description: string }[] {
-  if (promptObject instanceof Array)
-    return promptObject; // Support old format
-  return objectToArray(promptObject).map(obj => {
-    return { name: obj.key, description: obj.value as string }
+export function parsePrompts(promptObject: {
+  [name: string]: string;
+}): { name: string; description: string; bgSrc?: string }[] {
+  if (promptObject instanceof Array) return promptObject; // Support old format
+  return objectToArray(promptObject).map((obj) => {
+    if (typeof obj.value === "object") {
+      return { name: obj.key, description: obj.value.description as string, bgSrc: obj.value.bg as string };
+    }
+    return { name: obj.key, description: obj.value as string };
   });
 }
 
@@ -87,23 +88,29 @@ export function parsePrompts(promptObject: { [name: string]: string }): { name: 
  * @param spaceCount The amount of spaces available on the board
  * @returns An array of prompts to put on the board.
  */
-export async function loadPrompts(customBuckets: { [name: string]: string }, weights: { [name: string]: number }, spaceCount: number): Promise<({ name: string; description: string } | null)[]> {
+export async function loadPrompts(
+  customBuckets: { [name: string]: string },
+  weights: { [name: string]: number },
+  spaceCount: number,
+): Promise<({ name: string; description: string; bgSrc?: string } | null)[]> {
   let output: ({ name: string; description: string } | null)[] = [];
-  
+
   const defaultBuckets: { [name: string]: string } = {
     //"neuro": "neuro.json",
     //"evil": "evil.json",
     //"vedal": "vedal.json",
-    "chat": "chat.json",
+    chat: "chat.json",
     //"partner": "partner.json"
   };
   const buckets: { [name: string]: { name: string; description: string }[] } = {};
 
   // TODO: This should probably be based on weights....
-  let combinedBuckets = {...defaultBuckets, ...customBuckets};
-  for(let key in weights) {
+  let combinedBuckets = { ...defaultBuckets, ...customBuckets };
+  for (let key in weights) {
     if (combinedBuckets[key] == undefined) {
-      console.error(`Weighs requested bucket "${key}" but that bucket does not exist, Did you forget to import a custom bucket? Prompt loading has failed.`);
+      console.error(
+        `Weighs requested bucket "${key}" but that bucket does not exist, Did you forget to import a custom bucket? Prompt loading has failed.`,
+      );
       return [];
     }
     let request = await fetch(`/data/boards/${combinedBuckets[key]}`);
@@ -116,10 +123,12 @@ export async function loadPrompts(customBuckets: { [name: string]: string }, wei
   const weightArray = objectToArray(weights);
   let activeBucket = 0;
   let count = 0;
-  
+
   for (let i = 1; i <= spaceCount; i++) {
     if (weightArray[activeBucket] == undefined) {
-      console.warn("There are more spaces on the bingo card then there are defined in weights. This will result in an incompleted board. Please fix this in the schedule configuation.");
+      console.warn(
+        "There are more spaces on the bingo card then there are defined in weights. This will result in an incompleted board. Please fix this in the schedule configuation.",
+      );
       output.push(null);
       continue;
     }
@@ -128,12 +137,16 @@ export async function loadPrompts(customBuckets: { [name: string]: string }, wei
       count = 0;
     }
     if (weightArray[activeBucket] == undefined) {
-      console.warn("There are more spaces on the bingo card then there are defined in weights. This will result in an incompleted board. Please fix this in the schedule configuation.");
+      console.warn(
+        "There are more spaces on the bingo card then there are defined in weights. This will result in an incompleted board. Please fix this in the schedule configuation.",
+      );
       output.push(null);
       continue;
     }
     if (buckets[weightArray[activeBucket].key][count] == undefined) {
-      console.warn(`There are more prompts requested from the ${weightArray[activeBucket].key} bucket then there are in that bucket. This will result in an incompleted board. Either reduce the amount of prompts requested in schedule configuation or add more prompts to the ${weightArray[activeBucket].key} bucket.`)
+      console.warn(
+        `There are more prompts requested from the ${weightArray[activeBucket].key} bucket then there are in that bucket. This will result in an incompleted board. Either reduce the amount of prompts requested in schedule configuation or add more prompts to the ${weightArray[activeBucket].key} bucket.`,
+      );
       output.push(null);
       count++;
       continue;
