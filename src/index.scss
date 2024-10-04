@@ -11,12 +11,9 @@ body {
   --header-bg: #f25a6e;
   --modal-bg: #ffe2ec;
   --modal-border: #d1a2b3;
-  //--card-bg-light: #ffe2ec;
-  //--card-bg-dark: #ffccdd;
-  --card-bg-light: #000000;
-  --card-bg-dark: #ffffff;
-  --card-text-light: white;
-  //--card-text-light: black;
+  --card-bg-light: #ffe2ec;
+  --card-bg-dark: #ffccdd;
+  --card-text-light: black;
   --card-text-dark: black;
   --card-bg-active: #7aff7a;
   --card-text-active: black;
@@ -32,14 +29,13 @@ body.dark {
   --modal-bg: #4d001b;
   //--modal-border: #24000c;
   --modal-border: #0f0005;
-  //--card-bg-light: #4d001b;
-  //--card-bg-dark: #390014;
-  //--card-text-light: white;
-  //--card-text-dark: white;
+  --card-bg-light: #4d001b;
+  --card-bg-dark: #390014;
+  --card-text-light: white;
+  --card-text-dark: white;
   --card-bg-active: green;
   --card-text-active: white;
-  //--card-bg-artwork: #000000;
-  --card-bg-artwork: white;
+  --card-bg-artwork: #000000;
   --card-border: #0f0005;
   --link-color: aqua;
 }
