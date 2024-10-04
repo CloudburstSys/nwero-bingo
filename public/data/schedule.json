@@ -1,17 +1,15 @@
 {
-  "2024-10-03": {
-    "name": "Neuro vs Evil chess",
+  "2024-10-04": {
+    "name": "Evil & Miniko therapy collab",
     "customBuckets": {
-      "neuro": "streams/chess/neuro.json",
-      "evil": "streams/chess/evil.json",
-      "both": "streams/chess/both.json",
-      "win": "streams/chess/win.json"
+      "evil": "collabs/therapy_miniko/evil.json",
+      "miniko": "collabs/therapy_miniko/miniko.json",
+      "misc": "collabs/therapy_miniko/misc.json"
     },
     "weights": {
-      "neuro": 7,
       "evil": 7,
-      "both": 5,
-      "win": 1,
+      "miniko": 7,
+      "misc": 6,
       "chat": 4
     },
     "boardWidth": 5,
