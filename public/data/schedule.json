@@ -1,15 +1,13 @@
 {
-  "2024-10-04": {
-    "name": "Evil & Miniko therapy collab",
+  "2024-10-07": {
+    "name": "Dev stream",
     "customBuckets": {
-      "evil": "collabs/therapy_miniko/evil.json",
-      "miniko": "collabs/therapy_miniko/miniko.json",
-      "misc": "collabs/therapy_miniko/misc.json"
+      "neuro": "streams/dev/neuro.json",
+      "vedal": "streams/dev/vedal.json"
     },
     "weights": {
-      "evil": 7,
-      "miniko": 7,
-      "misc": 6,
+      "neuro": 10,
+      "vedal": 10,
       "chat": 4
     },
     "boardWidth": 5,
