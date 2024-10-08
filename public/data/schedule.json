@@ -1,13 +1,11 @@
 {
-  "2024-10-07": {
-    "name": "Dev stream",
+  "2024-10-08": {
+    "name": "Neuro solo stream",
     "customBuckets": {
-      "neuro": "streams/dev/neuro.json",
-      "vedal": "streams/dev/vedal.json"
+      "neuro": "streams/solo/neuro.json"
     },
     "weights": {
-      "neuro": 10,
-      "vedal": 10,
+      "neuro": 20,
       "chat": 4
     },
     "boardWidth": 5,
@@ -16,20 +14,11 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/neuro_gymbag.png",
-        "alt": "Neuro weating her usual outfit minus the blazer/jacket/cardigan, with a gymbag over her shoulder.",
+        "src": "/assets/artworks/neuro_dress.png",
+        "alt": "Neuro-sama in a floral dress",
         "credit": {
-          "name": "chairzard_5818",
-          "source": "https://discord.com/channels/574720535888396288/1285359250205442162/1285359250205442162"
-        }
-      },
-      {
-        "pos": [2, 2],
-        "src": "/assets/artworks/evil_desk.png",
-        "alt": "Evil Neuro weating her usual outfit, sitting at a desk.",
-        "credit": {
-          "name": "chairzard_5818",
-          "source": "https://discord.com/channels/574720535888396288/1290327929649233940/1290327929649233940"
+          "name": "cooper1ion",
+          "source": "https://discord.com/channels/574720535888396288/1287576034665037985/1287576034665037985"
         }
       }
     ]
