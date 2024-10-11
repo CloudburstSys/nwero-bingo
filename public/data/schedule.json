@@ -1,12 +1,18 @@
 {
-  "2024-10-08": {
-    "name": "Neuro solo stream",
+  "2024-10-11": {
+    "name": "Vedal and Neuro play Inscryption",
     "customBuckets": {
-      "neuro": "streams/solo/neuro.json"
+      "neuro": "streams/inscryption_vedal/neuro.json",
+      "vedal": "streams/inscryption_vedal/vedal.json",
+      "game": "streams/inscryption_vedal/game.json",
+      "boss": "streams/inscryption_vedal/boss.json"
     },
     "weights": {
-      "neuro": 20,
-      "chat": 4
+      "neuro": 7,
+      "vedal": 7,
+      "game": 7,
+      "boss": 1,
+      "chat": 2
     },
     "boardWidth": 5,
     "boardHeight": 5,
