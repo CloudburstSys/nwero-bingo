@@ -1,28 +1,46 @@
 {
-  "2024-10-12": {
-    "name": "News stream",
+  "2024-10-13": {
+    "name": "Twin cooking with Layna",
     "customBuckets": {
-      "neuro": "streams/news/neuro.json",
-      "evil": "streams/news/evil.json",
-      "dual": "streams/news/dual.json"
+      "neuro": "collabs/cooking_twins/neuro.json",
+      "evil": "collabs/cooking_twins/evil.json",
+      "layna": "collabs/cooking_twins/layna.json"
     },
     "weights": {
-      "neuro": 7,
-      "evil": 7,
-      "dual": 7,
+      "neuro": 11,
+      "evil": 11,
+      "layna": 8,
       "chat": 3
     },
-    "boardWidth": 5,
-    "boardHeight": 5,
+    "boardWidth": 6,
+    "boardHeight": 6,
     "multipleFreeSpacesBehaviour": "theme",
     "freeSpaces": [
       {
-        "pos": [2, 2],
-        "src": "/assets/artworks/neuro_dress.png",
-        "alt": "Neuro-sama in a floral dress",
+        "pos": [1, 2],
+        "src": "/assets/artworks/neuro_gymbag.png",
+        "alt": "Neuro-sama wearing her usual outfit minus the blazer/cardigan, with a gymbag over her shoulder",
         "credit": {
-          "name": "cooper1ion",
-          "source": "https://discord.com/channels/574720535888396288/1287576034665037985/1287576034665037985"
+          "name": "chairzard_5818",
+          "source": "https://discord.com/channels/574720535888396288/1285359250205442162/1285359250205442162"
+        }
+      },
+      {
+        "pos": [3, 4],
+        "src": "/assets/artworks/evil_desk.png",
+        "alt": "Evil sitting at a desk",
+        "credit": {
+          "name": "chairzard_5818",
+          "source": "https://discord.com/channels/574720535888396288/1290327929649233940/1290327929649233940"
+        }
+      },
+      {
+        "pos": [4, 1],
+        "src": "/assets/artworks/LaynaLazar.webp",
+        "alt": "Layna's vtuber model",
+        "credit": {
+          "name": "Unknown artist",
+          "source": "https://virtualyoutuber.fandom.com/wiki/Layna_Lazar?file=LaynaLazar.jpg"
         }
       }
     ]
