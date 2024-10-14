@@ -6,10 +6,9 @@
   { "name": "more than 3 streams in schedule", "description": "Vedal schedules more than 3 streams while making the schedule" },
   { "name": "vedal says \"i don't know\"", "description": "Vedal says \"i don't know\"" },
   { "name": "vedal complains about a stream", "description": "Vedal complains about a previous stream" },
-  { "name": "vedal has tech issues", "description": "there are tech issues of any kind during the stream. This may be completely unrelated to Neuro or Evil" },
+  { "name": "vedal has tech issues", "description": "there are tech issues of any kind during the stream. This may be completely unrelated to Neuro or Evil or entirely related to them" },
   { "name": "vedal mentions name debate", "description": "Vedal mentions the name debate, or mentions wanting to change Evil's name" },
   { "name": "vedal mentions any non-latency issues", "description": "Vedal talks about any issues not pertaining to latency (think crashes, glitches, etc. SSL issues were an example when they occured)" },
-  { "name": "new game stream", "description": "Vedal adds a new game stream to the schedule (either Neuro, Evil, or himself would stream a game not streamed before by any of them)" },
   { "name": "vedal says \"vedal out\"", "description": "Vedal says his catchphrase, \"vedal out\"" },
   { "name": "vedal mentions sleep", "description": "Vedal mentions the concept of sleep, not nessacerally by calling it sleeping, or his sleeping schedule (or lack thereof)" }
 ]

@@ -1,46 +1,26 @@
 {
-  "2024-10-13": {
-    "name": "Twin cooking with Layna",
+  "2024-10-14": {
+    "name": "Dev stream",
     "customBuckets": {
-      "neuro": "collabs/cooking_twins/neuro.json",
-      "evil": "collabs/cooking_twins/evil.json",
-      "layna": "collabs/cooking_twins/layna.json"
+      "neuro": "streams/dev/neuro.json",
+      "vedal": "streams/dev/vedal.json"
     },
     "weights": {
       "neuro": 11,
-      "evil": 11,
-      "layna": 8,
+      "vedal": 10,
       "chat": 3
     },
-    "boardWidth": 6,
-    "boardHeight": 6,
+    "boardWidth": 5,
+    "boardHeight": 5,
     "multipleFreeSpacesBehaviour": "theme",
     "freeSpaces": [
       {
-        "pos": [1, 2],
-        "src": "/assets/artworks/neuro_gymbag.png",
-        "alt": "Neuro-sama wearing her usual outfit minus the blazer/cardigan, with a gymbag over her shoulder",
+        "pos": [2, 2],
+        "src": "/assets/artworks/Neuro_Sama_Maid_Outfit_Transparent.png",
+        "alt": "Neuro-sama in a maid outfit, holding Vedal like a burger",
         "credit": {
-          "name": "chairzard_5818",
-          "source": "https://discord.com/channels/574720535888396288/1285359250205442162/1285359250205442162"
-        }
-      },
-      {
-        "pos": [3, 4],
-        "src": "/assets/artworks/evil_desk.png",
-        "alt": "Evil sitting at a desk",
-        "credit": {
-          "name": "chairzard_5818",
-          "source": "https://discord.com/channels/574720535888396288/1290327929649233940/1290327929649233940"
-        }
-      },
-      {
-        "pos": [4, 1],
-        "src": "/assets/artworks/LaynaLazar.webp",
-        "alt": "Layna's vtuber model",
-        "credit": {
-          "name": "Unknown artist",
-          "source": "https://virtualyoutuber.fandom.com/wiki/Layna_Lazar?file=LaynaLazar.jpg"
+          "name": "VoidSynatic (commissioned by soul1419 on Discord)",
+          "source": "https://x.com/VoidSynatic/status/1841877109779923241"
         }
       }
     ]
