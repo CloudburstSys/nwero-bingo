@@ -1,13 +1,11 @@
 {
-  "2024-10-14": {
-    "name": "Dev stream",
+  "2024-10-15": {
+    "name": "Evil solo stream",
     "customBuckets": {
-      "neuro": "streams/dev/neuro.json",
-      "vedal": "streams/dev/vedal.json"
+      "evil": "streams/solo/evil.json"
     },
     "weights": {
-      "neuro": 11,
-      "vedal": 10,
+      "evil": 21,
       "chat": 3
     },
     "boardWidth": 5,
@@ -16,11 +14,11 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/Neuro_Sama_Maid_Outfit_Transparent.png",
-        "alt": "Neuro-sama in a maid outfit, holding Vedal like a burger",
+        "src": "/assets/artworks/Evil_and_her_pet.jpg",
+        "alt": "Evil Neuro riding her pet xenomorph",
         "credit": {
-          "name": "VoidSynatic (commissioned by soul1419 on Discord)",
-          "source": "https://x.com/VoidSynatic/status/1841877109779923241"
+          "name": "RAITvisualworks (commissioned by soul1419 on Discord)",
+          "source": "https://discord.com/channels/574720535888396288/1295708348716679229/1295708348716679229"
         }
       }
     ]
