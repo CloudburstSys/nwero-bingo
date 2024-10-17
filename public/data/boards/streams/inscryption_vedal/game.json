@@ -1,11 +1,11 @@
 {
     "uses the pliers": "Vedal uses the Pliers at any point during the game",
     "completes a totem": "Vedal completes a totem at any point during the game",
-    "encounters trader": "Vedal encounters a trader at any point during the game",
+    "buys from trader": "Vedal buys items from the trader at any point during the game",
     "loses to boss": "Vedal loses to a boss at any point during the game",
-    "first death": "Vedal dies at any point during the game",
+    "dies": "Vedal dies at any point during the game",
     "aquires a non-stoat talking card": "Vedal aquires a talking card (of which there are 3) which isn't a stoat",
-    "encounter mycologists": "Vedal encounters Mucologists at any point during the game",
+    "combines cards (mycologists)": "Vedal combines 2 of his cards with the Mycologists at any point during the game",
     "stuck on a puzzle": "Vedal gets stuck on a puzzle. The definition of stuck in this case is not making any progress for 5 or more minutes",
     "chat spams MISPLAY (or SO BAD)": "chat spams MISPLAY or SO BAD (which may replace the O with the omegalul emote) at any point while Vedal is playing"
 }

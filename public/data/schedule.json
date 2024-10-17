@@ -1,12 +1,18 @@
 {
-  "2024-10-15": {
-    "name": "Evil solo stream",
+  "2024-10-17": {
+    "name": "Inscryption w/ Vedal & Neuro",
     "customBuckets": {
-      "evil": "streams/solo/evil.json"
+      "neuro": "streams/inscryption_vedal/neuro.json",
+      "vedal": "streams/inscryption_vedal/vedal.json",
+      "game": "streams/inscryption_vedal/game.json",
+      "boss": "streams/inscryption_vedal/boss.json"
     },
     "weights": {
-      "evil": 21,
-      "chat": 3
+      "neuro": 7,
+      "vedal": 7,
+      "game": 7,
+      "boss": 1,
+      "chat": 2
     },
     "boardWidth": 5,
     "boardHeight": 5,
@@ -14,11 +20,11 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/Evil_and_her_pet.jpg",
-        "alt": "Evil Neuro riding her pet xenomorph",
+        "src": "/assets/artworks/neuro_closeup.jpg",
+        "alt": "A close-up shot of Neuro-sama's face",
         "credit": {
-          "name": "RAITvisualworks (commissioned by soul1419 on Discord)",
-          "source": "https://discord.com/channels/574720535888396288/1295708348716679229/1295708348716679229"
+          "name": "hoshistream (commissioned by soul1419 on Discord)",
+          "source": "https://discord.com/channels/574720535888396288/1291075668393721866/1291075668393721866"
         }
       }
     ]
