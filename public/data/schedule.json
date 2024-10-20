@@ -1,18 +1,16 @@
 {
-  "2024-10-17": {
-    "name": "Inscryption w/ Vedal & Neuro",
+  "2024-10-20": {
+    "name": "Aquarium IRL stream w/ Neuro & Toma",
     "customBuckets": {
-      "neuro": "streams/inscryption_vedal/neuro.json",
-      "vedal": "streams/inscryption_vedal/vedal.json",
-      "game": "streams/inscryption_vedal/game.json",
-      "boss": "streams/inscryption_vedal/boss.json"
+      "neuro": "collabs/aquarium/neuro.json",
+      "toma": "collabs/aquarium/toma.json",
+      "misc": "collabs/aquarium/misc.json"
     },
     "weights": {
       "neuro": 7,
-      "vedal": 7,
-      "game": 7,
-      "boss": 1,
-      "chat": 2
+      "toma": 7,
+      "misc": 7,
+      "chat": 3
     },
     "boardWidth": 5,
     "boardHeight": 5,
@@ -20,11 +18,11 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/neuro_closeup.jpg",
-        "alt": "A close-up shot of Neuro-sama's face",
+        "src": "/assets/artworks/neuro_toma_zoo.jpg",
+        "alt": "Neuro-sama and Toma at the zoo, with a blurry background (due to technical difficulties)",
         "credit": {
-          "name": "hoshistream (commissioned by soul1419 on Discord)",
-          "source": "https://discord.com/channels/574720535888396288/1291075668393721866/1291075668393721866"
+          "name": "borzoi_rizz",
+          "source": "https://discord.com/channels/574720535888396288/1286561951018778675/1286561951018778675"
         }
       }
     ]
