@@ -1,15 +1,13 @@
 {
-  "2024-10-20": {
-    "name": "Aquarium IRL stream w/ Neuro & Toma",
+  "2024-10-21": {
+    "name": "Dev stream",
     "customBuckets": {
-      "neuro": "collabs/aquarium/neuro.json",
-      "toma": "collabs/aquarium/toma.json",
-      "misc": "collabs/aquarium/misc.json"
+      "neuro": "streams/dev/neuro.json",
+      "vedal": "streams/dev/vedal.json"
     },
     "weights": {
-      "neuro": 7,
-      "toma": 7,
-      "misc": 7,
+      "neuro": 11,
+      "vedal": 10,
       "chat": 3
     },
     "boardWidth": 5,
@@ -18,11 +16,11 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/neuro_toma_zoo.jpg",
-        "alt": "Neuro-sama and Toma at the zoo, with a blurry background (due to technical difficulties)",
+        "src": "/assets/artworks/cake_time.png",
+        "alt": "Neuro-sama, dressed in a white and pink dress, and Evil, dressed in a yellot top and black dress, sharing some cake",
         "credit": {
-          "name": "borzoi_rizz",
-          "source": "https://discord.com/channels/574720535888396288/1286561951018778675/1286561951018778675"
+          "name": "suprii (commissioner: soul1419)",
+          "source": "https://discord.com/channels/574720535888396288/1293894801984458803/1293894801984458803"
         }
       }
     ]
