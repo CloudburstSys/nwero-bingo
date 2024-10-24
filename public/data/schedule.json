@@ -1,5 +1,16 @@
 {
-  "2024-10-22": {
+  "2024-10-24": {
+    "name": "No bingo today, sorry ):",
+    "customBuckets": {},
+    "weights": {
+      "chat": 0
+    },
+    "boardWidth": 0,
+    "boardHeight": 0,
+    "multipleFreeSpacesBehaviour": "theme",
+    "freeSpaces": []
+  },
+  "2025-10-22": {
     "name": "Neuro solo stream",
     "customBuckets": {
       "neuro": "streams/solo/neuro.json"
