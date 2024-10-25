@@ -1,5 +1,4 @@
 import "./index.scss";
-// TODO: This file should take schedule data and figure stuff out from there.
 import "./Dark";
 import BingoCard, { BingoCardFreeSpace, BingoCardItem, BingoCardMultipleFreeSpaces } from "./BingoCard";
 import SavedState from "./SavedState";
@@ -56,7 +55,6 @@ fetch("/data/schedule.json")
 
     if (day == undefined) {
       // There's no content for today? Mkay then.
-      // TODO: Tell the user there's no content, or have a default prompt? Maybe EvilZyzz and NeuroZyzz?
       document.getElementsByClassName("bingo-title")[0].innerHTML = "No stream ongoing";
       let board = new BingoCard("No stream ongoing", 5, 5);
 
@@ -68,7 +66,6 @@ fetch("/data/schedule.json")
 
     document.getElementsByClassName("bingo-title")[0].innerHTML = cardInfo.name;
 
-    // TODO: Implement prompt bucket system
     let freeSpaces: [number, number][] = [];
     cardInfo.freeSpaces.forEach((freeSpace) => {
       if (freeSpaces.some((space) => space[0] == freeSpace.pos[0] && space[1] == freeSpace.pos[1])) return;

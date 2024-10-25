@@ -104,7 +104,6 @@ export async function loadPrompts(
   };
   const buckets: { [name: string]: { name: string; description: string }[] } = {};
 
-  // TODO: This should probably be based on weights....
   let combinedBuckets = { ...defaultBuckets, ...customBuckets };
   for (let key in weights) {
     if (combinedBuckets[key] == undefined) {
