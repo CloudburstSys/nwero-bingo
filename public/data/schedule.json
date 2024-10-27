@@ -1,22 +1,14 @@
 {
-  "2024-10-24": {
-    "name": "No bingo today, sorry ):",
-    "customBuckets": {},
-    "weights": {
-      "chat": 0
-    },
-    "boardWidth": 0,
-    "boardHeight": 0,
-    "multipleFreeSpacesBehaviour": "theme",
-    "freeSpaces": []
-  },
-  "2025-10-22": {
-    "name": "Neuro solo stream",
+  "2024-10-27": {
+    "name": "Cerber and Evil-wan collab",
+    "description": "Whoops! Seems like Cerber got to the prompts!",
     "customBuckets": {
-      "neuro": "streams/solo/neuro.json"
+      "evil": "collabs/evil_cerber/evil.json",
+      "cerber": "collabs/evil_cerber/cerber.json"
     },
     "weights": {
-      "neuro": 21,
+      "evil": 11,
+      "cerber": 10,
       "chat": 3
     },
     "boardWidth": 5,
@@ -25,21 +17,13 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/neuro_cat_happy.jpg",
-        "alt": "Neuro-sama, in her usual outfit, with cat ears.",
+        "src": "/assets/artworks/cerber_evil.png",
+        "alt": "Evil-wan and Cerber surrounded by many puppies. Evil-wan is being defeated by the puppies.",
         "credit": {
-          "name": "ame.000_57340",
-          "source": "https://discord.com/channels/574720535888396288/1289261175611068459/1289261175611068459"
-        }
-      },
-      {
-        "pos": [2, 2],
-        "src": "/assets/artworks/neuro_witch_hat.jpg",
-        "alt": "Neuro-sama, dressed in her halloween dress with her witch hat on, outside at night.",
-        "credit": {
-          "name": "ame.000_57340",
-          "source": "https://discord.com/channels/574720535888396288/1289261175611068459/1289261175611068459"
-        }
+          "name": "paccha_ (commissioned by soul1419)",
+          "source": "https://discord.com/channels/574720535888396288/1299526510469972008/1299526510469972008"
+        },
+        "description": "the stream starts (selected automatically)<br/>Dev note: paccha is so good at art tho"
       }
     ]
   }
