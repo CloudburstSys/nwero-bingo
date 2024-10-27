@@ -6,12 +6,14 @@ import { onClassChange } from "./Utils";
 /* Assembles a Bingo card */
 export default class BingoCard {
   public name: string;
+  public description: string | undefined;
   public width: number;
   public height: number;
   public data: BingoCardItem[][];
 
-  constructor(name: string, width: number, height: number, boardData?: BingoCardItem[][]) {
+  constructor(name: string, description: string | undefined, width: number, height: number, boardData?: BingoCardItem[][]) {
     this.name = name;
+    this.description = description;
     this.width = width;
     this.height = height;
     this.data =
@@ -32,6 +34,7 @@ export default class BingoCard {
   static fromSavedState(state: SavedState) {
     let card = new this(
       state.card.name,
+      state.card.description,
       state.card.width,
       state.card.height,
       state.card.state.map((row) => row.map((item) => new BingoCardItem(item.name, item.description, item.marked))),
@@ -47,6 +50,7 @@ export default class BingoCard {
                 freeSpace.alt,
                 freeSpace.credit.name,
                 freeSpace.credit.source,
+                freeSpace.description,
                 freeSpace.stretch,
               ),
           ),
@@ -138,6 +142,7 @@ export default class BingoCard {
 
     return {
       name: this.name,
+      description: this.description,
       width: this.width,
       height: this.height,
       freeSpaces: freeSpaces,
@@ -236,11 +241,12 @@ export class BingoCardFreeSpace extends BingoCardItem {
   public artistName: string;
   public sourceUrl: string;
   public stretched: boolean;
+  public overridenDescription: string | undefined;
 
-  constructor(imageUrl: string, altText: string, artistName: string, sourceUrl: string, streched: boolean = false) {
+  constructor(imageUrl: string, altText: string, artistName: string, sourceUrl: string, overridenDescription: string | undefined = undefined, streched: boolean = false) {
     super(
       "Free Space",
-      `the stream starts (selected automatically)<br/><img class="modal-image" src="${imageUrl}" alt="${altText}" /><br/>Art credit: <a href="${sourceUrl}" target="_blank">${artistName}</a>`,
+      `${(overridenDescription ? overridenDescription : "the stream starts (selected automatically)")}<br/><img class="modal-image" src="${imageUrl}" alt="${altText}" /><br/>Art credit: <a href="${sourceUrl}" target="_blank">${artistName}</a>`,
       true,
       false,
     );
@@ -250,6 +256,7 @@ export class BingoCardFreeSpace extends BingoCardItem {
     this.artistName = artistName;
     this.sourceUrl = sourceUrl;
     this.stretched = streched;
+    this.overridenDescription = overridenDescription;
 
     this.element.innerHTML = `<img class="bingo-image${this.stretched ? " stretch" : ""}" src="${this.imageUrl}" alt="${this.altText}" />`;
   }

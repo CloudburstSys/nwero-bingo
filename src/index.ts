@@ -40,6 +40,7 @@ fetch("/data/schedule.json")
           card.render(document.getElementsByClassName("bingo-container")[0] as HTMLElement);
 
           document.getElementsByClassName("bingo-title")[0].innerHTML = card.name;
+          document.getElementsByClassName("bingo-description")[0].innerHTML = card.description || "&nbsp;";
 
           cardSaveInterval = setInterval(() => saveState(card as BingoCard, cardState.expiry), 1000);
 
@@ -56,7 +57,7 @@ fetch("/data/schedule.json")
     if (day == undefined) {
       // There's no content for today? Mkay then.
       document.getElementsByClassName("bingo-title")[0].innerHTML = "No stream ongoing";
-      let board = new BingoCard("No stream ongoing", 5, 5);
+      let board = new BingoCard("No stream ongoing", "There's currently no stream right now, sorry!", 5, 5);
 
       board.render(document.getElementsByClassName("bingo-container")[0] as HTMLElement);
       return;
@@ -65,6 +66,7 @@ fetch("/data/schedule.json")
     let cardInfo = schedule[day.key];
 
     document.getElementsByClassName("bingo-title")[0].innerHTML = cardInfo.name;
+    document.getElementsByClassName("bingo-description")[0].innerHTML = cardInfo.description || "&nbsp;";
 
     let freeSpaces: [number, number][] = [];
     cardInfo.freeSpaces.forEach((freeSpace) => {
@@ -83,7 +85,7 @@ fetch("/data/schedule.json")
 
     let j = 0;
 
-    let board = new BingoCard(cardInfo.name, cardInfo.boardWidth, cardInfo.boardHeight);
+    let board = new BingoCard(cardInfo.name, cardInfo.description, cardInfo.boardWidth, cardInfo.boardHeight);
 
     for (let i = 0; i <= cardInfo.boardWidth * cardInfo.boardHeight; i++) {
       if (i == cardInfo.boardWidth * cardInfo.boardHeight) {
@@ -118,6 +120,7 @@ fetch("/data/schedule.json")
               freeSpace.alt,
               freeSpace.credit.name,
               freeSpace.credit.source,
+              freeSpace.description,
               freeSpace.stretch,
             ),
         );
@@ -135,6 +138,7 @@ fetch("/data/schedule.json")
           freeSpacesForSpace[0].alt,
           freeSpacesForSpace[0].credit.name,
           freeSpacesForSpace[0].credit.source,
+          freeSpacesForSpace[0].description,
           freeSpacesForSpace[0].stretch,
         );
         j++;
@@ -158,6 +162,7 @@ interface Schedule {
 
 interface ScheduledDay {
   name: string;
+  description?: string;
   customBuckets: { [name: string]: string };
   weights: { [name: string]: number };
   boardWidth: number;
@@ -179,4 +184,5 @@ interface FreeSpace {
     source: string;
   };
   stretch?: boolean;
+  description?: string;
 }

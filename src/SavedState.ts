@@ -5,6 +5,7 @@ export default interface SavedState {
 
 export interface SavedCard {
   name: string;
+  description: string | undefined;
   width: number;
   height: number;
   freeSpaces: (CardFreeSpace | CardFreeSpaces)[];
@@ -28,6 +29,7 @@ export interface CardFreeSpace {
     source: string;
   };
   stretch?: boolean;
+  description?: string;
 }
 
 export interface SavedStateItem {
