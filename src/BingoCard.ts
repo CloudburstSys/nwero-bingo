@@ -115,6 +115,7 @@ export default class BingoCard {
               name: (this.data[row][column] as BingoCardFreeSpace).artistName,
               source: (this.data[row][column] as BingoCardFreeSpace).sourceUrl,
             },
+            description: (this.data[row][column] as BingoCardFreeSpace).overridenDescription,
             stretch: (this.data[row][column] as BingoCardFreeSpace).stretched,
           });
         } else if (this.data[row][column] instanceof BingoCardMultipleFreeSpaces) {
@@ -132,7 +133,7 @@ export default class BingoCard {
                   name: freeSpace.artistName,
                   source: freeSpace.sourceUrl,
                 },
-                description: freeSpace.description,
+                description: freeSpace.overridenDescription,
                 stretch: freeSpace.stretched,
               };
             }),
