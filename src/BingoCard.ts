@@ -66,7 +66,7 @@ export default class BingoCard {
         card.setItem(
           freeSpace.pos[0],
           freeSpace.pos[1],
-          new BingoCardFreeSpace(freeSpace.src, freeSpace.alt, freeSpace.credit.name, freeSpace.credit.source),
+          new BingoCardFreeSpace(freeSpace.src, freeSpace.alt, freeSpace.credit.name, freeSpace.credit.source, freeSpace.description, freeSpace.stretch),
         );
       }
     });
@@ -132,6 +132,7 @@ export default class BingoCard {
                   name: freeSpace.artistName,
                   source: freeSpace.sourceUrl,
                 },
+                description: freeSpace.description,
                 stretch: freeSpace.stretched,
               };
             }),
