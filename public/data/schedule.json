@@ -1,14 +1,14 @@
 {
-  "2024-10-27": {
-    "name": "Cerber and Evil-wan collab",
-    "description": "Whoops! Seems like Cerber got to the prompts!",
+  "2024-10-28": {
+    "name": "Evil dev stream",
+    "description": "Free space artwork is what Vedal sees today",
     "customBuckets": {
-      "evil": "collabs/evil_cerber/evil.json",
-      "cerber": "collabs/evil_cerber/cerber.json"
+      "evil": "streams/dev/evil.json",
+      "vedal": "streams/dev/vedal.json"
     },
     "weights": {
       "evil": 11,
-      "cerber": 10,
+      "vedal": 10,
       "chat": 3
     },
     "boardWidth": 5,
@@ -17,13 +17,12 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/cerber_evil.png",
-        "alt": "Evil-wan and Cerber surrounded by many puppies. Evil-wan is being defeated by the puppies.",
+        "src": "/assets/artworks/evil_shoots_u.png",
+        "alt": "Evil Neuro holding a gun, aiming it at the viewer.",
         "credit": {
-          "name": "paccha_ (commissioned by soul1419)",
-          "source": "https://discord.com/channels/574720535888396288/1299526510469972008/1299526510469972008"
-        },
-        "description": "the stream starts (selected automatically)<br/>Dev note: paccha is so good at art tho"
+          "name": "Naofaro (commissioned by soul1419)",
+          "source": "https://discord.com/channels/574720535888396288/1294664169932456017/1294664169932456017"
+        }
       }
     ]
   }
