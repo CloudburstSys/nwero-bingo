@@ -1,27 +1,34 @@
 {
-  "2024-10-28": {
-    "name": "Evil dev stream",
-    "description": "Free space artwork is what Vedal sees today",
+  "2024-10-29": {
+    "name": "Neuro solo stream",
+    "description": "scary neuro aaaaaaaaaa",
     "customBuckets": {
-      "evil": "streams/dev/evil.json",
-      "vedal": "streams/dev/vedal.json"
+      "neuro": "streams/solo/neuro.json"
     },
     "weights": {
-      "evil": 11,
-      "vedal": 10,
+      "neuro": 21,
       "chat": 3
     },
     "boardWidth": 5,
     "boardHeight": 5,
-    "multipleFreeSpacesBehaviour": "theme",
+    "multipleFreeSpacesBehaviour": "random",
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/evil_shoots_u.png",
-        "alt": "Evil Neuro holding a gun, aiming it at the viewer.",
+        "src": "/assets/artworks/neuro_witch_hat.jpg",
+        "alt": "Neuro-sama in her halloween (witch) outfit, under the night sky",
         "credit": {
-          "name": "Naofaro (commissioned by soul1419)",
-          "source": "https://discord.com/channels/574720535888396288/1294664169932456017/1294664169932456017"
+          "name": "ame.000_57340",
+          "source": "https://discord.com/channels/574720535888396288/1289261175611068459/1289261175611068459"
+        }
+      },
+      {
+        "pos": [2, 2],
+        "src": "/assets/artworks/neuro_autumn_wink.png",
+        "alt": "Neuro-sama wearing a yellow top and a hoodie which resembles her usual outfit, with said hoodie partially off. Neuro-sama is winking at the viewer.",
+        "credit": {
+          "name": "hanashi1821 (commissioner: soul1419)",
+          "source": "https://discord.com/channels/574720535888396288/1299375399557398650/1299375399557398650"
         }
       }
     ]
