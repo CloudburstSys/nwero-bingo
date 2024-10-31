@@ -156,3 +156,13 @@ export async function loadPrompts(
 
   return output;
 }
+
+export async function randomCharacters(amount: number) {
+  const characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let output = [];
+  for (let i = 0; i < amount; i++) {
+    output.push(characters.charAt(Math.floor(Math.random() * characters.length)));
+  }
+
+  return output.join("");
+}

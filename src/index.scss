@@ -20,6 +20,7 @@ body {
   --card-bg-artwork: #ffffff;
   --card-border: #d1a2b3;
   --link-color: rgb(0, 0, 238);
+  --invert: 1
 }
 
 body.dark {
@@ -38,6 +39,17 @@ body.dark {
   --card-bg-artwork: #000000;
   --card-border: #0f0005;
   --link-color: aqua;
+  --invert: 0;
+}
+
+body.hiyori {
+  --body-bg: #9f9f9f !important;
+  --header-bg: #7c7c7c !important;
+}
+
+body.hiyori.dark {
+  --body-bg: #1b1b1b !important;
+  --header-bg: #141414 !important;
 }
 
 body {
@@ -271,6 +283,10 @@ header ul li .theme-switcher img {
     color 0.15s ease-in-out;
 }
 
+.bingo-item span {
+  overflow: hidden;
+}
+
 .bingo-item:has(.bingo-image) {
   background-color: var(--card-bg-artwork) !important;
 }
@@ -278,6 +294,10 @@ header ul li .theme-switcher img {
 .bingo-image {
   overflow: hidden;
   height: 130px;
+}
+
+.bingo-image.invert {
+  filter: invert(var(--invert));
 }
 
 .bingo-image.stretch {

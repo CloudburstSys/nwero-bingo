@@ -1,12 +1,16 @@
 {
-  "2024-10-29": {
-    "name": "Neuro solo stream",
-    "description": "scary neuro aaaaaaaaaa",
+  "2024-10-31": {
+    "name": "Evil and Camila collab",
+    "description": "Finally. Evil on Halloween.",
     "customBuckets": {
-      "neuro": "streams/solo/neuro.json"
+      "evil": "collabs/evil_camila_halloween/evil.json",
+      "camila": "collabs/evil_camila_halloween/camila.json",
+      "general": "collabs/evil_camila_halloween/general.json"
     },
     "weights": {
-      "neuro": 21,
+      "evil": 7,
+      "camila": 7,
+      "general": 7,
       "chat": 3
     },
     "boardWidth": 5,
@@ -15,21 +19,13 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/neuro_witch_hat.jpg",
-        "alt": "Neuro-sama in her halloween (witch) outfit, under the night sky",
+        "src": "/assets/artworks/evil_witch.png",
+        "alt": "Evil Neuro wearing her halloween witch outfit, flying on a magic broomstick. Vedal is seen barely hanging on. There are various objects surrounding Evil Neuro, and a cat floating to her right.",
         "credit": {
-          "name": "ame.000_57340",
-          "source": "https://discord.com/channels/574720535888396288/1289261175611068459/1289261175611068459"
-        }
-      },
-      {
-        "pos": [2, 2],
-        "src": "/assets/artworks/neuro_autumn_wink.png",
-        "alt": "Neuro-sama wearing a yellow top and a hoodie which resembles her usual outfit, with said hoodie partially off. Neuro-sama is winking at the viewer.",
-        "credit": {
-          "name": "hanashi1821 (commissioner: soul1419)",
-          "source": "https://discord.com/channels/574720535888396288/1299375399557398650/1299375399557398650"
-        }
+          "name": "Lynx (commissioner: soul1419)",
+          "source": "https://discord.com/channels/574720535888396288/1300783883373121686/1300783883373121686"
+        },
+        "stretch": true
       }
     ]
   }

@@ -2,7 +2,9 @@ import "./index.scss";
 import "./Dark";
 import BingoCard, { BingoCardFreeSpace, BingoCardItem, BingoCardMultipleFreeSpaces } from "./BingoCard";
 import SavedState from "./SavedState";
-import { loadPrompts, onClassChange, saveState, shuffleArray } from "./Utils";
+import { loadPrompts, onClassChange, randomCharacters, saveState, shuffleArray } from "./Utils";
+import Emote from "./Emote";
+import * as hiyori from "./Hiyori";
 
 let card: BingoCard | null;
 let cardSaveInterval = null;
@@ -14,6 +16,9 @@ window.localStorage.removeItem("board-state");
 fetch("/data/schedule.json")
   .then(async (data) => await data.json())
   .then(async (schedule: Schedule) => {
+    // Halloween funny
+    hiyori.init();
+
     let scheduleDays = [];
 
     for (let key in schedule) {
@@ -40,7 +45,11 @@ fetch("/data/schedule.json")
           card.render(document.getElementsByClassName("bingo-container")[0] as HTMLElement);
 
           document.getElementsByClassName("bingo-title")[0].innerHTML = card.name;
+          hiyori.updateTitle(card.name);
           document.getElementsByClassName("bingo-description")[0].innerHTML = card.description || "&nbsp;";
+          hiyori.updateDescription(card.description || "&nbsp;");
+
+          hiyori.updateCard(card);
 
           cardSaveInterval = setInterval(() => saveState(card as BingoCard, cardState.expiry), 1000);
 
@@ -66,7 +75,9 @@ fetch("/data/schedule.json")
     let cardInfo = schedule[day.key];
 
     document.getElementsByClassName("bingo-title")[0].innerHTML = cardInfo.name;
+    hiyori.updateTitle(cardInfo.name);
     document.getElementsByClassName("bingo-description")[0].innerHTML = cardInfo.description || "&nbsp;";
+    hiyori.updateDescription(cardInfo.description || "&nbsp;");
 
     let freeSpaces: [number, number][] = [];
     cardInfo.freeSpaces.forEach((freeSpace) => {
@@ -90,6 +101,10 @@ fetch("/data/schedule.json")
     for (let i = 0; i <= cardInfo.boardWidth * cardInfo.boardHeight; i++) {
       if (i == cardInfo.boardWidth * cardInfo.boardHeight) {
         console.log(board);
+
+        card = board;
+
+        hiyori.updateCard(card);
 
         saveState(board, day.end);
         cardSaveInterval = setInterval(() => saveState(board, day.end), 1000);
