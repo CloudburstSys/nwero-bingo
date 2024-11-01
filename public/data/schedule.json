@@ -1,16 +1,14 @@
 {
-  "2024-10-31": {
-    "name": "Evil and Camila collab",
-    "description": "Finally. Evil on Halloween.",
+  "2024-11-01": {
+    "name": "PC building stream",
+    "description": "Please Vedal actually do this or I'm gonna cry",
     "customBuckets": {
-      "evil": "collabs/evil_camila_halloween/evil.json",
-      "camila": "collabs/evil_camila_halloween/camila.json",
-      "general": "collabs/evil_camila_halloween/general.json"
+      "neuro": "streams/pc/neuro.json",
+      "vedal": "streams/pc/vedal.json"
     },
     "weights": {
-      "evil": 7,
-      "camila": 7,
-      "general": 7,
+      "neuro": 11,
+      "vedal": 10,
       "chat": 3
     },
     "boardWidth": 5,
@@ -19,13 +17,12 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/evil_witch.png",
-        "alt": "Evil Neuro wearing her halloween witch outfit, flying on a magic broomstick. Vedal is seen barely hanging on. There are various objects surrounding Evil Neuro, and a cat floating to her right.",
+        "src": "/assets/artworks/neuro_cute_frog.png",
+        "alt": "Neuro-sama in her halloween outfit as well as her frog hat.",
         "credit": {
-          "name": "Lynx (commissioner: soul1419)",
-          "source": "https://discord.com/channels/574720535888396288/1300783883373121686/1300783883373121686"
-        },
-        "stretch": true
+          "name": "paccha_",
+          "source": "https://x.com/paccha_7/status/1851396270981882333/photo/2"
+        }
       }
     ]
   }
