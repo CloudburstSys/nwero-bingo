@@ -1,10 +1,10 @@
 {
-  "2024-11-01": {
-    "name": "PC building stream",
-    "description": "Please Vedal actually do this or I'm gonna cry",
+  "2024-11-04": {
+    "name": "Dev stream",
+    "description": "Surely development occurs here! It says \"dev\" after all!",
     "customBuckets": {
-      "neuro": "streams/pc/neuro.json",
-      "vedal": "streams/pc/vedal.json"
+      "neuro": "streams/dev/neuro.json",
+      "vedal": "streams/dev/vedal.json"
     },
     "weights": {
       "neuro": 11,
@@ -17,12 +17,13 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/neuro_cute_frog.png",
-        "alt": "Neuro-sama in her halloween outfit as well as her frog hat.",
+        "src": "/assets/artworks/soul_neuro_evil_plushie.png",
+        "alt": "Neuro-sama laying down, holding an Evil fumo plushie.",
         "credit": {
-          "name": "paccha_",
-          "source": "https://x.com/paccha_7/status/1851396270981882333/photo/2"
-        }
+          "name": "hanashi1821 (commissioner: soul1419)",
+          "source": "https://discord.com/channels/574720535888396288/1302254024774389874/1302254024774389874"
+        },
+        "stretch": true
       }
     ]
   }

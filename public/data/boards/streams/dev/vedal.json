@@ -1,13 +1,14 @@
-[ { "name": "vedal mentions changes to neuro", "description": "Vedal tells us about improvements, bugfixes, brainstorming, etc" },
-  { "name": "vedal mentions latency", "description": "Vedal mentions latency and how it's improved/got worse/is the same/etc" },
-  { "name": "vedal insults neuro/evil", "description": "Vedal insults Neuro or Evil at any point during the stream" },
-  { "name": "vedal makes tutel/femboy noise", "description": "Vedal makes a tutel or femboy noise" },
-  { "name": "vedal is :corpa: :vedalCorpa:", "description": "Vedal acts corpa, either shilling for Abandoned Archive, Neuro, or generally acts in a corporate-like way" },
-  { "name": "more than 3 streams in schedule", "description": "Vedal schedules more than 3 streams while making the schedule" },
-  { "name": "vedal says \"i don't know\"", "description": "Vedal says \"i don't know\"" },
-  { "name": "vedal complains about a stream", "description": "Vedal complains about a previous stream" },
-  { "name": "vedal has tech issues", "description": "there are tech issues of any kind during the stream. This may be completely unrelated to Neuro or Evil or entirely related to them" },
-  { "name": "vedal mentions any non-latency issues", "description": "Vedal talks about any issues not pertaining to latency (think crashes, glitches, etc. SSL issues were an example when they occured)" },
-  { "name": "vedal says \"vedal out\"", "description": "Vedal says his catchphrase, \"vedal out\"" },
-  { "name": "vedal mentions sleep", "description": "Vedal mentions the concept of sleep, not nessacerally by calling it sleeping, or his sleeping schedule (or lack thereof)" }
-]
+﻿{
+  "vedal mentions changes to neuro": "Vedal tells us about improvements, bugfixes, brainstorming, etc",
+  "vedal mentions latency": "Vedal mentions latency and how it's improved/got worse/is the same/etc",
+  "vedal insults neuro/evil": "Vedal insults Neuro or Evil at any point during the stream",
+  "vedal makes tutel/femboy noise": "Vedal makes a tutel or femboy noise",
+  "vedal is corpa": "Vedal acts corpa, either shilling for Abandoned Archive, Neuro, or generally acts in a corporate-like way",
+  "3+ streams in schedule": "Vedal schedules more than 3 streams while making the schedule",
+  "vedal says \"i don't know\"": "Vedal says \"i don't know\" during the streamn",
+  "vedal complains about a stream": "Vedal complains about a previous stream",
+  "vedal has tech issues": "there are tech issues of any kind during the stream. This may be completely unrelated to Neuro or Evil or directly related to them",
+  "vedal mentions non-latency issue": "Vedal talks about any issues not pertaining to latency (think crashes, glitches, etc. SSL issues were an example when they occured)<br/><br/>If an issue is actively ongoing, the \"vedal has tech issues\" prompt is more suited and this prompt doesn't count",
+  "vedal says \"vedal out\"": "Vedal says his catchphrase, \"vedal out\"",
+  "vedal mentions sleep": "Vedal mentions the concept of sleep, not necessarily by calling it sleeping, or his sleeping schedule (or lack thereof)"
+}
