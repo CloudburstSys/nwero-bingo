@@ -1,14 +1,12 @@
 {
-  "2024-11-04": {
-    "name": "Dev stream",
-    "description": "Surely development occurs here! It says \"dev\" after all!",
+  "2024-11-05": {
+    "name": "Evil solo stream",
+    "description": "No schedule but I am HOPING it's Evil today",
     "customBuckets": {
-      "neuro": "streams/dev/neuro.json",
-      "vedal": "streams/dev/vedal.json"
+      "evil": "streams/solo/evil.json"
     },
     "weights": {
-      "neuro": 11,
-      "vedal": 10,
+      "evil": 21,
       "chat": 3
     },
     "boardWidth": 5,
@@ -17,13 +15,13 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/soul_neuro_evil_plushie.png",
-        "alt": "Neuro-sama laying down, holding an Evil fumo plushie.",
+        "src": "/assets/artworks/evil_katana.webp",
+        "alt": "",
         "credit": {
-          "name": "hanashi1821 (commissioner: soul1419)",
-          "source": "https://discord.com/channels/574720535888396288/1302254024774389874/1302254024774389874"
+          "name": "Maruru Maru (commissioner: soul1419)",
+          "source": "https://discord.com/channels/574720535888396288/1303331235124482048/1303331235124482048"
         },
-        "stretch": true
+        "stretch": false
       }
     ]
   }
