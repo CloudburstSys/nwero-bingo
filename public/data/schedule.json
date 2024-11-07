@@ -1,13 +1,19 @@
 {
-  "2024-11-05": {
-    "name": "Evil solo stream",
-    "description": "No schedule but I am HOPING it's Evil today",
+  "2024-11-07": {
+    "name": "Inscryption w/ Vedal + Neuro",
+    "description": "Beep boop.. beep?",
     "customBuckets": {
-      "evil": "streams/solo/evil.json"
+      "neuro": "streams/inscryption_vedal/neuro.json",
+      "vedal": "streams/inscryption_vedal/vedal.json",
+      "game": "streams/inscryption_vedal/game.json",
+      "boss": "streams/inscryption_vedal/boss.json"
     },
     "weights": {
-      "evil": 21,
-      "chat": 3
+      "neuro": 7,
+      "vedal": 7,
+      "game": 7,
+      "boss": 1,
+      "chat": 2
     },
     "boardWidth": 5,
     "boardHeight": 5,
@@ -15,13 +21,12 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/evil_katana.webp",
-        "alt": "",
+        "src": "/assets/artworks/neuro_cat_clown.png",
+        "alt": "Neuro-sama, as a cat, dressed in her clown outfit",
         "credit": {
-          "name": "Maruru Maru (commissioner: soul1419)",
-          "source": "https://discord.com/channels/574720535888396288/1303331235124482048/1303331235124482048"
-        },
-        "stretch": false
+          "name": "paccha_",
+          "source": "https://discord.com/channels/574720535888396288/1302020853114081474/1302020853114081474"
+        }
       }
     ]
   }
