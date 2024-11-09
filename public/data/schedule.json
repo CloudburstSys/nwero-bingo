@@ -1,19 +1,18 @@
 {
-  "2024-11-07": {
-    "name": "Inscryption w/ Vedal + Neuro",
-    "description": "Beep boop.. beep?",
+  "2024-11-09": {
+    "name": "Liars bar collab",
+    "description": "With Vedal, Anny, and Camila (that's a lot of people)",
     "customBuckets": {
-      "neuro": "streams/inscryption_vedal/neuro.json",
-      "vedal": "streams/inscryption_vedal/vedal.json",
-      "game": "streams/inscryption_vedal/game.json",
-      "boss": "streams/inscryption_vedal/boss.json"
+      "neuro": "collabs/liars_bar/neuro.json",
+      "vedal": "collabs/liars_bar/vedal.json",
+      "anny": "collabs/liars_bar/anny.json",
+      "camila": "collabs/liars_bar/camila.json"
     },
     "weights": {
-      "neuro": 7,
-      "vedal": 7,
-      "game": 7,
-      "boss": 1,
-      "chat": 2
+      "neuro": 6,
+      "vedal": 6,
+      "anny": 6,
+      "camila": 6
     },
     "boardWidth": 5,
     "boardHeight": 5,
@@ -21,11 +20,11 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/neuro_cat_clown.png",
-        "alt": "Neuro-sama, as a cat, dressed in her clown outfit",
+        "src": "/assets/artworks/noro.png",
+        "alt": "",
         "credit": {
-          "name": "paccha_",
-          "source": "https://discord.com/channels/574720535888396288/1302020853114081474/1302020853114081474"
+          "name": "nostyx_x",
+          "source": "https://discord.com/channels/574720535888396288/1303487268128030862/1303487268128030862"
         }
       }
     ]
