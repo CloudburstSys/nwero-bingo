@@ -24,7 +24,7 @@
   "evil laugh": "Evil does an evil laugh (mwhahahahaha)",
   "someone shows up": "a visitor appears on stream, regardless of whether Evil called them, or they joined in themselves. Vedal counts for this prompt",
   "does a flip": "Evil does a flip (rotates 360)",
-  "plays sound effect": "Evil plays a sound effect",
+  "plays sound effect correctly": "Evil plays a sound effect in the correct context, for example playing Incorrect Buzzer when saying someone is incorrect",
   "makes a poll": "Evil makes a poll, regardless of the content of said poll.<br/><br/>For this to count, the creator of the poll must be <b>vedal987</b> according to the report poll menu (do not actually report it!)",
   "changes title": "Evil changes the stream title.<br/><br/>For this to count, no chat mods must claim responsibility for the title change. You may mark this if you believe Evil changed it but you must unmark it if it becomes apparent that this is not the case"
 }

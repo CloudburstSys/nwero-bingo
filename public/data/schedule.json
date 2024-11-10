@@ -1,18 +1,13 @@
 {
   "2024-11-09": {
-    "name": "Liars bar collab",
-    "description": "With Vedal, Anny, and Camila (that's a lot of people)",
+    "name": "Evil solo",
+    "description": "Evil has recovered from the BIOS bug!",
     "customBuckets": {
-      "neuro": "collabs/liars_bar/neuro.json",
-      "vedal": "collabs/liars_bar/vedal.json",
-      "anny": "collabs/liars_bar/anny.json",
-      "camila": "collabs/liars_bar/camila.json"
+      "evil": "streams/solo/evil.json"
     },
     "weights": {
-      "neuro": 6,
-      "vedal": 6,
-      "anny": 6,
-      "camila": 6
+      "evil": 21,
+      "chat": 3
     },
     "boardWidth": 5,
     "boardHeight": 5,
@@ -20,11 +15,11 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/noro.png",
+        "src": "/assets/artworks/soul_evil_wink.png",
         "alt": "",
         "credit": {
-          "name": "nostyx_x",
-          "source": "https://discord.com/channels/574720535888396288/1303487268128030862/1303487268128030862"
+          "name": "hanashi1821 (commissioned by soul1419)",
+          "source": "https://discord.com/channels/574720535888396288/1302254024774389874/1302254024774389874"
         }
       }
     ]
