@@ -1,12 +1,14 @@
 {
-  "2024-11-10": {
-    "name": "Evil solo",
-    "description": "Evil has recovered from the BIOS bug!",
+  "2024-11-11": {
+    "name": "Dev stream",
+    "description": "I will perish if it's Evil instead of Neuro.",
     "customBuckets": {
-      "evil": "streams/solo/evil.json"
+      "neuro": "streams/dev/neuro.json",
+      "vedal": "streams/dev/vedal.json"
     },
     "weights": {
-      "evil": 21,
+      "neuro": 11,
+      "vedal": 10,
       "chat": 3
     },
     "boardWidth": 5,
@@ -15,11 +17,11 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/soul_evil_wink.webp",
+        "src": "/assets/artworks/chibi_neuro.png",
         "alt": "",
         "credit": {
-          "name": "hanashi1821 (commissioned by soul1419)",
-          "source": "https://discord.com/channels/574720535888396288/1302254024774389874/1302254024774389874"
+          "name": "baonhi_art",
+          "source": "https://discord.com/channels/574720535888396288/1304502272104857600/1304502272104857600"
         }
       }
     ]
