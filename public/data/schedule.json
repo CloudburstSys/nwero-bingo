@@ -1,12 +1,14 @@
 {
-  "2024-11-12": {
-    "name": "Neuro stream",
-    "description": "I will perish if it's Evil instead of Neuro (part 2).",
+  "2024-11-14": {
+    "name": "Collab with Numi",
+    "description": "I will perish if it's Evil instead of Neuro (part 3 - this is getting insane).",
     "customBuckets": {
-      "neuro": "streams/solo/neuro.json"
+      "neuro": "collabs/numo_neuro/neuro.json",
+      "numi": "collabs/numo_neuro/numi.json"
     },
     "weights": {
-      "neuro": 21,
+      "neuro": 11,
+      "numi": 10,
       "chat": 3
     },
     "boardWidth": 5,
@@ -15,13 +17,13 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/neuro_summer_dress.jpg",
+        "src": "/assets/artworks/soul_neuro_idol.png",
         "alt": "",
         "credit": {
-          "name": "Goyu24",
-          "source": "https://discord.com/channels/574720535888396288/1304446610654101646/1304446610654101646"
+          "name": "えれ",
+          "source": "https://discord.com/channels/574720535888396288/1306226785129857097/1306226785129857097"
         },
-        "stretch": true
+        "stretch": false
       }
     ]
   }
