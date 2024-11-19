@@ -249,8 +249,8 @@ export class BingoCardFreeSpace extends BingoCardItem {
     super(
       "Free Space",
       `${(overridenDescription ? overridenDescription : "the stream starts (selected automatically)")}<br/><img class="modal-image" src="${imageUrl}" alt="${altText}" /><br/>Art credit: <a href="${sourceUrl}" target="_blank">${artistName}</a>`,
-      true,
       false,
+      true,
     );
 
     this.imageUrl = imageUrl;
@@ -272,8 +272,8 @@ export class BingoCardMultipleFreeSpaces extends BingoCardItem {
     super(
       "Multiple Free Space",
       `the stream starts (selected automatically)<br/><br/>This should have changed ${mode === "random" ? "randomly" : "in accordance with the theme"} but something went wrong.`,
-      true,
       false,
+      true,
     );
 
     this.mode = mode;
