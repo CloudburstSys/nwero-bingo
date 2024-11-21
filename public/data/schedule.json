@@ -1,28 +1,41 @@
 {
-  "2024-11-19": {
-    "name": "Evil stream",
-    "description": "I'm thinking Evil Evil oo ee oo",
+  "2024-11-21": {
+    "name": "Twin clown stream",
+    "description": "they're twins! and they're clowns! woah!",
     "customBuckets": {
-      "evil": "streams/solo/evil.json"
+      "both": "streams/one_offs/twin_clown/both.json",
+      "neuro": "streams/one_offs/twin_clown/neuro.json",
+      "evil": "streams/one_offs/twin_clown/evil.json"
     },
     "weights": {
-      "evil": 21,
+      "both": 9,
+      "neuro": 6,
+      "evil": 6,
       "chat": 3
     },
     "boardWidth": 5,
     "boardHeight": 5,
-    "multipleFreeSpacesBehaviour": "random",
+    "multipleFreeSpacesBehaviour": "theme",
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/soul_neuro_nuke.jpg",
+        "src": "/assets/artworks/soul_neuro_evil_box_light.png",
         "alt": "",
         "credit": {
-          "name": "soren0468 (commissioner: soul1419)",
-          "source": "https://discord.com/channels/574720535888396288/1307727936865964193/1307727936865964193"
+          "name": "fians_51090 (commissioner: soul1419)",
+          "source": "https://discord.com/channels/574720535888396288/1308250357067157594/1308250357067157594"
         },
-        "stretch": true,
-        "description": "the stream starts (selected automatically)<br/>Dev note: [insert Vine Boom SFX here]"
+        "stretch": false
+      },
+      {
+        "pos": [2, 2],
+        "src": "/assets/artworks/soul_neuro_evil_box_dark.png",
+        "alt": "",
+        "credit": {
+          "name": "fians_51090 (commissioner: soul1419)",
+          "source": "https://discord.com/channels/574720535888396288/1308250357067157594/1308250357067157594"
+        },
+        "stretch": false
       }
     ]
   }
