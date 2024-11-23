@@ -23,6 +23,7 @@ export interface CardFreeSpace {
   type: "single";
   pos: [number, number];
   src: string;
+  srcMarked?: string;
   alt: string;
   credit: {
     name: string;
@@ -30,6 +31,7 @@ export interface CardFreeSpace {
   };
   stretch?: boolean;
   description?: string;
+  reminderOverride?: string;
 }
 
 export interface SavedStateItem {

@@ -121,10 +121,12 @@ fetch("/data/schedule.json")
           (freeSpace) =>
             new BingoCardFreeSpace(
               freeSpace.src,
+              freeSpace.srcMarked,
               freeSpace.alt,
               freeSpace.credit.name,
               freeSpace.credit.source,
               freeSpace.description,
+              freeSpace.overrideReminder,
               freeSpace.stretch,
             ),
         );
@@ -137,14 +139,19 @@ fetch("/data/schedule.json")
         });
         j++;
       } else if (freeSpacesForSpace.length == 1) {
+        console.log(
+          freeSpacesForSpace[0].overrideReminder)
         freeSpace = new BingoCardFreeSpace(
           freeSpacesForSpace[0].src,
+          freeSpacesForSpace[0].srcMarked,
           freeSpacesForSpace[0].alt,
           freeSpacesForSpace[0].credit.name,
           freeSpacesForSpace[0].credit.source,
           freeSpacesForSpace[0].description,
+          freeSpacesForSpace[0].overrideReminder,
           freeSpacesForSpace[0].stretch,
         );
+        console.log(freeSpace.overriddenReminder);
         j++;
       }
 
@@ -182,6 +189,7 @@ interface ScheduledDay {
 interface FreeSpace {
   pos: [number, number];
   src: string;
+  srcMarked?: string;
   alt: string;
   credit: {
     name: string;
@@ -189,4 +197,5 @@ interface FreeSpace {
   };
   stretch?: boolean;
   description?: string;
+  overrideReminder?: string;
 }

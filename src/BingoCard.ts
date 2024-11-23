@@ -47,14 +47,18 @@ export default class BingoCard {
             (freeSpace) =>
               new BingoCardFreeSpace(
                 freeSpace.src,
+                freeSpace.srcMarked,
                 freeSpace.alt,
                 freeSpace.credit.name,
                 freeSpace.credit.source,
                 freeSpace.description,
+                freeSpace.reminderOverride,
                 freeSpace.stretch,
               ),
           ),
         );
+
+        space.marked = state.card.state[freeSpace.pos[0]][freeSpace.pos[1]].marked;
 
         space.update(document.body.classList.contains("dark") ? "dark" : "light");
         onClassChange(document.body, (body) => {
@@ -63,10 +67,16 @@ export default class BingoCard {
 
         card.setItem(freeSpace.pos[0], freeSpace.pos[1], space);
       } else {
+        let fs = new BingoCardFreeSpace(freeSpace.src, freeSpace.srcMarked, freeSpace.alt, freeSpace.credit.name, freeSpace.credit.source, freeSpace.description, freeSpace.reminderOverride, freeSpace.stretch);
+        let currentState = state.card.state[freeSpace.pos[0]][freeSpace.pos[1]].marked;
+
+        fs.marked = currentState;
+        fs.onToggle(currentState);
+
         card.setItem(
           freeSpace.pos[0],
           freeSpace.pos[1],
-          new BingoCardFreeSpace(freeSpace.src, freeSpace.alt, freeSpace.credit.name, freeSpace.credit.source, freeSpace.description, freeSpace.stretch),
+          fs
         );
       }
     });
@@ -110,12 +120,14 @@ export default class BingoCard {
             type: "single",
             pos: [row, column],
             src: (this.data[row][column] as BingoCardFreeSpace).imageUrl,
+            srcMarked: (this.data[row][column] as BingoCardFreeSpace).markedImageUrl,
             alt: (this.data[row][column] as BingoCardFreeSpace).altText,
             credit: {
               name: (this.data[row][column] as BingoCardFreeSpace).artistName,
               source: (this.data[row][column] as BingoCardFreeSpace).sourceUrl,
             },
-            description: (this.data[row][column] as BingoCardFreeSpace).overridenDescription,
+            description: (this.data[row][column] as BingoCardFreeSpace).overriddenDescription,
+            reminderOverride: (this.data[row][column] as BingoCardFreeSpace).overriddenReminder,
             stretch: (this.data[row][column] as BingoCardFreeSpace).stretched,
           });
         } else if (this.data[row][column] instanceof BingoCardMultipleFreeSpaces) {
@@ -128,12 +140,14 @@ export default class BingoCard {
                 type: "single",
                 pos: [row, column],
                 src: freeSpace.imageUrl,
+                srcMarked: freeSpace.markedImageUrl,
                 alt: freeSpace.altText,
                 credit: {
                   name: freeSpace.artistName,
                   source: freeSpace.sourceUrl,
                 },
-                description: freeSpace.overridenDescription,
+                description: freeSpace.overriddenDescription,
+                reminderOverride: freeSpace.overriddenReminder,
                 stretch: freeSpace.stretched,
               };
             }),
@@ -166,14 +180,16 @@ export class BingoCardItem {
   public description: string;
   public marked: boolean;
   public togglable: boolean;
+  public overriddenReminder: string | undefined;
   protected element: HTMLElement;
   private longHoldTimeout: number | undefined = undefined;
 
-  constructor(name: string, description: string, marked: boolean = false, togglable: boolean = true) {
+  constructor(name: string, description: string, marked: boolean = false, togglable: boolean = true, overriddenReminder?: string) {
     this.name = name;
     this.description = description;
     this.marked = marked;
     this.togglable = togglable;
+    this.overriddenReminder = overriddenReminder;
 
     this.element = this._render();
   }
@@ -219,17 +235,21 @@ export class BingoCardItem {
   }
 
   private onLongHold(e: TouchEvent) {
-    Modal.showModal(this.name, this.description);
+    Modal.showModal(this.name, this.description, this.overriddenReminder);
   }
 
-  private onClick(e: MouseEvent) {
+  protected onToggle?(state: boolean): void;
+
+  protected onClick(e: MouseEvent) {
     if (e.which === 3 || e.button === 2) {
-      Modal.showModal(this.name, this.description);
+      Modal.showModal(this.name, this.description, this.overriddenReminder);
     } else if (e.which === 1 || e.button === 0) {
       if (!this.togglable) return;
       this.marked = !this.marked;
       if (this.marked) this.element.classList.add("active");
       else this.element.classList.remove("active");
+      console.log("a");
+      this.onToggle && this.onToggle(this.marked);
     }
   }
 }
@@ -239,33 +259,45 @@ export class BingoCardItem {
  */
 export class BingoCardFreeSpace extends BingoCardItem {
   public imageUrl: string;
+  public markedImageUrl: string | undefined;
   public altText: string;
   public artistName: string;
   public sourceUrl: string;
   public stretched: boolean;
-  public overridenDescription: string | undefined;
+  public overriddenDescription: string | undefined;
 
-  constructor(imageUrl: string, altText: string, artistName: string, sourceUrl: string, overridenDescription: string | undefined = undefined, streched: boolean = false) {
+  constructor(imageUrl: string, markedImageUrl: string | undefined, altText: string, artistName: string, sourceUrl: string, overriddenDescription: string | undefined = undefined, overriddenReminder: string | undefined = undefined, streched: boolean = false) {
     super(
       "Free Space",
-      `${(overridenDescription ? overridenDescription : "the stream starts (selected automatically)")}<br/><img class="modal-image" src="${imageUrl}" alt="${altText}" /><br/>Art credit: <a href="${sourceUrl}" target="_blank">${artistName}</a>`,
+      `${(overriddenDescription ? overriddenDescription : "the stream starts (selected automatically)")}<br/><img class="modal-image" src="${imageUrl}" alt="${altText}" /><br/>Art credit: <a href="${sourceUrl}" target="_blank">${artistName}</a>`,
       false,
       true,
+      overriddenReminder
     );
 
     this.imageUrl = imageUrl;
+    this.markedImageUrl = markedImageUrl;
     this.altText = altText;
     this.artistName = artistName;
     this.sourceUrl = sourceUrl;
     this.stretched = streched;
-    this.overridenDescription = overridenDescription;
+    this.overriddenDescription = overriddenDescription;
 
     this.element.innerHTML = `<img class="bingo-image${this.stretched ? " stretch" : ""}" src="${this.imageUrl}" alt="${this.altText}" />`;
+  }
+
+  public onToggle(state: boolean) {
+    console.log(state);
+    if (state)
+      (this.element.querySelector(".bingo-image") as HTMLImageElement).src = this.markedImageUrl || this.imageUrl;
+    else
+      (this.element.querySelector(".bingo-image") as HTMLImageElement).src = this.imageUrl;
   }
 }
 
 export class BingoCardMultipleFreeSpaces extends BingoCardItem {
   public mode: "theme" | "random";
+  private theme: "light" | "dark" = "light";
   public freeSpaces: BingoCardFreeSpace[];
 
   constructor(mode: "theme" | "random", freeSpaces: BingoCardFreeSpace[]) {
@@ -283,6 +315,7 @@ export class BingoCardMultipleFreeSpaces extends BingoCardItem {
   update(theme?: "light" | "dark") {
     if (this.mode === "theme") {
       if (theme === "light") {
+        this.theme = "light";
         this.name = this.freeSpaces[0].name;
         this.description = this.freeSpaces[0].description;
         this.element.innerHTML = `<img class="bingo-image${this.freeSpaces[0].stretched ? " stretch" : ""}" src="${this.freeSpaces[0].imageUrl}" alt="${this.freeSpaces[0].altText}" />`;
@@ -290,6 +323,7 @@ export class BingoCardMultipleFreeSpaces extends BingoCardItem {
         //document.getElementById("bingo-artwork-credit-below")!.innerHTML =
         //`Center artwork credit: <a href="${this.freeSpaces[0].sourceUrl}" target="_blank">${this.freeSpaces[0].artistName}</a>`;
       } else {
+        this.theme = "dark";
         this.name = this.freeSpaces[1].name;
         this.description = this.freeSpaces[1].description;
         this.element.innerHTML = `<img class="bingo-image${this.freeSpaces[1].stretched ? " stretch" : ""}" src="${this.freeSpaces[1].imageUrl}" alt="${this.freeSpaces[1].altText}" />`;
@@ -306,6 +340,31 @@ export class BingoCardMultipleFreeSpaces extends BingoCardItem {
 
       //document.getElementById("bingo-artwork-credit-below")!.innerHTML =
       //`Center artwork credit: <a href="${randomFreeSpace.sourceUrl}" target="_blank">${randomFreeSpace.artistName}</a>`;
+    }
+
+    if (this.marked)
+      this.element.classList.add("active");
+    else this.element.classList.remove("active");
+
+    this.onToggle(this.marked);
+  }
+
+  public onToggle(state: boolean) {
+    console.log(state);
+    if (this.mode === "theme") {
+      if (this.theme === "light") {
+        if (state)
+          (this.element.querySelector(".bingo-image") as HTMLImageElement).src = this.freeSpaces[0].markedImageUrl || this.freeSpaces[0].imageUrl;
+        else
+          (this.element.querySelector(".bingo-image") as HTMLImageElement).src = this.freeSpaces[0].imageUrl;
+      } else {
+        if (state)
+          (this.element.querySelector(".bingo-image") as HTMLImageElement).src = this.freeSpaces[1].markedImageUrl || this.freeSpaces[1].imageUrl;
+        else
+          (this.element.querySelector(".bingo-image") as HTMLImageElement).src = this.freeSpaces[1].imageUrl;
+      }
+    } else {
+      // TODO: Make this work!
     }
   }
 }

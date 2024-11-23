@@ -1,8 +1,24 @@
 import Emote from "./Emote";
 
-export function showModal(prompt: string, description: string) {
+export function showModal(prompt: string, description: string, reminderOverride?: string) {
   Emote.convert(prompt).then((str) => (document.getElementsByClassName("modal-prompt")[0].innerHTML = str));
   Emote.convert(description).then((str) => (document.getElementsByClassName("modal-description")[0].innerHTML = str));
+
+  if (reminderOverride) {
+    document.getElementsByClassName("modal-bottom")[0]!.querySelector("h3")!.innerHTML = "Dev note";
+    Emote.convert(reminderOverride).then((str) => (
+      document.getElementsByClassName("modal-bottom")[0]!.querySelector("div")!.innerHTML = `<span>${str}</span>`
+    ));
+  } else {
+    document.getElementsByClassName("modal-bottom")[0]!.querySelector("h3")!.innerHTML = "Reminder";
+    document.getElementsByClassName("modal-bottom")[0]!.querySelector("div")!.innerHTML = "" +
+      "              <span\n" +
+      "                >Do not lazily bait the sisters into fulfilling bingo prompts! This is meant to be something to do while\n" +
+      "                watching, not a competition or TODO list.</span\n" +
+      "              >\n" +
+      "              <br /><br />\n" +
+      "              <span>Prompts fulfilled from lazily baiting the sisters into them do NOT count.</span>";
+  }
 
   document.getElementsByClassName("modal-container")[0].classList.add("active");
   document.getElementsByClassName("overlay")[0].classList.add("active");
