@@ -287,9 +287,10 @@ header ul li .theme-switcher img {
   overflow: hidden;
 }
 
-/*.bingo-item:has(.bingo-image) {
-  background-color: var(--card-bg-artwork) !important;
-}*/
+.bingo-item:has(.bingo-image) {
+  //background-color: var(--card-bg-artwork) !important;
+  background-color: black !important;
+}
 
 .bingo-item:has(.bingo-image).active .bingo-image {
   //filter: hue-rotate(45deg);

@@ -1,16 +1,16 @@
 {
-  "2024-11-21": {
-    "name": "Twin clown stream",
-    "description": "they're twins! and they're clowns! woah!",
+  "2024-11-23": {
+    "name": "Until Dawn w/ Layna",
+    "description": "until dawn? sure is for the chinese and japanese viewers!",
     "customBuckets": {
-      "both": "streams/one_offs/twin_clown/both.json",
-      "neuro": "streams/one_offs/twin_clown/neuro.json",
-      "evil": "streams/one_offs/twin_clown/evil.json"
+      "game": "collabs/layna_untildawn/game.json",
+      "layna": "collabs/layna_untildawn/layna.json",
+      "neuro": "collabs/layna_untildawn/neuro.json"
     },
     "weights": {
-      "both": 9,
-      "neuro": 6,
-      "evil": 6,
+      "game": 7,
+      "layna": 7,
+      "neuro": 7,
       "chat": 3
     },
     "boardWidth": 5,
@@ -19,23 +19,16 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/soul_neuro_evil_box_light.png",
+        "src": "/assets/artworks/comm_neuro_layna_untildawn_white.png",
+        "srcMarked": "/assets/artworks/comm_neuro_layna_untildawn_green.png",
         "alt": "",
         "credit": {
-          "name": "fians_51090 (commissioner: soul1419)",
-          "source": "https://discord.com/channels/574720535888396288/1308250357067157594/1308250357067157594"
+          "name": "fiid0606 (commissioner: soul1419)",
+          "source": "https://discord.com/channels/574720535888396288/1309672316216672256/1309672316216672256"
         },
-        "stretch": false
-      },
-      {
-        "pos": [2, 2],
-        "src": "/assets/artworks/soul_neuro_evil_box_dark.png",
-        "alt": "",
-        "credit": {
-          "name": "fians_51090 (commissioner: soul1419)",
-          "source": "https://discord.com/channels/574720535888396288/1308250357067157594/1308250357067157594"
-        },
-        "stretch": false
+        "stretch": false,
+        "description": "the stream starts<br/>",
+        "overrideReminder": "This is no longer marked automatically, try clicking it to mark it!<br/><br/>Also rare commission specifically for the bingo, thanks Soul!"
       }
     ]
   }
