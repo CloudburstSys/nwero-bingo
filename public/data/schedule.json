@@ -1,16 +1,14 @@
 {
-  "2024-11-23": {
-    "name": "Until Dawn w/ Layna",
-    "description": "until dawn? sure is for the chinese and japanese viewers!",
+  "2024-11-25": {
+    "name": "Dev stream",
+    "description": "no way it's vedal (real)",
     "customBuckets": {
-      "game": "collabs/layna_untildawn/game.json",
-      "layna": "collabs/layna_untildawn/layna.json",
-      "neuro": "collabs/layna_untildawn/neuro.json"
+      "neuro": "streams/dev/neuro.json",
+      "vedal": "streams/dev/vedal.json"
     },
     "weights": {
-      "game": 7,
-      "layna": 7,
-      "neuro": 7,
+      "neuro": 11,
+      "vedal": 10,
       "chat": 3
     },
     "boardWidth": 5,
@@ -19,16 +17,16 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/comm_neuro_layna_untildawn_white.png",
-        "srcMarked": "/assets/artworks/comm_neuro_layna_untildawn_green.png",
+        "src": "/assets/artworks/neuro_evil_times_square_off.png",
+        "srcMarked": "/assets/artworks/neuro_evil_times_square_on.png",
+        "useMarkedAsReal": true,
         "alt": "",
         "credit": {
-          "name": "fiid0606 (commissioner: soul1419)",
-          "source": "https://discord.com/channels/574720535888396288/1309672316216672256/1309672316216672256"
+          "name": "nostyx_x",
+          "source": "https://discord.com/channels/574720535888396288/1309009158179262484/1309009158179262484"
         },
         "stretch": false,
-        "description": "the stream starts<br/>",
-        "overrideReminder": "This is no longer marked automatically, try clicking it to mark it!<br/><br/>Also rare commission specifically for the bingo, thanks Soul!"
+        "overrideReminder": "Last chance to <a href=\"https://thestreamerawards.com/vote\" target=\"_blank\">vote for Vedal/Neuro-sama in the Streamer Awards</a>! Make sure you vote!"
       }
     ]
   }
