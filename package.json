@@ -7,7 +7,7 @@
     "format": "prettier --write .",
     "build": "vite build",
     "dev": "vite dev --host",
-    "start": "sirv dist --single --host"
+    "start": "sirv dist --single --host --dev"
   },
   "author": "",
   "license": "ISC",
