@@ -2,14 +2,20 @@ import "./index.scss";
 import "./Dark";
 import BingoCard, { BingoCardFreeSpace, BingoCardItem, BingoCardMultipleFreeSpaces } from "./BingoCard";
 import SavedState from "./SavedState";
+import * as UpdateChecker from "./UpdateChecker";
 import { loadPrompts, onClassChange, randomCharacters, saveState, shuffleArray } from "./Utils";
 import Emote from "./Emote";
 
 let card: BingoCard | null;
-let cardSaveInterval = null;
+let cardSaveInterval: number | null = null;
 
 // Remove old storage name
 window.localStorage.removeItem("board-state");
+UpdateChecker.init(() => {
+  // This gets executed if an update is detected.
+  if(cardSaveInterval) clearInterval(cardSaveInterval);
+  window.localStorage.removeItem("card-state");
+});
 
 // Fetch schedule JSON
 fetch("/data/schedule.json")
@@ -38,13 +44,14 @@ fetch("/data/schedule.json")
         let cardState = JSON.parse(window.localStorage.getItem("card-state") as string) as SavedState;
         if (Date.now() <= new Date(cardState.expiry).getTime() || day == undefined) {
           // Card hasn't expired yet or there's no stream after an expired card, keep this one.
+          UpdateChecker.forceSetVersion();
           card = BingoCard.fromSavedState(cardState);
           card.render(document.getElementsByClassName("bingo-container")[0] as HTMLElement);
 
           document.getElementsByClassName("bingo-title")[0].innerHTML = card.name;
           document.getElementsByClassName("bingo-description")[0].innerHTML = card.description || "&nbsp;";
 
-          cardSaveInterval = setInterval(() => saveState(card as BingoCard, cardState.expiry), 1000);
+          cardSaveInterval = setInterval(() => saveState(card as BingoCard, cardState.expiry), 1000) as unknown as number;
 
           return;
         }
@@ -96,7 +103,7 @@ fetch("/data/schedule.json")
         card = board;
 
         saveState(board, day.end);
-        cardSaveInterval = setInterval(() => saveState(board, day.end), 1000);
+        cardSaveInterval = setInterval(() => saveState(board, day.end), 1000) as unknown as number;
 
         board.render(document.getElementsByClassName("bingo-container")[0] as HTMLElement);
         return;
