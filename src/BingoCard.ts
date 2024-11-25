@@ -48,6 +48,7 @@ export default class BingoCard {
               new BingoCardFreeSpace(
                 freeSpace.src,
                 freeSpace.srcMarked,
+                freeSpace.useMarkedAsReal,
                 freeSpace.alt,
                 freeSpace.credit.name,
                 freeSpace.credit.source,
@@ -67,7 +68,7 @@ export default class BingoCard {
 
         card.setItem(freeSpace.pos[0], freeSpace.pos[1], space);
       } else {
-        let fs = new BingoCardFreeSpace(freeSpace.src, freeSpace.srcMarked, freeSpace.alt, freeSpace.credit.name, freeSpace.credit.source, freeSpace.description, freeSpace.reminderOverride, freeSpace.stretch);
+        let fs = new BingoCardFreeSpace(freeSpace.src, freeSpace.srcMarked, freeSpace.useMarkedAsReal, freeSpace.alt, freeSpace.credit.name, freeSpace.credit.source, freeSpace.description, freeSpace.reminderOverride, freeSpace.stretch);
         let currentState = state.card.state[freeSpace.pos[0]][freeSpace.pos[1]].marked;
 
         fs.marked = currentState;
@@ -121,6 +122,7 @@ export default class BingoCard {
             pos: [row, column],
             src: (this.data[row][column] as BingoCardFreeSpace).imageUrl,
             srcMarked: (this.data[row][column] as BingoCardFreeSpace).markedImageUrl,
+            useMarkedAsReal: (this.data[row][column] as BingoCardFreeSpace).useMarkedAsReal ? true : undefined,
             alt: (this.data[row][column] as BingoCardFreeSpace).altText,
             credit: {
               name: (this.data[row][column] as BingoCardFreeSpace).artistName,
@@ -141,6 +143,7 @@ export default class BingoCard {
                 pos: [row, column],
                 src: freeSpace.imageUrl,
                 srcMarked: freeSpace.markedImageUrl,
+                useMarkedAsReal: freeSpace.useMarkedAsReal ? true : undefined,
                 alt: freeSpace.altText,
                 credit: {
                   name: freeSpace.artistName,
@@ -260,16 +263,17 @@ export class BingoCardItem {
 export class BingoCardFreeSpace extends BingoCardItem {
   public imageUrl: string;
   public markedImageUrl: string | undefined;
+  public useMarkedAsReal: boolean;
   public altText: string;
   public artistName: string;
   public sourceUrl: string;
   public stretched: boolean;
   public overriddenDescription: string | undefined;
 
-  constructor(imageUrl: string, markedImageUrl: string | undefined, altText: string, artistName: string, sourceUrl: string, overriddenDescription: string | undefined = undefined, overriddenReminder: string | undefined = undefined, streched: boolean = false) {
+  constructor(imageUrl: string, markedImageUrl: string | undefined, useMarkedAsReal: boolean | undefined, altText: string, artistName: string, sourceUrl: string, overriddenDescription: string | undefined = undefined, overriddenReminder: string | undefined = undefined, streched: boolean = false) {
     super(
       "Free Space",
-      `${(overriddenDescription ? overriddenDescription : "the stream starts (selected automatically)")}<br/><img class="modal-image" src="${imageUrl}" alt="${altText}" /><br/>Art credit: <a href="${sourceUrl}" target="_blank">${artistName}</a>`,
+      `${(overriddenDescription ? overriddenDescription : "the stream starts")}<br/><img class="modal-image" src="${useMarkedAsReal ? markedImageUrl : imageUrl}" alt="${altText}" /><br/>Art credit: <a href="${sourceUrl}" target="_blank">${artistName}</a>`,
       false,
       true,
       overriddenReminder
@@ -277,6 +281,7 @@ export class BingoCardFreeSpace extends BingoCardItem {
 
     this.imageUrl = imageUrl;
     this.markedImageUrl = markedImageUrl;
+    this.useMarkedAsReal = useMarkedAsReal || false;
     this.altText = altText;
     this.artistName = artistName;
     this.sourceUrl = sourceUrl;
@@ -303,7 +308,7 @@ export class BingoCardMultipleFreeSpaces extends BingoCardItem {
   constructor(mode: "theme" | "random", freeSpaces: BingoCardFreeSpace[]) {
     super(
       "Multiple Free Space",
-      `the stream starts (selected automatically)<br/><br/>This should have changed ${mode === "random" ? "randomly" : "in accordance with the theme"} but something went wrong.`,
+      `the stream starts<br/><br/>This should have changed ${mode === "random" ? "randomly" : "in accordance with the theme"} but something went wrong.`,
       false,
       true,
     );

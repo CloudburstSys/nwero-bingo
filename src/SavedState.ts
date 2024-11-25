@@ -24,6 +24,7 @@ export interface CardFreeSpace {
   pos: [number, number];
   src: string;
   srcMarked?: string;
+  useMarkedAsReal?: boolean;
   alt: string;
   credit: {
     name: string;

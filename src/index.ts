@@ -122,6 +122,7 @@ fetch("/data/schedule.json")
             new BingoCardFreeSpace(
               freeSpace.src,
               freeSpace.srcMarked,
+              freeSpace.useMarkedAsReal,
               freeSpace.alt,
               freeSpace.credit.name,
               freeSpace.credit.source,
@@ -144,6 +145,7 @@ fetch("/data/schedule.json")
         freeSpace = new BingoCardFreeSpace(
           freeSpacesForSpace[0].src,
           freeSpacesForSpace[0].srcMarked,
+          freeSpacesForSpace[0].useMarkedAsReal,
           freeSpacesForSpace[0].alt,
           freeSpacesForSpace[0].credit.name,
           freeSpacesForSpace[0].credit.source,
@@ -190,6 +192,7 @@ interface FreeSpace {
   pos: [number, number];
   src: string;
   srcMarked?: string;
+  useMarkedAsReal?: boolean;
   alt: string;
   credit: {
     name: string;
