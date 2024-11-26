@@ -1,14 +1,12 @@
 {
-  "2024-11-25": {
-    "name": "Dev stream",
-    "description": "no way it's vedal (real)",
+  "2024-11-26": {
+    "name": "Neuro solo stream",
+    "description": "neuro neuro oh oo oh",
     "customBuckets": {
-      "neuro": "streams/dev/neuro.json",
-      "vedal": "streams/dev/vedal.json"
+      "neuro": "streams/solo/neuro.json"
     },
     "weights": {
-      "neuro": 11,
-      "vedal": 10,
+      "neuro": 21,
       "chat": 3
     },
     "boardWidth": 5,
@@ -17,16 +15,14 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/neuro_evil_times_square_off.png",
-        "srcMarked": "/assets/artworks/neuro_evil_times_square_on.png",
-        "useMarkedAsReal": true,
+        "src": "/assets/artworks/soul_neuro_burger.png",
         "alt": "",
         "credit": {
-          "name": "nostyx_x",
-          "source": "https://discord.com/channels/574720535888396288/1309009158179262484/1309009158179262484"
+          "name": "food0606 (commissioner: soul1419)",
+          "source": "https://discord.com/channels/574720535888396288/1308995951809138688/1308995951809138688"
         },
-        "stretch": true,
-        "overrideReminder": "Last chance to <a href=\"https://thestreamerawards.com/vote\" target=\"_blank\">vote for Vedal/Neuro-sama in the Streamer Awards</a>! Make sure you vote!"
+        "stretch": false,
+        "overrideReminder": "VOTING CLOSES TODAY! <a href=\"https://thestreamerawards.com/vote\" target=\"_blank\">Vote for Vedal/Neuro-sama in the Streamer Awards</a>!"
       }
     ]
   }
