@@ -30,7 +30,7 @@ async function checkForUpdate(callback: Function) {
       localStorage.setItem("version", upstream);
     }
 
-    if (current != upstream && upstream != "DEVBUILD") {
+    if ((current != upstream && upstream != "DEVBUILD_NOREFRESH") || upstream == "DEVBUILD") {
       // Update detected.
       console.log("Detected update");
       await callback();

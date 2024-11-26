@@ -28,11 +28,15 @@ Nwero Bingo uses a prompt bucket system for storing and building bingo sheets, a
         "pos": [2, 2], // The position on the board.
         "src": "/assets/neuro_pirate.jpg", // The source from where to pull the image for display
         "alt": "Neuro-sama dressed in a pirate outfit, looking upset, while holding a dead fish.", // Alt-text for visually impaired
+        "srcMarked": "/assets/artworks/neuro_evil_times_square_on.png", // The artwork displayed when the free space is marked.
+        "useMarkedAsReal": true, // Whether to use the marked src as the "actual" artwork (displayed in explanation modal) or not.
         "credit": {
           // Credit MUST be provided for a free space image.
           "name": "PTITSA (commissioned by nicoGG)", // The name of the artist (if it's a commission piece, credit the commissoner too)
           "source": "https://discord.com/channels/574720535888396288/1261935581756391494/1261935581756391494", // The source of the artwork, where you can find the artwork OUTSIDE of the bingo site.
         },
+        "streched": false, // Whether to stretch the artwork to match the size of the space.
+        "overrideReminder": "" // Overrides the "don't bait neuro/evil" reminder to be a Dev Note. Use for funny little messages.
       },
     ],
   },
