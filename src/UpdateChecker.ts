@@ -6,7 +6,6 @@
 const updateHeader = document.querySelector(".banner.update-banner") as HTMLDivElement;
 
 export function init(callback: Function) {
-  checkForUpdate(callback);
   setInterval(async () => {
     await checkForUpdate(callback);
   }, 60000)
