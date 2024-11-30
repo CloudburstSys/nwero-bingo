@@ -49,7 +49,7 @@ fetch("/data/schedule.json")
           card.render(document.getElementsByClassName("bingo-container")[0] as HTMLElement);
 
           document.getElementsByClassName("bingo-title")[0].innerHTML = card.name;
-          document.getElementsByClassName("bingo-description")[0].innerHTML = card.description || "&nbsp;";
+          Emote.convert(card.description || "&nbsp;").then(str => document.getElementsByClassName("bingo-description")[0].innerHTML = str);
 
           cardSaveInterval = setInterval(() => saveState(card as BingoCard, cardState.expiry), 1000) as unknown as number;
 
@@ -75,7 +75,7 @@ fetch("/data/schedule.json")
     let cardInfo = schedule[day.key];
 
     document.getElementsByClassName("bingo-title")[0].innerHTML = cardInfo.name;
-    document.getElementsByClassName("bingo-description")[0].innerHTML = cardInfo.description || "&nbsp;";
+    Emote.convert(cardInfo.description || "&nbsp;").then(str => document.getElementsByClassName("bingo-description")[0].innerHTML = str);
 
     let freeSpaces: [number, number][] = [];
     cardInfo.freeSpaces.forEach((freeSpace) => {
