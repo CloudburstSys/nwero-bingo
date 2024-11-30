@@ -1,12 +1,16 @@
 {
-  "2024-11-26": {
-    "name": "Evil solo stream",
-    "description": "glad i can change this in real time now",
+  "2024-11-30": {
+    "name": "DougDoug collab",
+    "description": "Teletric can finally rest :neuroAware: <br/>also i can hear something... it sounds like someone doesn't want a lot for...",
     "customBuckets": {
-      "evil": "streams/solo/evil.json"
+      "game": "collabs/dougdoug/game.json",
+      "neuro": "collabs/dougdoug/neuro.json",
+      "doug": "collabs/dougdoug/dougdoug.json"
     },
     "weights": {
-      "evil": 21,
+      "game": 7,
+      "neuro": 7,
+      "doug": 7,
       "chat": 3
     },
     "boardWidth": 5,
@@ -15,14 +19,14 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/soul_evil_burger.png",
+        "src": "/assets/artworks/soul_neuro_burger.png",
         "alt": "",
         "credit": {
           "name": "food0606 (commissioner: soul1419)",
           "source": "https://discord.com/channels/574720535888396288/1308995951809138688/1308995951809138688"
         },
         "stretch": false,
-        "overrideReminder": "VOTING CLOSES TODAY! <a href=\"https://thestreamerawards.com/vote\" target=\"_blank\">Vote for Vedal/Neuro-sama in the Streamer Awards</a>!"
+        "overrideReminder": "borgor"
       }
     ]
   }
