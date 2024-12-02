@@ -14,7 +14,9 @@ window.localStorage.removeItem("board-state");
 UpdateChecker.init(() => {
   // This gets executed if an update is detected.
   if(cardSaveInterval) clearInterval(cardSaveInterval);
-  window.localStorage.removeItem("card-state");
+  setTimeout(() => {
+    window.localStorage.removeItem("card-state");
+  }, 100);
 });
 
 // Fetch schedule JSON

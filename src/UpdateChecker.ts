@@ -4,8 +4,10 @@
  */
 
 const updateHeader = document.querySelector(".banner.update-banner") as HTMLDivElement;
+let givenCallback: Function | null = null;
 
 export function init(callback: Function) {
+  givenCallback = callback;
   setInterval(async () => {
     await checkForUpdate(callback);
   }, 60000)
@@ -17,9 +19,11 @@ export function init(callback: Function) {
 export async function forceSetVersion() {
   let upstream = await fetch('/commitinfo.txt').then((res) => res.text());
   localStorage.setItem("version", upstream);
+
+  checkForUpdate(givenCallback!);
 }
 
-async function checkForUpdate(callback: Function) {
+export async function checkForUpdate(callback: Function) {
   try {
     let current = localStorage.getItem("version");
     let upstream = await fetch('/commitinfo.txt').then((res) => res.text());
