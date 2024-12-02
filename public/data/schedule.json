@@ -1,16 +1,14 @@
 {
-  "2024-11-30": {
-    "name": "DougDoug collab",
-    "description": "Teletric can finally rest :neuroAware: <br/>also i can hear something... it sounds like someone doesn't want a lot for...",
+  "2024-12-02": {
+    "name": "Dev stream",
+    "description": "tuesday - offline :aware:",
     "customBuckets": {
-      "game": "collabs/dougdoug/game.json",
-      "neuro": "collabs/dougdoug/neuro.json",
-      "doug": "collabs/dougdoug/dougdoug.json"
+      "neuro": "streams/dev/neuro.json",
+      "vedal": "streams/dev/vedal.json"
     },
     "weights": {
-      "game": 7,
-      "neuro": 7,
-      "doug": 7,
+      "neuro": 11,
+      "vedal": 10,
       "chat": 3
     },
     "boardWidth": 5,
@@ -19,14 +17,14 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/soul_neuro_burger.png",
+        "src": "/assets/artworks/soul_vedal_chicken_bake.png",
         "alt": "",
         "credit": {
           "name": "food0606 (commissioner: soul1419)",
           "source": "https://discord.com/channels/574720535888396288/1308995951809138688/1308995951809138688"
         },
         "stretch": false,
-        "overrideReminder": "borgor"
+        "overrideReminder": "sponsor pls :neuroPray: <br/>also i just realised the person who made this artwork is named \"food\". funny coincidence"
       }
     ]
   }
