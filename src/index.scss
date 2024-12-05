@@ -281,8 +281,9 @@ header ul li .theme-switcher img {
 }
 
 .banner.update-banner {
-  background-color: rgba(255, 183, 101, 0.6);
-  border: 3px solid rgba(128, 92, 51, 0.6);
+  background-color: rgb(255, 242.6, 205.4);
+  border: 3px solid rgb(255, 230.2, 155.8);
+  color: rgb(102, 77.2, 2.8);
 }
 
 .banner.update-banner b {
@@ -300,12 +301,22 @@ header ul li .theme-switcher img {
   cursor: pointer;
 
   appearance: none;
-  background-color: rgba(255, 214, 49, 0.6);
-  border: 3px solid rgba(202, 179, 32, 0.6);
+  background-color: #ffc107;
+  border: 3px solid #ffc107;
 
   border-radius: 15px;
   padding: 2px;
   margin: 2.5px 5px 5px;
+}
+
+.banner.update-banner button:hover {
+  background-color: rgb(255, 202.3, 44.2);
+  border: 3px solid rgb(255, 199.2, 31.8);
+}
+
+.banner.update-banner button:active {
+  background-color: rgb(255, 205.4, 56.6);
+  border: 3px solid rgb(255, 199.2, 31.8);
 }
 
 @media (max-width: 768px) {
@@ -336,18 +347,15 @@ header ul li .theme-switcher img {
   user-select: none;
   display: flex;
   flex-wrap: nowrap;
-  margin-right: calc(-0.5 * 0);
-  margin-left: calc(-0.5 * 0);
 }
 
 .bingo-item {
   flex: 0 0 auto;
-  width: 20%;
-  max-width: 100%;
+  min-width: 199px;
   padding: 0 5px;
-  min-height: 130px;
-  min-width: 200px;
-  max-width: 200px;
+  min-height: 142px;
+  max-height: 142px;
+  max-width: 199px;
   border-style: solid;
   border-width: 2px;
   border-color: var(--card-border);
@@ -390,8 +398,7 @@ header ul li .theme-switcher img {
 
 .bingo-item:has(.bingo-image.stretch) {
   padding: 0;
-  min-width: 210px;
-  max-width: 210px;
+  max-width: 213px;
 }
 
 .emote {
