@@ -1,4 +1,4 @@
-import BingoCard from "./BingoCard";
+import BingoCard, { BingoCardEmptyItem, BingoCardFreeSpace, BingoCardItem } from "./BingoCard";
 
 /**
  * Shuffles an array in-place.
@@ -91,8 +91,8 @@ export async function loadPrompts(
   customBuckets: { [name: string]: string },
   weights: { [name: string]: number },
   spaceCount: number,
-): Promise<({ name: string; description: string; bgSrc?: string } | null)[]> {
-  let output: ({ name: string; description: string } | null)[] = [];
+): Promise<({ name: string; bucket: string; description: string; bgSrc?: string } | null)[]> {
+  let output: ({ name: string; bucket: string; description: string } | null)[] = [];
 
   const defaultBuckets: { [name: string]: string } = {
     //"neuro": "neuro.json",
@@ -150,11 +150,104 @@ export async function loadPrompts(
       continue;
     }
 
-    output.push(buckets[weightArray[activeBucket].key][count]);
+    output.push(buckets[weightArray[activeBucket].key].map(prompt => {
+      return {
+        name: prompt.name,
+        bucket: weightArray[activeBucket].key,
+        description: prompt.description
+      }
+    })[count]);
     count++;
   }
 
   return output;
+}
+
+export async function regenerateBucket(card: BingoCard, bucket: string) {
+  let request = await fetch(`/data/boards/streams/subathon/${bucket}.json`);
+  let prompts: { name: string; description: string }[] = parsePrompts(await request.json());
+  shuffleArray(prompts);
+  console.log(prompts);
+
+  let items: { row: number, column: number, item: BingoCardItem }[] = [];
+  for (let row = 0; row < card.data.length; row++) {
+    for (let column = 0; column < card.data[row].length; column++) {
+      if (card.data[row][column].bucket != bucket) continue;
+      items.push({
+        row,
+        column,
+        item: card.data[row][column]
+      });
+    }
+  }
+
+  console.log(items);
+
+  const sfx = document.getElementById("sfx_prompt_regen") as HTMLAudioElement;
+  sfx.play();
+  items.forEach(item => {
+    card.setItem(item.row, item.column, new BingoCardEmptyItem());
+  });
+
+  setTimeout(() => {
+    items.forEach(item => {
+      let prompt = prompts.shift();
+      card.setItem(item.row, item.column, new BingoCardItem(prompt!.name, bucket, prompt!.description));
+    });
+  }, 5000);
+}
+
+export async function regeneratePrompts(boardData: BingoCardItem[][], amount: number) {
+  let currentPrompts: string[] = [];
+  boardData.forEach((row) => {
+    row.forEach(item => {
+      currentPrompts.push(item.name);
+    });
+  });
+
+  let spaces: BingoCardItem[] = [];
+  let possiblePromptsFiltered: { name: string; bucket: string; description: string; }[] = [];
+  let possiblePrompts: { name: string; bucket: string; description: string; }[] = [];
+  let freeSpaces: FreeSpace[] = [];
+
+  for (const bucket of ["streams/subathon/stream", "streams/subathon/twin", "streams/subathon/vedal", "chat"]) {
+    let request = await fetch(`/data/boards/${bucket}.json`);
+    let prompts = parsePrompts(await request.json()).map(prompt => {
+      return {
+        name: prompt.name,
+        bucket,
+        description: prompt.description
+      }
+    });
+    possiblePromptsFiltered.push(...prompts);
+    possiblePrompts.push(...prompts);
+  }
+
+  possiblePromptsFiltered = possiblePromptsFiltered.filter(prompt => !currentPrompts.some(item => item == prompt.name));
+
+  shuffleArray(possiblePromptsFiltered);
+  shuffleArray(possiblePrompts);
+
+  let request = await fetch(`/data/boards/streams/subathon/freeSpaces.json`).then(res => res.json());
+  freeSpaces.push(...request);
+
+  // TODO: Get all buckets, combine, and filter out currentPrompts. Then pick random ones for each boardData and set.
+  for (let i = 0; i < amount; i++) {
+    if (Math.floor(Math.random() * 10) === 1) {
+      // TODO: Free space
+      let randomFreeSpace = freeSpaces[Math.floor(Math.random() * freeSpaces.length)];
+      spaces.push(new BingoCardFreeSpace(randomFreeSpace.src, randomFreeSpace.srcMarked, randomFreeSpace.useMarkedAsReal, randomFreeSpace.alt, randomFreeSpace.credit.name, randomFreeSpace.credit.source, randomFreeSpace.description, randomFreeSpace.overrideReminder, randomFreeSpace.stretch));
+    } else {
+      let randomPrompt = null;
+      if (possiblePromptsFiltered.length === 0)
+        randomPrompt = possiblePrompts[Math.floor(Math.random() * possiblePrompts.length)];
+      else
+        randomPrompt = possiblePromptsFiltered.shift();
+      spaces.push(new BingoCardItem(randomPrompt!.name, randomPrompt!.bucket, randomPrompt!.description));
+    }
+  }
+
+  return spaces;
 }
 
 export async function randomCharacters(amount: number) {
@@ -165,4 +258,19 @@ export async function randomCharacters(amount: number) {
   }
 
   return output.join("");
+}
+
+interface FreeSpace {
+  pos: [number, number];
+  src: string;
+  srcMarked?: string;
+  useMarkedAsReal?: boolean;
+  alt: string;
+  credit: {
+    name: string;
+    source: string;
+  };
+  stretch?: boolean;
+  description?: string;
+  overrideReminder?: string;
 }

@@ -52,5 +52,10 @@
     "name": "chat spams :NOWAYING:, :neuroNOWAYING:",
     "description": "chat spams the :NOWAYING: (NOWAYING) or :neuroNOWAYING: (neuroNOWAYING) emotes at any point during the stream"
   },
-  { "name": "chat spams :1984:", "description": "chat spams the :1984: (1984) emote at any point during the stream" }
+  { "name": "chat spams :1984:", "description": "chat spams the :1984: (1984) emote at any point during the stream" },
+  { "name": "I WAS HERE :STRONGE:", "description": "chat spams \"I WAS HERE :STRONGE:\" (STRONGE emote) at any point" },
+  { "name": "chat spams HE HATES US", "description": "chat spams \"HE HATES US\" at any point" },
+  { "name": "chat spams HE LOVES US", "description": "chat spams \"HE LOVES US\" at any point" },
+  { "name": "chat spams BEST TECH VTUBER x2", "description": "chat spams \"BEST TECH VTUBER x2\" at any point" },
+  { "name": "chat spams :evilCry: when no evil", "description": "chat spams the :evilCry: (evilCry) emote when there's no Evil on stream" }
 ]

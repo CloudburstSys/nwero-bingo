@@ -1,32 +1,44 @@
 import "./index.scss";
-import "./Dark";
+import "./ThemeManager";
 import BingoCard, { BingoCardFreeSpace, BingoCardItem, BingoCardMultipleFreeSpaces } from "./BingoCard";
 import SavedState from "./SavedState";
 import * as UpdateChecker from "./UpdateChecker";
-import { loadPrompts, onClassChange, randomCharacters, saveState, shuffleArray } from "./Utils";
+import { loadPrompts, onClassChange, randomCharacters, regenerateBucket, saveState, shuffleArray } from "./Utils";
 import Emote from "./Emote";
 
 let card: BingoCard | null;
 let cardSaveInterval: number | null = null;
 
+document.getElementById("bingo-score")!.innerText = localStorage.getItem("bingo-score") ?? "0";
+
 // Remove old storage name
 window.localStorage.removeItem("board-state");
 UpdateChecker.init(() => {
-  // This gets executed if an update is detected.
+  // This gets executed if an update is detected to stream.json
+  regenerateBucket(card!, "stream");
+}, () => {
+  // This gets executed if an update is detected to schedule.json
   if(cardSaveInterval) clearInterval(cardSaveInterval);
-  window.localStorage.removeItem("card-state");
+  setTimeout(() => {
+    window.localStorage.removeItem("card-state");
+  }, 100);
 });
+
+let sfx = document.createElement("audio");
+sfx.id = "sfx_prompt_regen";
+sfx.src = "/assets/prompt_regen.mp3";
+sfx.volume = 0.5;
+document.body.appendChild(sfx);
 
 // Fetch schedule JSON
 fetch("/data/schedule.json")
   .then(async (data) => await data.json())
   .then(async (schedule: Schedule) => {
-
     let scheduleDays = [];
 
     for (let key in schedule) {
-      let start = schedule[key].override?.start || new Date(`${key}T12:00:00Z`);
-      let end = schedule[key].override?.end || new Date(`${key}T12:00:00Z`);
+      let start = schedule[key].override?.start ? new Date(schedule[key].override!.start) : new Date(`${key}T12:00:00Z`);
+      let end = schedule[key].override?.end ? new Date(schedule[key].override!.end) : new Date(`${key}T12:00:00Z`);
       if (!schedule[key].override?.end) end.setDate(end.getDate() + 1);
 
       scheduleDays.push({
@@ -44,7 +56,7 @@ fetch("/data/schedule.json")
         let cardState = JSON.parse(window.localStorage.getItem("card-state") as string) as SavedState;
         if (Date.now() <= new Date(cardState.expiry).getTime() || day == undefined) {
           // Card hasn't expired yet or there's no stream after an expired card, keep this one.
-          UpdateChecker.forceSetVersion();
+          //UpdateChecker.forceSetVersion();
           card = BingoCard.fromSavedState(cardState);
           card.render(document.getElementsByClassName("bingo-container")[0] as HTMLElement);
 
@@ -167,7 +179,7 @@ fetch("/data/schedule.json")
       if (freeSpace != null) board.setItem(row, column, freeSpace);
       else {
         if (prompts[i - j] != null)
-          board.setItem(row, column, new BingoCardItem(prompts[i - j]!.name, prompts[i - j]!.description));
+          board.setItem(row, column, new BingoCardItem(prompts[i - j]!.name, prompts[i - j]!.bucket, prompts[i - j]!.description));
         else
           console.warn(
             `Encountered null prompt at prompt number ${i - j}, row ${row} column ${column}. This usually means there's not enough prompts somewhere. Check above for more details.`,

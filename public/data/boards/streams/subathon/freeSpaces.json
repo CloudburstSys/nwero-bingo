@@ -1,0 +1,67 @@
+﻿[
+  {
+    "src": "/assets/artworks/subathon/custom_comm_1.png",
+    "srcMarked": "/assets/artworks/subathon/custom_comm_1_marked.png",
+    "alt": "",
+    "credit": {
+      "name": "food0606 (commissioner: soul1419)",
+      "source": "special:first_view"
+    },
+    "stretch": true
+  },
+  {
+    "src": "/assets/artworks/subathon/nicogg_comm_1.png",
+    "alt": "",
+    "credit": {
+      "name": "reznyan (commissioner: nicogg)",
+      "source": "https://discord.com/channels/574720535888396288/1319199910893060106/1319199910893060106"
+    },
+    "stretch": true
+  },
+  {
+    "src": "/assets/artworks/subathon/soul_commission_p3r_1.png",
+    "alt": "",
+    "credit": {
+      "name": "P3R (commissioner: soul1419)",
+      "source": "https://discord.com/channels/574720535888396288/1319337589794148465/1319337589794148465"
+    },
+    "stretch": true
+  },
+  {
+    "src": "/assets/artworks/subathon/soul_commission_mrfish_1.png",
+    "alt": "",
+    "credit": {
+      "name": "Mr.Fish (commissioner: soul1419)",
+      "source": "special:cant_find"
+    },
+    "stretch": true
+  },
+  {
+    "src": "/assets/artworks/subathon/soul_commission_paccha_1.png",
+    "srcMarked": "/assets/artworks/subathon/soul_commission_paccha_1_marked.gif",
+    "alt": "",
+    "credit": {
+      "name": "Paccha (commissioner: soul1419)",
+      "source": "https://discord.com/channels/574720535888396288/1319268065099386913/1319268065099386913s"
+    },
+    "stretch": true
+  },
+  {
+    "src": "/assets/artworks/subathon/eris_1.png",
+    "alt": "",
+    "credit": {
+      "name": "233eris",
+      "source": "https://discord.com/channels/574720535888396288/1319092001077198868/1319092001077198868"
+    },
+    "stretch": true
+  },
+  {
+    "src": "/assets/artworks/subathon/paccha_1.jpg",
+    "alt": "",
+    "credit": {
+      "name": "paccha",
+      "source": "https://discord.com/channels/574720535888396288/1319048411424493631/1319048411424493631"
+    },
+    "stretch": false
+  }
+]

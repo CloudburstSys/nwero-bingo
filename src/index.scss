@@ -16,6 +16,8 @@ body {
   --card-text-light: black;
   --card-text-dark: black;
   --card-bg-active: #7aff7a;
+  --card-bg-bingo: gold;
+  --dev-card-bg-checking: yellow;
   --card-text-active: black;
   --card-bg-artwork: #ffffff;
   --card-border: #d1a2b3;
@@ -35,11 +37,35 @@ body.dark {
   --card-text-light: white;
   --card-text-dark: white;
   --card-bg-active: green;
+  --card-bg-bingo: #b39800;
+  --dev-card-bg-checking: #7f7f00;
   --card-text-active: white;
   --card-bg-artwork: #000000;
   --card-border: #0f0005;
   --link-color: aqua;
   --invert: 0;
+}
+
+body.vedal {
+  --body-bg: #97d091;
+  --header-bg: #589f5c;
+  --modal-bg: #abdda6;
+  --modal-border: #8dc986;
+  --card-bg-light: #abdda6;
+  --card-bg-dark: #81c07a;
+  --card-bg-active: #f58796;
+  --card-border: #589f5c;
+}
+
+body.dark.vedal {
+  --body-bg: #5d8059;
+  --header-bg: #294d2b;
+  --modal-bg: #628060;
+  --modal-border: #3f593c;
+  --card-bg-light: #628060;
+  --card-bg-dark: #3c5939;
+  --card-bg-active: #5e0813;
+  --card-border: #294d2b;
 }
 
 body.hiyori {
@@ -178,7 +204,6 @@ header a {
 
 header a img {
   width: 32px;
-  height: 32px;
   padding: 5px;
 }
 
@@ -216,10 +241,23 @@ header ul li .theme-switcher {
   cursor: pointer;
 }
 
+header ul li .vedal-theme-switcher {
+  padding: 0.311rem 1rem 0rem 1rem;
+  cursor: pointer;
+
+  position:relative;
+  top: 11px;
+}
+
 header ul li .theme-switcher img {
   padding: 0;
   width: 32px;
   height: 32px;
+}
+
+header ul li .vedal-theme-switcher img {
+  padding: 0;
+  width: 32px;
 }
 
 .bingo-title {
@@ -286,16 +324,25 @@ header ul li .theme-switcher img {
   color: rgb(102, 77.2, 2.8);
 }
 
-.banner.update-banner b {
+.banner.update-banner b.danger {
   color: #c80000;
 }
 
-.dark .banner.update-banner b {
+.banner.update-banner b.success {
+  color: #1bc800;
+}
+
+.dark .banner.update-banner b.danger {
   color: #ac0000;
 }
 
+.dark .banner.update-banner b.success {
+  color: #17ab00;
+}
+
 .banner.update-banner button {
-  width: 100px;
+  min-width: 100px;
+  max-width: 200px;
   font-family: FirstCoffee, serif !important;
 
   cursor: pointer;
@@ -319,6 +366,11 @@ header ul li .theme-switcher img {
   border: 3px solid rgb(255, 199.2, 31.8);
 }
 
+.banner.update-banner button.disabled {
+  background-color: rgb(179, 136, 8);
+  border: 3px solid rgb(179 136 8);
+}
+
 @media (max-width: 768px) {
   .banner.update-banner button {
     width: 100%;
@@ -337,7 +389,8 @@ header ul li .theme-switcher img {
 
 .bingo-container {
   width: fit-content;
-  font-size: 1.5rem;
+  //font-size: 1.5rem;
+  font-size: 1.25rem;
 
   margin-left: auto;
   margin-right: auto;
@@ -351,11 +404,15 @@ header ul li .theme-switcher img {
 
 .bingo-item {
   flex: 0 0 auto;
-  min-width: 199px;
   padding: 0 5px;
-  min-height: 142px;
-  max-height: 142px;
-  max-width: 199px;
+  //min-width: 199px;
+  //max-width: 199px;
+  //min-height: 142px;
+  //max-height: 142px;
+  min-width: 169px;
+  max-width: 169px;
+  min-height: 118px;
+  max-height: 118px;
   border-style: solid;
   border-width: 2px;
   border-color: var(--card-border);
@@ -384,7 +441,8 @@ header ul li .theme-switcher img {
 
 .bingo-image {
   overflow: hidden;
-  height: 130px;
+  //height: 130px;
+  height: 118px;
 }
 
 .bingo-image.invert {
@@ -393,18 +451,21 @@ header ul li .theme-switcher img {
 
 .bingo-image.stretch {
   object-fit: fill;
-  width: 100%;
+  width: 179px;
 }
 
 .bingo-item:has(.bingo-image.stretch) {
   padding: 0;
-  max-width: 213px;
+  //max-width: 213px;
+  max-width: 183px;
 }
 
 .emote {
-  height: 32px;
+  //height: 32px;
+  height: 24px;
   position: relative;
-  top: 8px;
+  // top: 8px;
+  top: 4px;
 }
 
 // Credit: Cornlakes (megacornflakes) [https://github.com/megacornflakes]
@@ -420,10 +481,124 @@ header ul li .theme-switcher img {
   --card-text-dark: var(--card-text-active);
 }
 
+.bingo-item.bingo {
+  animation: bingo-animation-light 0.5s 12 alternate;
+  -webkit-animation: bingo-animation-light 0.5s 12 alternate;
+  -moz-animation: bingo-animation-light 0.5s 12 alternate;
+  -o-animation: bingo-animation-light 0.5s 12 alternate;
+  -ms-animation: bingo-animation-light 0.5s 12 alternate;
+}
+
+.bingo-row:nth-child(odd) .bingo-item:nth-child(odd).bingo,
+.bingo-row:nth-child(even) .bingo-item:nth-child(even) .bingo {
+  animation-name: bingo-animation-dark;
+  -webkit-animation-name: bingo-animation-dark;
+  -moz-animation-name: bingo-animation-dark;
+  -o-animation-name: bingo-animation-dark;
+  -ms-animation-name: bingo-animation-dark;
+}
+
+@keyframes bingo-animation-light {
+  0% {
+    background-color: var(--card-bg-light);
+  }
+  100% {
+    background-color: var(--card-bg-bingo);
+  }
+}
+@-webkit-keyframes bingo-animation-light {
+  0% {
+    background-color: var(--card-bg-light);
+  }
+  100% {
+    background-color: var(--card-bg-bingo);
+  }
+}
+@-moz-keyframes bingo-animation-light {
+  0% {
+    background-color: var(--card-bg-light);
+  }
+  100% {
+    background-color: var(--card-bg-bingo);
+  }
+}
+@-o-keyframes bingo-animation-light {
+  0% {
+    background-color: var(--card-bg-light);
+  }
+  100% {
+    background-color: var(--card-bg-bingo);
+  }
+}
+@-ms-keyframes bingo-animation-light {
+  0% {
+    background-color: var(--card-bg-light);
+  }
+  100% {
+    background-color: var(--card-bg-bingo);
+  }
+}
+
+@keyframes bingo-animation-dark {
+  0% {
+    background-color: var(--card-bg-dark);
+  }
+  100% {
+    background-color: var(--card-bg-bingo);
+  }
+}
+@-webkit-keyframes bingo-animation-dark {
+  0% {
+    background-color: var(--card-bg-dark);
+  }
+  100% {
+    background-color: var(--card-bg-bingo);
+  }
+}
+@-moz-keyframes bingo-animation-dark {
+  0% {
+    background-color: var(--card-bg-dark);
+  }
+  100% {
+    background-color: var(--card-bg-bingo);
+  }
+}
+@-o-keyframes bingo-animation-dark {
+  0% {
+    background-color: var(--card-bg-dark);
+  }
+  100% {
+    background-color: var(--card-bg-bingo);
+  }
+}
+@-ms-keyframes bingo-animation-dark {
+  0% {
+    background-color: var(--card-bg-dark);
+  }
+  100% {
+    background-color: var(--card-bg-bingo);
+  }
+}
+
+.bingo-item.dev-checking {
+  --card-bg-light: var(--dev-card-bg-checking);
+  --card-bg-dark: var(--dev-card-bg-checking);
+  --card-text-light: var(--card-text-active);
+  --card-text-dark: var(--card-text-active);
+}
+
 .bingo-row:nth-child(odd) .bingo-item:nth-child(odd),
 .bingo-row:nth-child(even) .bingo-item:nth-child(even) {
   background-color: var(--card-bg-dark);
   color: var(--card-text-dark);
+}
+
+.bingo-item.broken {
+  background-color: #cdcdcd !important;
+}
+
+.dark .bingo-item.broken {
+  background-color: #4d4c4c !important;
 }
 
 a {

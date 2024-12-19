@@ -1,7 +1,8 @@
 import Emote from "./Emote";
 import * as Modal from "./Modal";
 import SavedState, { CardFreeSpace, CardFreeSpaces, SavedCard } from "./SavedState";
-import { onClassChange } from "./Utils";
+import { onClassChange, randomCharacters } from "./Utils";
+import detectBingo from "./BingoDetector";
 
 /* Assembles a Bingo card */
 export default class BingoCard {
@@ -10,6 +11,7 @@ export default class BingoCard {
   public width: number;
   public height: number;
   public data: BingoCardItem[][];
+  private hasRendered: boolean = false;
 
   constructor(name: string, description: string | undefined, width: number, height: number, boardData?: BingoCardItem[][]) {
     this.name = name;
@@ -24,7 +26,9 @@ export default class BingoCard {
         for (let h = 0; h < this.height; h++) {
           output[h] = [];
           for (let w = 0; w < this.width; w++) {
-            output[h][w] = new BingoCardEmptyItem();
+            let item = new BingoCardEmptyItem();
+            item.addToggleListener((state: boolean) => detectBingo(w, h, state, this));
+            output[h][w] = item;
           }
         }
         return output;
@@ -37,8 +41,13 @@ export default class BingoCard {
       state.card.description,
       state.card.width,
       state.card.height,
-      state.card.state.map((row) => row.map((item) => new BingoCardItem(item.name, item.description, item.marked))),
+      state.card.state.map((row) => row.map((item) => new BingoCardItem(item.name, item.bucket, item.description, item.marked))),
     );
+    for (let y = 0; y < card.data.length; y++) {
+      for (let x = 0; x < card.data[y].length; x++) {
+        card.data[y][x].addToggleListener((state: boolean) => detectBingo(x, y, state, card));
+      }
+    }
     state.card.freeSpaces.forEach((freeSpace) => {
       if (freeSpace.type === "multiple") {
         let space = new BingoCardMultipleFreeSpaces(
@@ -72,6 +81,7 @@ export default class BingoCard {
         let currentState = state.card.state[freeSpace.pos[0]][freeSpace.pos[1]].marked;
 
         fs.marked = currentState;
+        fs.update();
         fs.onToggle(currentState);
 
         card.setItem(
@@ -86,6 +96,15 @@ export default class BingoCard {
   }
 
   setItem(row: number, column: number, item: BingoCardItem) {
+    if (this.data[row][column] && this.hasRendered) {
+      this.data[row][column].replace(item);
+
+      if (row == 0 && column == 0) item.addTopLeftCurve(30);
+      if (row == 0 && column == this.width - 1) item.addTopRightCurve(30);
+      if (row == this.height - 1 && column == 0) item.addBottomLeftCurve(30);
+      if (row == this.height - 1 && column == this.width - 1) item.addBottomRightCurve(30);
+    }
+    item.addToggleListener((state: boolean) => detectBingo(column, row, state, this));
     this.data[row][column] = item;
   }
 
@@ -109,6 +128,8 @@ export default class BingoCard {
         row[j].render(rowElement);
       }
     }
+
+    this.hasRendered = true;
   }
 
   toJSON(): SavedCard {
@@ -167,11 +188,21 @@ export default class BingoCard {
       freeSpaces: freeSpaces,
       state: this.data.map((row) =>
         row.map((item) => {
-          return {
-            name: item.name,
-            description: item.description,
-            marked: item.marked,
-          };
+          if (item instanceof BingoCardRegeneratingItem) {
+            return {
+              name: item.destinedItem.name,
+              bucket: item.destinedItem.bucket,
+              description: item.destinedItem.description,
+              marked: item.destinedItem.marked
+            }
+          } else {
+            return {
+              name: item.name,
+              bucket: item.bucket,
+              description: item.description,
+              marked: item.marked,
+            };
+          }
         }),
       ),
     };
@@ -180,27 +211,31 @@ export default class BingoCard {
 
 export class BingoCardItem {
   public name: string;
+  public bucket: string;
   public description: string;
   public marked: boolean;
   public togglable: boolean;
   public overriddenReminder: string | undefined;
-  protected element: HTMLElement;
+  public element: HTMLElement;
   private longHoldTimeout: number | undefined = undefined;
+  private listeners: Function[] = [];
 
-  constructor(name: string, description: string, marked: boolean = false, togglable: boolean = true, overriddenReminder?: string) {
+  constructor(name: string, bucket: string, description: string, marked: boolean = false, togglable: boolean = true, overriddenReminder?: string, element?: HTMLElement) {
     this.name = name;
+    this.bucket = bucket;
     this.description = description;
     this.marked = marked;
     this.togglable = togglable;
     this.overriddenReminder = overriddenReminder;
 
-    this.element = this._render();
+    this.element = this._render(element);
   }
 
-  protected _render() {
-    let element = document.createElement("div");
+  protected _render(element: HTMLElement = document.createElement("div")) {
     element.classList.add("bingo-item");
     if (this.marked) element.classList.add("active");
+
+    element.setAttribute("data-bucket", this.bucket);
 
     let textElement = document.createElement("span");
     Emote.convert(this.name).then((str) => (textElement.innerHTML = str));
@@ -216,8 +251,16 @@ export class BingoCardItem {
     return element;
   }
 
-  static fromBoardJSON(data: { name: string; description: string }): BingoCardItem {
-    return new this(data?.name, data?.description);
+  static fromBoardJSON(data: { name: string; description: string }, bucket: string): BingoCardItem {
+    return new this(data?.name, bucket, data?.description);
+  }
+
+  addClass(name: string) {
+    this.element.classList.add(name);
+  }
+
+  removeClass(name: string) {
+    this.element.classList.remove(name);
   }
 
   addTopLeftCurve(value: number) {
@@ -233,6 +276,12 @@ export class BingoCardItem {
     this.element.style.borderBottomRightRadius = `${value}px`;
   }
 
+  public update() {
+    if (this.marked)
+      this.element.classList.add("active");
+    else this.element.classList.remove("active");
+  }
+
   render(element: HTMLElement) {
     element.appendChild(this.element);
   }
@@ -241,7 +290,9 @@ export class BingoCardItem {
     Modal.showModal(this.name, this.description, this.overriddenReminder);
   }
 
-  protected onToggle?(state: boolean): void;
+  addToggleListener(callback: Function): void {
+    this.listeners.push(callback);
+  };
 
   protected onClick(e: MouseEvent) {
     if (e.which === 3 || e.button === 2) {
@@ -251,9 +302,12 @@ export class BingoCardItem {
       this.marked = !this.marked;
       if (this.marked) this.element.classList.add("active");
       else this.element.classList.remove("active");
-      console.log("a");
-      this.onToggle && this.onToggle(this.marked);
+      this.listeners.forEach(listener => listener(this.marked))
     }
+  }
+
+  replace(item: BingoCardItem) {
+    this.element.parentElement!.replaceChild(item.element, this.element); // can i even do this??
   }
 }
 
@@ -273,7 +327,8 @@ export class BingoCardFreeSpace extends BingoCardItem {
   constructor(imageUrl: string, markedImageUrl: string | undefined, useMarkedAsReal: boolean | undefined, altText: string, artistName: string, sourceUrl: string, overriddenDescription: string | undefined = undefined, overriddenReminder: string | undefined = undefined, streched: boolean = false) {
     super(
       "Free Space",
-      `${(overriddenDescription ? overriddenDescription : "the stream starts")}<br/><img class="modal-image" src="${useMarkedAsReal ? markedImageUrl : imageUrl}" alt="${altText}" /><br/>Art credit: <a href="${sourceUrl}" target="_blank">${artistName}</a>`,
+      "freeSpace",
+      `${(overriddenDescription ? overriddenDescription : "the stream starts")}<br/><img class="modal-image" src="${useMarkedAsReal ? markedImageUrl : imageUrl}" alt="${altText}" /><br/>Art credit: ${processArtCredit(artistName, sourceUrl)}`,
       false,
       true,
       overriddenReminder
@@ -289,10 +344,11 @@ export class BingoCardFreeSpace extends BingoCardItem {
     this.overriddenDescription = overriddenDescription;
 
     this.element.innerHTML = `<img class="bingo-image${this.stretched ? " stretch" : ""}" src="${this.imageUrl}" alt="${this.altText}" />`;
+
+    this.addToggleListener((state: boolean) => this.onToggle(state));
   }
 
   public onToggle(state: boolean) {
-    console.log(state);
     if (state)
       (this.element.querySelector(".bingo-image") as HTMLImageElement).src = this.markedImageUrl || this.imageUrl;
     else
@@ -308,6 +364,7 @@ export class BingoCardMultipleFreeSpaces extends BingoCardItem {
   constructor(mode: "theme" | "random", freeSpaces: BingoCardFreeSpace[]) {
     super(
       "Multiple Free Space",
+      "freeSpace",
       `the stream starts<br/><br/>This should have changed ${mode === "random" ? "randomly" : "in accordance with the theme"} but something went wrong.`,
       false,
       true,
@@ -374,8 +431,65 @@ export class BingoCardMultipleFreeSpaces extends BingoCardItem {
   }
 }
 
+function processArtCredit(artistName: string, sourceUrl: string) {
+  switch (sourceUrl) {
+    case "special:first_view":
+      return `${artistName}<br/><b>This artwork was commissioned for the bingo!</b>`;
+    case "special:cant_find":
+      return `${artistName}<br/><i>Couldn't find the source URL. Maybe check art channel in Neuro-sama Headquarters?</i>`
+    default:
+      return `<a href="${sourceUrl}" target="_blank">${artistName}</a>`
+  }
+}
+
+// TODO: Repurpose this to have rapidly shifting text
 export class BingoCardEmptyItem extends BingoCardItem {
+  private interval: number | undefined;
+
   constructor() {
-    super("", "never", false, false);
+    super("Unknown prompt", "meta_unknown", "This prompts fate has yet to be decided...", false, false);
+
+    this.update();
+    this.interval = setInterval(() => this.update(), 50) as unknown as number;
+  }
+
+  async update() {
+    this.element.innerText = await randomCharacters(14);
+  }
+
+  replace(element: BingoCardItem) {
+    super.replace(element);
+    clearInterval(this.interval);
+  }
+}
+
+export class BingoCardRegeneratingItem extends BingoCardItem {
+  private interval: number | undefined;
+  private card: BingoCard;
+  private row: number;
+  private column: number;
+  public destinedItem: BingoCardItem;
+
+  constructor(card: BingoCard, row: number, column: number, destinedItem: BingoCardItem) {
+    super("Unknown prompt", "meta_regenerating", "This prompts fate has yet to be decided...", false, false);
+
+    this.card = card;
+    this.row = row;
+    this.column = column;
+    this.destinedItem = destinedItem;
+    this.update();
+    this.interval = setInterval(() => this.update(), 50) as unknown as number;
+    setTimeout(() => {
+      this.card.setItem(this.row, this.column, this.destinedItem);
+    }, 5000);
+  }
+
+  async update() {
+    this.element.innerText = await randomCharacters(14);
+  }
+
+  replace(element: BingoCardItem) {
+    super.replace(element);
+    clearInterval(this.interval);
   }
 }

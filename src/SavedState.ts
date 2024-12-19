@@ -37,6 +37,7 @@ export interface CardFreeSpace {
 
 export interface SavedStateItem {
   name: string;
+  bucket: string;
   description: string;
   marked: boolean;
 }

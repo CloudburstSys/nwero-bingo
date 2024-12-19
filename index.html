@@ -50,6 +50,11 @@
           <a href="/">Current Board</a>
         </li>
         <li>
+          <a class="vedal-theme-switcher">
+            <img alt="Switch to Normal theme" src="/assets/vedal-theme-off-light.png" />
+          </a>
+        </li>
+        <li>
           <a class="theme-switcher">
             <img alt="Switch to Dark theme" src="/assets/dark.svg" />
           </a>
@@ -62,13 +67,16 @@
     <div class="banner update-banner">
       <h2>Heads up!</h2>
       <span>Your local version of the bingo is outdated. Press the button below to update!<br/>
-        <b>Your bingo card will be reset.</b></span>
+        <b class="">Your bingo card will be reset.</b></span>
       <button>Update</button>
     </div>
     <span class="bingo-instructions"
       >Left click (mouse) / Tap (touchscreen) to mark, Right click (mouse) / Hold (touchscreen) for prompt
       explanation.</span
     >
+    <span class="bingo-instructions">
+      Total bingos: <span id="bingo-score">0</span>
+    </span>
     <div class="bingo-container"></div>
     <span class="bingo-instructions" id="bingo-artwork-credit-below">Right click free spaces for art credit.</span>
     <span class="bingo-instructions">Prompt credit: 2econd Umbrella</span>

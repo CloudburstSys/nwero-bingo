@@ -1,28 +1,77 @@
 {
-  "2024-11-26": {
-    "name": "Evil solo stream",
-    "description": "glad i can change this in real time now",
+  "2024-12-06": {
+    "name": "Subathon",
+    "description": "idk i'll put one here later",
+    "override": {
+      "start": "2024-12-11T12:00:00Z",
+      "end": "2025-02-01T12:00:00Z"
+    },
     "customBuckets": {
-      "evil": "streams/solo/evil.json"
+      "stream": "streams/subathon/stream.json",
+      "twin": "streams/subathon/twin.json",
+      "vedal": "streams/subathon/vedal.json"
     },
     "weights": {
-      "evil": 21,
-      "chat": 3
+      "stream": 12,
+      "twin": 12,
+      "vedal": 12,
+      "chat": 8
     },
-    "boardWidth": 5,
-    "boardHeight": 5,
+    "boardWidth": 7,
+    "boardHeight": 7,
     "multipleFreeSpacesBehaviour": "theme",
     "freeSpaces": [
       {
-        "pos": [2, 2],
-        "src": "/assets/artworks/soul_evil_burger.png",
+        "pos": [3, 3],
+        "src": "/assets/artworks/subathon/custom_comm_1.png",
+        "srcMarked": "/assets/artworks/subathon/custom_comm_1_marked.png",
         "alt": "",
         "credit": {
           "name": "food0606 (commissioner: soul1419)",
-          "source": "https://discord.com/channels/574720535888396288/1308995951809138688/1308995951809138688"
+          "source": "special:first_view"
         },
-        "stretch": false,
-        "overrideReminder": "VOTING CLOSES TODAY! <a href=\"https://thestreamerawards.com/vote\" target=\"_blank\">Vote for Vedal/Neuro-sama in the Streamer Awards</a>!"
+        "stretch": true
+      },
+      {
+        "pos": [1, 1],
+        "src": "/assets/artworks/subathon/nicogg_comm_1.png",
+        "alt": "",
+        "credit": {
+          "name": "reznyan (commissioner: nicogg)",
+          "source": "https://discord.com/channels/574720535888396288/1319199910893060106/1319199910893060106"
+        },
+        "stretch": true
+      },
+      {
+        "pos": [1, 5],
+        "src": "/assets/artworks/subathon/soul_commission_p3r_1.png",
+        "alt": "",
+        "credit": {
+          "name": "P3R (commissioner: soul1419)",
+          "source": "https://discord.com/channels/574720535888396288/1319337589794148465/1319337589794148465"
+        },
+        "stretch": true
+      },
+      {
+        "pos": [5, 1],
+        "src": "/assets/artworks/subathon/soul_commission_mrfish_1.png",
+        "alt": "",
+        "credit": {
+          "name": "Mr.Fish (commissioner: soul1419)",
+          "source": "special:cant_find"
+        },
+        "stretch": true
+      },
+      {
+        "pos": [5, 5],
+        "src": "/assets/artworks/subathon/soul_commission_paccha_1.png",
+        "srcMarked": "/assets/artworks/subathon/soul_commission_paccha_1_marked.gif",
+        "alt": "",
+        "credit": {
+          "name": "Paccha (commissioner: soul1419)",
+          "source": "https://discord.com/channels/574720535888396288/1319268065099386913/1319268065099386913"
+        },
+        "stretch": true
       }
     ]
   }
