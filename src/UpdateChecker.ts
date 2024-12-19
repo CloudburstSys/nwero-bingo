@@ -44,7 +44,7 @@ async function checkForUpdate(rerollCallback: Function, refreshCallback: Functio
 
       console.log(gitInfo);
 
-      if (gitInfo.changedFiles.some(file => file.endsWith(".ts") || file.endsWith(".scss"))) {
+      if (gitInfo.changedFiles.some(file => file.endsWith(".ts") || file.endsWith(".scss") || file.endsWith(".html"))) {
         // Codebase update + maybe JSON
         if(gitInfo.changedFiles.some(file => file.endsWith(".json"))) {
           // There's JSON, check if it's stream.json or schedule.json
