@@ -10,13 +10,13 @@ export async function init(rerollCallback: Function, refreshCallback: Function) 
   let gitInfo = parseGitInfo(await fetch('/commitinfo.txt').then((res) => res.text()));
 
   (<any>globalThis).BuildInformation = {
-    branch: gitInfo.branch,
+    //branch: gitInfo.branch,
     commit: gitInfo.commitId
   };
 
   setInterval(async () => {
     await checkForUpdate(rerollCallback, refreshCallback);
-  }, 1000);
+  }, 30000);
 }
 
 /**
@@ -37,7 +37,7 @@ async function checkForUpdate(rerollCallback: Function, refreshCallback: Functio
       localStorage.setItem("version", gitInfo.commitId);
     }
 
-    if ((current != gitInfo.commitId && gitInfo.branch != "devbuild" && !updateDetected) || (gitInfo.commitId == "DEVBUILD" && !updateDetected)) {
+    if ((current != gitInfo.commitId && !updateDetected) || (gitInfo.commitId == "DEVBUILD" && !updateDetected)) {
       // Update detected.
       console.log("Detected update");
       updateDetected = true;
@@ -118,22 +118,22 @@ async function checkForUpdate(rerollCallback: Function, refreshCallback: Functio
 }
 
 function parseGitInfo(txt: string): GitInfo {
-  let regex = /([\w\d]{5,10}) \(HEAD -> ([\w\d/]+)(?:, .+)+\) (.+)\r?\n([\w\W]*)/gi;
+  let regex = /([\w\d]{5,10}) (\(HEAD -> (?:[\w\d/]+)(?:, .+)+\))? (.+)\r?\n([\w\W]*)/gi;
   let info = regex.exec(txt.trim());
 
   if (info === null) throw new ReferenceError("String provided does not match nwero-bingo commitinfo file");
 
   return {
     commitId: info[1],
-    branch: info[2],
-    message: info[3],
-    changedFiles: info[4].trim().replaceAll("\r", "").split("\n")
+    //branch: info[2],
+    message: info[2],
+    changedFiles: info[3].trim().replaceAll("\r", "").split("\n")
   }
 }
 
 interface GitInfo {
   commitId: string,
-  branch: string,
+  //branch: string,
   message: string,
   changedFiles: string[]
 }
