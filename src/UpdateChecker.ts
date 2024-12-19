@@ -117,6 +117,8 @@ async function checkForUpdate(rerollCallback: Function, refreshCallback: Functio
   }
 }
 
+//test
+
 function parseGitInfo(txt: string): GitInfo {
   let regex = /([\w\d]{5,10})( \(HEAD -> (?:[\w\d/]+)(?:, .+)+\))? (.+)\r?\n([\w\W]*)/gi;
   let info = regex.exec(txt.trim());
