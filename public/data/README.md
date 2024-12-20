@@ -52,3 +52,15 @@ Nwero Bingo uses a prompt bucket system for storing and building bingo sheets, a
   "name": "description",
 }
 ```
+
+## hotload.json format
+hotload.json is used to tell the UpdateChecker what files are allowed to hotload.
+Because this deploys at the same time as an update, it also functions as way to do this in a hotload fashion too.
+
+```jsonc
+{
+  // The following can be duplicated.
+  "path/to/file.json": true, // This will enable hotloading
+  "path/to/another/file.json": false // This explicitly disables hotloading, same as not including it in the file
+}
+```

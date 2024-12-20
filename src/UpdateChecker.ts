@@ -16,7 +16,7 @@ export async function init(rerollCallback: Function, refreshCallback: Function) 
 
   setInterval(async () => {
     await checkForUpdate(rerollCallback, refreshCallback);
-  }, 120000);
+  }, 1000);
 }
 
 /**
@@ -40,6 +40,7 @@ async function checkForUpdate(rerollCallback: Function, refreshCallback: Functio
     if ((current != gitInfo.commitId && !updateDetected) || (gitInfo.commitId == "DEVBUILD" && !updateDetected)) {
       // Update detected.
       console.log("Detected update");
+      let hotLoadInfo: HotloadConfig = await fetch('/data/hotload.json').then((res) => res.json());
       updateDetected = true;
 
       console.log(gitInfo);
@@ -62,9 +63,13 @@ async function checkForUpdate(rerollCallback: Function, refreshCallback: Functio
                 location.reload();
               }, 200);
             }, { once: true });
-          } else if (gitInfo.changedFiles.includes("public/data/boards/streams/subathon/stream.json")) {
+          } else if (gitInfo.changedFiles.some(file => Object.keys(hotLoadInfo).includes(file) && hotLoadInfo[file])) {
             setTimeout(async () => {
-              await rerollCallback();
+              for (let hotLoadInfoKey in hotLoadInfo) {
+                if (gitInfo.changedFiles.includes(hotLoadInfoKey) && hotLoadInfo[hotLoadInfoKey]) {
+                  await rerollCallback(hotLoadInfoKey.split("/")[hotLoadInfoKey.split("/").length - 1].replace(".json", ""));
+                }
+              }
               setTimeout(() => {
                 localStorage.setItem("version", gitInfo.commitId);
                 location.reload();
@@ -100,10 +105,14 @@ async function checkForUpdate(rerollCallback: Function, refreshCallback: Functio
               location.reload();
             }, 200);
           }, {once: true});
-        } else if (gitInfo.changedFiles.includes("public/data/boards/streams/subathon/stream.json")) {
+        } else if (gitInfo.changedFiles.some(file => Object.keys(hotLoadInfo).includes(file) && hotLoadInfo[file])) {
           // There's an update to the stream.json file, regen it's prompts.
           setTimeout(async () => {
-            await rerollCallback();
+            for (let hotLoadInfoKey in hotLoadInfo) {
+              if (gitInfo.changedFiles.includes(hotLoadInfoKey) && hotLoadInfo[hotLoadInfoKey]) {
+                await rerollCallback(hotLoadInfoKey.split("/")[hotLoadInfoKey.split("/").length - 1].replace(".json", ""));
+              }
+            }
             setTimeout(() => {
               localStorage.setItem("version", gitInfo.commitId);
               updateDetected = false;
@@ -138,4 +147,8 @@ interface GitInfo {
   branch: string,
   message: string,
   changedFiles: string[]
+}
+
+interface HotloadConfig {
+  [file: string]: boolean
 }

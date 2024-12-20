@@ -13,9 +13,9 @@ document.getElementById("bingo-score")!.innerText = localStorage.getItem("bingo-
 
 // Remove old storage name
 window.localStorage.removeItem("board-state");
-UpdateChecker.init(() => {
+UpdateChecker.init((bucket: string) => {
   // This gets executed if an update is detected to stream.json
-  regenerateBucket(card!, "stream");
+  regenerateBucket(card!, bucket);
 }, () => {
   // This gets executed if an update is detected to schedule.json
   if(cardSaveInterval) clearInterval(cardSaveInterval);
