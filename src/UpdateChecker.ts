@@ -14,9 +14,10 @@ export async function init(rerollCallback: Function, refreshCallback: Function) 
     commit: gitInfo.commitId
   };
 
+  await checkForUpdate(rerollCallback, refreshCallback);
   setInterval(async () => {
     await checkForUpdate(rerollCallback, refreshCallback);
-  }, 1000);
+  }, 30000);
 }
 
 /**

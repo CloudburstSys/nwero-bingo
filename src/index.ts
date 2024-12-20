@@ -11,18 +11,21 @@ let cardSaveInterval: number | null = null;
 
 document.getElementById("bingo-score")!.innerText = localStorage.getItem("bingo-score") ?? "0";
 
-// Remove old storage name
-window.localStorage.removeItem("board-state");
-UpdateChecker.init((bucket: string) => {
+function regenerateBucketCallback(bucket: string) {
   // This gets executed if an update is detected to stream.json
   regenerateBucket(card!, bucket);
-}, () => {
+}
+
+function reloadPageCallback() {
   // This gets executed if an update is detected to schedule.json
   if(cardSaveInterval) clearInterval(cardSaveInterval);
   setTimeout(() => {
     window.localStorage.removeItem("card-state");
   }, 100);
-});
+}
+
+// Remove old storage name
+window.localStorage.removeItem("board-state");
 
 let sfx = document.createElement("audio");
 sfx.id = "sfx_prompt_regen";
@@ -59,6 +62,8 @@ fetch("/data/schedule.json")
           //UpdateChecker.forceSetVersion();
           card = BingoCard.fromSavedState(cardState);
           card.render(document.getElementsByClassName("bingo-container")[0] as HTMLElement);
+
+          UpdateChecker.init(regenerateBucketCallback, reloadPageCallback);
 
           document.getElementsByClassName("bingo-title")[0].innerHTML = card.name;
           document.getElementsByClassName("bingo-description")[0].innerHTML = card.description || "&nbsp;";
@@ -118,6 +123,8 @@ fetch("/data/schedule.json")
         cardSaveInterval = setInterval(() => saveState(board, day.end), 1000) as unknown as number;
 
         board.render(document.getElementsByClassName("bingo-container")[0] as HTMLElement);
+
+        UpdateChecker.init(regenerateBucketCallback, reloadPageCallback);
         return;
       }
       let column = i % cardInfo.boardHeight;
