@@ -14,6 +14,8 @@ export async function init(rerollCallback: Function, refreshCallback: Function) 
     commit: gitInfo.commitId
   };
 
+  (document.querySelector("footer .commit") as HTMLAnchorElement).innerText = `${(<any>globalThis).BuildInformation.commit}${(<any>globalThis).BuildInformation.branch ? ` - ${(<any>globalThis).BuildInformation.branch}` : ""}`;
+
   await checkForUpdate(rerollCallback, refreshCallback);
   setInterval(async () => {
     await checkForUpdate(rerollCallback, refreshCallback);

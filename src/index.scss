@@ -604,3 +604,13 @@ header ul li .vedal-theme-switcher img {
 a {
   color: var(--link-color);
 }
+
+footer {
+  padding: 1rem;
+  background-color: var(--header-bg);
+  margin-top: 1.5rem;
+}
+
+footer .commit {
+  float: right;
+}
