@@ -1,4 +1,9 @@
-import BingoCard, { BingoCardEmptyItem, BingoCardFreeSpace, BingoCardItem } from "./BingoCard";
+import BingoCard, {
+  BingoCardEmptyItem,
+  BingoCardFreeSpace,
+  BingoCardItem,
+  BingoCardRegeneratingItem
+} from "./BingoCard";
 
 /**
  * Shuffles an array in-place.
@@ -186,15 +191,13 @@ export async function regenerateBucket(card: BingoCard, bucket: string) {
   const sfx = document.getElementById("sfx_prompt_regen") as HTMLAudioElement;
   sfx.play();
   items.forEach(item => {
-    card.setItem(item.row, item.column, new BingoCardEmptyItem());
-  });
-
-  setTimeout(() => {
     items.forEach(item => {
       let prompt = prompts.shift();
-      card.setItem(item.row, item.column, new BingoCardItem(prompt!.name, bucket, prompt!.description));
+      let bingoItem = new BingoCardItem(prompt!.name, bucket, prompt!.description);
+      let generatingItem = new BingoCardRegeneratingItem(card, item.row, item.column, bingoItem);
+      card.setItem(item.row, item.column, generatingItem);
     });
-  }, 5000);
+  });
 }
 
 export async function regeneratePrompts(boardData: BingoCardItem[][], amount: number) {
