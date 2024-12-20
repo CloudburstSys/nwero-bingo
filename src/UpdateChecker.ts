@@ -16,7 +16,7 @@ export async function init(rerollCallback: Function, refreshCallback: Function) 
 
   setInterval(async () => {
     await checkForUpdate(rerollCallback, refreshCallback);
-  }, 30000);
+  }, 120000);
 }
 
 /**
