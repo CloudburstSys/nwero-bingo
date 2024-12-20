@@ -15,6 +15,7 @@ export async function init(rerollCallback: Function, refreshCallback: Function) 
   };
 
   (document.querySelector("footer .commit") as HTMLAnchorElement).innerText = `${(<any>globalThis).BuildInformation.commit}${(<any>globalThis).BuildInformation.branch ? ` - ${(<any>globalThis).BuildInformation.branch}` : ""}`;
+  (document.querySelector("footer .commit") as HTMLAnchorElement).href = `https://github.com/CloudburstSys/nwero-bingo/commit/${(<any>globalThis).BuildInformation.commit}`;
 
   await checkForUpdate(rerollCallback, refreshCallback);
   setInterval(async () => {
@@ -118,6 +119,8 @@ async function checkForUpdate(rerollCallback: Function, refreshCallback: Functio
             }
             setTimeout(() => {
               localStorage.setItem("version", gitInfo.commitId);
+              (document.querySelector("footer .commit") as HTMLAnchorElement).innerText = `${gitInfo.commitId}${(<any>globalThis).BuildInformation.branch ? ` - ${(<any>globalThis).BuildInformation.branch}` : ""}`;
+              (document.querySelector("footer .commit") as HTMLAnchorElement).href = `https://github.com/CloudburstSys/nwero-bingo/commit/${gitInfo.commitId}`;
               updateDetected = false;
             }, 7000);
           }, document.querySelectorAll(".bingo-item.bingo").length > 0 ? 13000 : 0);
