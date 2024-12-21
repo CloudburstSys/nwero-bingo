@@ -177,7 +177,7 @@ export async function regenerateBucket(card: BingoCard, bucket: string) {
   let items: { row: number, column: number, item: BingoCardItem }[] = [];
   for (let row = 0; row < card.data.length; row++) {
     for (let column = 0; column < card.data[row].length; column++) {
-      if (card.data[row][column].bucket != bucket) continue;
+      if (card.data[row][column].bucket != bucket || card.data[row][column].bucket != `streams/subathon/${bucket}`) continue;
       items.push({
         row,
         column,
@@ -218,7 +218,7 @@ export async function regeneratePrompts(boardData: BingoCardItem[][], amount: nu
     let prompts = parsePrompts(await request.json()).map(prompt => {
       return {
         name: prompt.name,
-        bucket,
+        bucket: bucket.split("/")[bucket.split("/").length-1],
         description: prompt.description
       }
     });
