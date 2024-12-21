@@ -113,6 +113,8 @@ async function checkForUpdate(rerollCallback: Function, refreshCallback: Functio
           // There's an update to the stream.json file, regen it's prompts.
           setTimeout(async () => {
             for (let hotLoadInfoKey in hotLoadInfo) {
+              console.log(gitInfo.changedFiles.includes(hotLoadInfoKey));
+              console.log(hotLoadInfo[hotLoadInfoKey]);
               if (gitInfo.changedFiles.includes(hotLoadInfoKey) && hotLoadInfo[hotLoadInfoKey]) {
                 await rerollCallback(hotLoadInfoKey.split("/")[hotLoadInfoKey.split("/").length - 1].replace(".json", ""));
               }
