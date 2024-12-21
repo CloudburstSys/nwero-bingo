@@ -39,6 +39,7 @@
   {
     "src": "/assets/artworks/subathon/soul_commission_paccha_1.png",
     "srcMarked": "/assets/artworks/subathon/soul_commission_paccha_1_marked.gif",
+    "useMarkedAsReal": true,
     "alt": "",
     "credit": {
       "name": "Paccha (commissioner: soul1419)",
@@ -67,6 +68,7 @@
   {
     "src": "/assets/artworks/subathon/mini_commission_1.png",
     "srcMarked": "/assets/artworks/subathon/mini_commission_1_marked.gif",
+    "useMarkedAsReal": true,
     "alt": "",
     "credit": {
       "name": "DoKiDoKiTsuki (commissioner: minikomew)",
@@ -76,8 +78,9 @@
     "overrideReminder": "yes. that minikomew.<br/><b>This is the artwork Minikomew got Neuro as a birthday gift!"
   },
   {
-    "src": "/assets/artworks/subathon/mini_commission_1.png",
-    "srcMarked": "/assets/artworks/subathon/mini_commission_1_marked.gif",
+    "src": "/assets/artworks/subathon/mini_commission_2.png",
+    "srcMarked": "/assets/artworks/subathon/mini_commission_2_marked.gif",
+    "useMarkedAsReal": true,
     "alt": "",
     "credit": {
       "name": "DoKiDoKiTsuki (commissioner: minikomew)",
