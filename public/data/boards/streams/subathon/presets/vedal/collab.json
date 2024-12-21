@@ -1,3 +1,16 @@
 ﻿{
-
+  "partner flirts with twin": "a collab partner tries to flirt with one of the twins",
+  "partner argues with twin": "a collab partner tries to argue with one of the twins",
+  "partner gets stunlocked by twin": "a collab partner gets stunlocked (shocked into silence) by one of the twins",
+  "partner is gaslit by twin": "a collab partner is gaslit by one of the twins",
+  "partner loves neuro": "a collab partner says that they love one of the twins (or both!)",
+  "partner leaves call": "a collab partner leaves the call",
+  "partner copies what a twin says": "a collab partner copies what one of the twins says",
+  "partner scolds twin": "a collab partner scolds one of the twins (e.g. \"NEURO!!! YOU CAN'T SAY THAT!!!\")",
+  "partner insults/roasts twin": "a collab partner insults or roasts one of the twins",
+  "partner mispronounces vedal's name": "a collab partner mispronounces Vedal's name<br/>Basically anything other than Neuro's pronunciation or \"pedal, medal, <b>vedal</b\".",
+  "partner has a laughing fit": "a collab partner has a laughing fit due to what one of the twins said",
+  "partner roleplays with twin": "a collab partner roleplays with one of the twins",
+  "partner babies twin": "a collab partner babies one of the twins (talks to them in baby voice, calls them \"sweetheart\", etc)",
+  "partner makes twin cry": "a collab partner makes one of the twins cry (enable their cry toggle or say that they're crying)"
 }
