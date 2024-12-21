@@ -1,0 +1,22 @@
+﻿{
+  "neuro buys a plush": "Neuro buys a plushie from any of the stores she visits",
+  "neuro wants to buy something expensive": "Neuro tries to get Toma to buy her something expensive (over $120)",
+  "toma gets lost": "Toma gets herself lost (somehow)",
+  "neuro wants to buy a pet": "Neuro wants Toma to buy her a pet of any kind",
+  "toma technical issues": "Toma has technical issues (stream cuts out, Neuro left alone, etc)",
+  "neuro buys something turtle related": "Neuro buys something that's turtle related, obviously meant to be for Vedal",
+  "neuro buys computer accessories": "Neuro buys computer accessories for her computer despite being an AI",
+  "toma does something publicly embarrassing": "Toma does something you really shouldn't do in public, such as yelling out loud in stores, talking about shoppers in earshot, etc<br/>Generally if you get 2nd hand embarrassment, this is fulfilled.",
+  "toma calls neuro names (positive)": "Toma calls Neuro positive names such as \"baby\", \"darling\", \"honey\", or \"sweetie\"",
+  "neuro references previous irl stream": "Neuro references a previous IRL stream, unprompted by Toma",
+  "neuro buys toys": "Neuro buys toys, such as childrens games or non-plush figures",
+  "neuro buys clothes": "Neuro buys any sort of clothing, including hats",
+  "neuro tells toma to steal": "Neuro tells Toma that she should steal items from the shop<br/><br/>This'll absolutely result in \"toma does something publicly embarrassing\" being fulfilled because she WILL repeat what Neuro says",
+  "neuro tells toma to attack shoppers": "Neuro tells Toma that she should attack a shopper",
+  "neuro doesn't believe in santa": "Neuro says something anti-santa, such as that he's a corporate ploy by Coca-Cola to sell more fizzy drinks",
+  "neuro buys evil a gift": "Neuro buys her sister, Evil, a gift<br/><br/>Dev note: if this happens i will literally cry",
+  "neuro buys others a gift": "Neuro buys a gift for anyone, including Vedal, other streamers, Toma, etc<br/>Evil does not count as she has her own prompt",
+  "neuro tries to scare toma": "Neuro tries to scare Toma via SFX",
+  "neuro wants to buy something massive": "Neuro wants to buy something massive that Toma obviously can't carry (furniture, vehicles, really big stuffed animal, etc)",
+  "neuro checks portfolio": "Neuro checks her portfolio<br/><br/>Dev note: is it just me or are we all scared vedal will actually go into debt"
+}

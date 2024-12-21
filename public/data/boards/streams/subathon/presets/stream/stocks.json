@@ -1,0 +1,18 @@
+﻿{
+  "tech issues": "some sort of tech issues occur<br/>This can be related to the start of the subathon, the timer, or Neuro/Evil themselves",
+  "guest appears": "someone other than Vedal, Neuro, or Evil appears on stream (must be live, not artwork of them)",
+  "both twins appear at same time": "both Neuro and Evil are present at the same time live (not in videos)",
+  "first 15 subgoals reached": "the first 15 subgoals are reached",
+  "vedal plays game with twin": "Vedal plays a game with either Neuro or Evil (or both!)",
+  "time per sub lowered": "Vedal (via the wheel) lowers the time per sub during the subathon",
+  "gamestop mentioned": "Gamestop is mentioned in the context of a stock",
+  "apple stock bought": "Neuro buys stock in Apple (AAPL)",
+  "tesla stock bought": "Neuro buys stock in Tesla (TSLA)",
+  "obscure stock bought": "Neuro buys a stock which makes everyone go \"WHO??\"",
+  "over $2000 in one stock": "Neuro buys over $2000 in one stock, or one of her stocks goes above $2000 in value",
+  "attempted financial crime": "Neuro attempts to commit financial crime such as fraud, insider trading, etc<br/>For this to count, she must at least consider the action.",
+  ":clueless: about stock market": "Neuro is absolutely clueless about how the stock market works, resulting in wildly inaccurate statements about it (e.g. \"stocks are free\")",
+  "amazon stock bought": "Neuro buys stock in Amazon (AMZN)",
+  "vedal realises this is a mistake": "Vedal realises that this is a mistake and cries over Neuro spending his money",
+  "neuro gives financial advice": "Neuro tries to give some sort of financial advice, however inaccurate it may be"
+}
