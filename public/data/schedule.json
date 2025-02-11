@@ -1,14 +1,12 @@
 {
-  "2024-12-02": {
-    "name": "Dev stream",
-    "description": "tuesday - offline :aware:",
+  "2025-02-11": {
+    "name": "Neuro stream",
+    "description": "We're so back!",
     "customBuckets": {
-      "neuro": "streams/dev/neuro.json",
-      "vedal": "streams/dev/vedal.json"
+      "neuro": "streams/solo/neuro.json"
     },
     "weights": {
-      "neuro": 11,
-      "vedal": 10,
+      "neuro": 21,
       "chat": 3
     },
     "boardWidth": 5,
@@ -24,7 +22,7 @@
           "source": "https://discord.com/channels/574720535888396288/1308995951809138688/1308995951809138688"
         },
         "stretch": false,
-        "overrideReminder": "sponsor pls :neuroPray: <br/>also i just realised the person who made this artwork is named \"food\". funny coincidence"
+        "overrideReminder": "i am editing this on my phone i can't be bothered to change the image"
       }
     ]
   }
