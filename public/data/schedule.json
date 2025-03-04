@@ -1,9 +1,9 @@
 {
-  "2025-02-27": {
-    "name": "Evil stream",
-    "description": "bingo!",
+  "2025-03-04": {
+    "name": "Neuro stream",
+    "description": "nwero",
     "customBuckets": {
-      "neuro": "streams/solo/evil.json"
+      "neuro": "streams/solo/neuro.json"
     },
     "weights": {
       "neuro": 21,
@@ -15,14 +15,14 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/soul_evil_burger.png",
+        "src": "/assets/artworks/soul_neuro_burger.png",
         "alt": "",
         "credit": {
           "name": "food0606 (commissioner: soul1419)",
           "source": "https://discord.com/channels/574720535888396288/1308995951809138688/1308995951809138688"
         },
         "stretch": false,
-        "overrideReminder": "burgr<br/>i need to stop configuring this all last minute<br/>disclaimer: i did not follow my own advice"
+        "overrideReminder": "burgr<br/>i need to stop configuring this all last minute<br/>disclaimer: i did not follow my own advice<br/>disclaimer 2: i never follow my own advice"
       }
     ]
   }
