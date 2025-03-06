@@ -1,9 +1,9 @@
 {
-  "2025-03-04": {
-    "name": "Neuro stream",
-    "description": "nwero",
+  "2025-03-06": {
+    "name": "Evil stream",
+    "description": "i'm not late, you're just early! -cloud",
     "customBuckets": {
-      "neuro": "streams/solo/neuro.json"
+      "neuro": "streams/solo/evil.json"
     },
     "weights": {
       "neuro": 21,
@@ -15,7 +15,7 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/soul_neuro_burger.png",
+        "src": "/assets/artworks/soul_evil_burger.png",
         "alt": "",
         "credit": {
           "name": "food0606 (commissioner: soul1419)",
