@@ -16,9 +16,12 @@ body {
   --card-text-light: black;
   --card-text-dark: black;
   --card-bg-active: #7aff7a;
+  --card-bg-bingo: gold;
+  --card-bg-dev-checking: yellow;
   --card-text-active: black;
   --card-bg-artwork: #ffffff;
   --card-border: #d1a2b3;
+  --card-border-bingo: #af9300;
   --link-color: rgb(0, 0, 238);
   --invert: 1
 }
@@ -35,6 +38,8 @@ body.dark {
   --card-text-light: white;
   --card-text-dark: white;
   --card-bg-active: green;
+  --card-bg-bingo: #b39800;
+  --card-bg-dev-checking: #7f7f00;
   --card-text-active: white;
   --card-bg-artwork: #000000;
   --card-border: #0f0005;
@@ -417,6 +422,136 @@ header ul li .theme-switcher img {
 .bingo-row:nth-child(even) .bingo-item:nth-child(even) {
   background-color: var(--card-bg-dark);
   color: var(--card-text-dark);
+}
+
+.bingo-item.bingo {
+  background-color: var(--card-bg-bingo);
+  border-color: var(--card-border-bingo);
+  animation: bingo-animation-light 0.5s 9 alternate;
+  -webkit-animation: bingo-animation-light 0.5s 9 alternate;
+  -moz-animation: bingo-animation-light 0.5s 9 alternate;
+  -o-animation: bingo-animation-light 0.5s 9 alternate;
+  -ms-animation: bingo-animation-light 0.5s 9 alternate;
+}
+
+.bingo-row:nth-child(odd) .bingo-item.bingo:nth-child(odd),
+.bingo-row:nth-child(even) .bingo-item.bingo:nth-child(even) {
+  background-color: var(--card-bg-bingo);
+  border-color: var(--card-border-bingo);
+  animation: bingo-animation-dark 0.5s 9 alternate;
+  -webkit-animation: bingo-animation-dark 0.5s 9 alternate;
+  -moz-animation: bingo-animation-dark 0.5s 9 alternate;
+  -o-animation: bingo-animation-dark 0.5s 9 alternate;
+  -ms-animation: bingo-animation-dark 0.5s 9 alternate;
+}
+
+@keyframes bingo-animation-light {
+  0% {
+    background-color: var(--card-bg-light);
+    border-color: var(--card-border);
+  }
+  100% {
+    background-color: var(--card-bg-bingo);
+    border-color: var(--card-border-bingo);
+  }
+}
+@-webkit-keyframes bingo-animation-light {
+  0% {
+    background-color: var(--card-bg-light);
+    border-color: var(--card-border);
+  }
+  100% {
+    background-color: var(--card-bg-bingo);
+    border-color: var(--card-border-bingo);
+  }
+}
+@-moz-keyframes bingo-animation-light {
+  0% {
+    background-color: var(--card-bg-light);
+    border-color: var(--card-border);
+  }
+  100% {
+    background-color: var(--card-bg-bingo);
+    border-color: var(--card-border-bingo);
+  }
+}
+@-o-keyframes bingo-animation-light {
+  0% {
+    background-color: var(--card-bg-light);
+    border-color: var(--card-border);
+  }
+  100% {
+    background-color: var(--card-bg-bingo);
+    border-color: var(--card-border-bingo);
+  }
+}
+@-ms-keyframes bingo-animation-light {
+  0% {
+    background-color: var(--card-bg-light);
+    border-color: var(--card-border);
+  }
+  100% {
+    background-color: var(--card-bg-bingo);
+    border-color: var(--card-border-bingo);
+  }
+}
+
+@keyframes bingo-animation-dark {
+  0% {
+    background-color: var(--card-bg-dark);
+    border-color: var(--card-border);
+  }
+  100% {
+    background-color: var(--card-bg-bingo);
+    border-color: var(--card-border-bingo);
+  }
+}
+@-webkit-keyframes bingo-animation-dark {
+  0% {
+    background-color: var(--card-bg-dark);
+    border-color: var(--card-border);
+  }
+  100% {
+    background-color: var(--card-bg-bingo);
+    border-color: var(--card-border-bingo);
+  }
+}
+@-moz-keyframes bingo-animation-dark {
+  0% {
+    background-color: var(--card-bg-dark);
+    border-color: var(--card-border);
+  }
+  100% {
+    background-color: var(--card-bg-bingo);
+    border-color: var(--card-border-bingo);
+  }
+}
+@-o-keyframes bingo-animation-dark {
+  0% {
+    background-color: var(--card-bg-dark);
+    border-color: var(--card-border);
+  }
+  100% {
+    background-color: var(--card-bg-bingo);
+    border-color: var(--card-border-bingo);
+  }
+}
+@-ms-keyframes bingo-animation-dark {
+  0% {
+    background-color: var(--card-bg-dark);
+    border-color: var(--card-border);
+  }
+  100% {
+    background-color: var(--card-bg-bingo);
+    border-color: var(--card-border-bingo);
+  }
+}
+
+.bingo-item.dev-checking {
+  --card-bg-light: var(--dev-card-bg-checking);
+  --card-bg-dark: var(--dev-card-bg-checking);
+  --card-text-light: var(--card-text-active);
+  --card-text-dark: var(--card-text-active);
 }
 
 a {

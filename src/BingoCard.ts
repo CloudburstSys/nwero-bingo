@@ -2,6 +2,7 @@ import Emote from "./Emote";
 import * as Modal from "./Modal";
 import SavedState, { CardFreeSpace, CardFreeSpaces, SavedCard } from "./SavedState";
 import { onClassChange } from "./Utils";
+import detectBingo from "./BingoDetector";
 
 /* Assembles a Bingo card */
 export default class BingoCard {
@@ -24,7 +25,9 @@ export default class BingoCard {
         for (let h = 0; h < this.height; h++) {
           output[h] = [];
           for (let w = 0; w < this.width; w++) {
-            output[h][w] = new BingoCardEmptyItem();
+            let item = new BingoCardEmptyItem();
+            item.addToggleListener((state: boolean) => detectBingo(w, h, state, this));
+            output[h][w] = item;
           }
         }
         return output;
@@ -39,6 +42,12 @@ export default class BingoCard {
       state.card.height,
       state.card.state.map((row) => row.map((item) => new BingoCardItem(item.name, item.description, item.marked))),
     );
+    for (let y = 0; y < card.data.length; y++) {
+      for (let x = 0; x < card.data[y].length; x++) {
+        card.data[y][x].addToggleListener((state: boolean) => detectBingo(x, y, state, card));
+        detectBingo(x, y, card.data[y][x].marked, card);
+      }
+    }
     state.card.freeSpaces.forEach((freeSpace) => {
       if (freeSpace.type === "multiple") {
         let space = new BingoCardMultipleFreeSpaces(
@@ -61,9 +70,9 @@ export default class BingoCard {
 
         space.marked = state.card.state[freeSpace.pos[0]][freeSpace.pos[1]].marked;
 
-        space.update(document.body.classList.contains("dark") ? "dark" : "light");
+        space.update(false, document.body.classList.contains("dark") ? "dark" : "light");
         onClassChange(document.body, (body) => {
-          (space as BingoCardMultipleFreeSpaces).update(body.classList.contains("dark") ? "dark" : "light");
+          (space as BingoCardMultipleFreeSpaces).update(false, body.classList.contains("dark") ? "dark" : "light");
         });
 
         card.setItem(freeSpace.pos[0], freeSpace.pos[1], space);
@@ -186,6 +195,7 @@ export class BingoCardItem {
   public overriddenReminder: string | undefined;
   protected element: HTMLElement;
   private longHoldTimeout: number | undefined = undefined;
+  private listeners: Function[] = [];
 
   constructor(name: string, description: string, marked: boolean = false, togglable: boolean = true, overriddenReminder?: string) {
     this.name = name;
@@ -220,6 +230,14 @@ export class BingoCardItem {
     return new this(data?.name, data?.description);
   }
 
+  addClass(name: string) {
+    this.element.classList.add(name);
+  }
+
+  removeClass(name: string) {
+    this.element.classList.remove(name);
+  }
+
   addTopLeftCurve(value: number) {
     this.element.style.borderTopLeftRadius = `${value}px`;
   }
@@ -233,6 +251,12 @@ export class BingoCardItem {
     this.element.style.borderBottomRightRadius = `${value}px`;
   }
 
+  public update(fakeNoMark?: boolean) {
+    if (this.marked && !fakeNoMark)
+      this.element.classList.add("active");
+    else this.element.classList.remove("active");
+  }
+
   render(element: HTMLElement) {
     element.appendChild(this.element);
   }
@@ -241,7 +265,9 @@ export class BingoCardItem {
     Modal.showModal(this.name, this.description, this.overriddenReminder);
   }
 
-  protected onToggle?(state: boolean): void;
+  public addToggleListener(callback: Function): void {
+    this.listeners.push(callback);
+  };
 
   protected onClick(e: MouseEvent) {
     if (e.which === 3 || e.button === 2) {
@@ -252,7 +278,7 @@ export class BingoCardItem {
       if (this.marked) this.element.classList.add("active");
       else this.element.classList.remove("active");
       console.log("a");
-      this.onToggle && this.onToggle(this.marked);
+      this.listeners.forEach(listener => listener(this.marked));
     }
   }
 }
@@ -317,7 +343,7 @@ export class BingoCardMultipleFreeSpaces extends BingoCardItem {
     this.freeSpaces = freeSpaces;
   }
 
-  update(theme?: "light" | "dark") {
+  update(fakeNoMark?: boolean, theme?: "light" | "dark") {
     if (this.mode === "theme") {
       if (theme === "light") {
         this.theme = "light";
@@ -347,7 +373,7 @@ export class BingoCardMultipleFreeSpaces extends BingoCardItem {
       //`Center artwork credit: <a href="${randomFreeSpace.sourceUrl}" target="_blank">${randomFreeSpace.artistName}</a>`;
     }
 
-    if (this.marked)
+    if (this.marked && !fakeNoMark)
       this.element.classList.add("active");
     else this.element.classList.remove("active");
 
