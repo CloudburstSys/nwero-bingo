@@ -1,13 +1,17 @@
 {
-  "2025-03-06": {
-    "name": "Evil stream",
-    "description": "i'm not late, you're just early! -cloud",
+  "2025-03-09": {
+    "name": "Deep Diving Conspiracy Theories w/ Mimi & Monii",
+    "description": "I believe in only one of these, and I'm not saying which. Guess. -Dev",
     "customBuckets": {
-      "neuro": "streams/solo/evil.json"
+      "topics": "collabs/conspiracy_mimi_monii/topics.json",
+      "partners": "collabs/conspiracy_mimi_monii/partners.json",
+      "neuro": "collabs/conspiracy_mimi_monii/neuro.json"
     },
     "weights": {
-      "neuro": 21,
-      "chat": 3
+      "topics": 9,
+      "partners": 7,
+      "neuro": 8,
+      "chat": 0
     },
     "boardWidth": 5,
     "boardHeight": 5,
@@ -15,14 +19,14 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/soul_evil_burger.png",
+        "src": "/assets/artworks/soul_neuro_burger.png",
         "alt": "",
         "credit": {
           "name": "food0606 (commissioner: soul1419)",
           "source": "https://discord.com/channels/574720535888396288/1308995951809138688/1308995951809138688"
         },
         "stretch": false,
-        "overrideReminder": "burgr<br/>i need to stop configuring this all last minute<br/>disclaimer: i did not follow my own advice<br/>disclaimer 2: i never follow my own advice"
+        "overrideReminder": "can't be bothered. busy re-adding bingo detection from subathon. sorry."
       }
     ]
   }
