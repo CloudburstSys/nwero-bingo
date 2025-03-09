@@ -11,6 +11,7 @@ export default class BingoCard {
   public width: number;
   public height: number;
   public data: BingoCardItem[][];
+  private hasRendered: boolean = false;
 
   constructor(name: string, description: string | undefined, width: number, height: number, boardData?: BingoCardItem[][]) {
     this.name = name;
@@ -95,6 +96,15 @@ export default class BingoCard {
   }
 
   setItem(row: number, column: number, item: BingoCardItem) {
+    if (this.data[row][column] && this.hasRendered) {
+      this.data[row][column].replace(item);
+
+      if (row == 0 && column == 0) item.addTopLeftCurve(30);
+      if (row == 0 && column == this.width - 1) item.addTopRightCurve(30);
+      if (row == this.height - 1 && column == 0) item.addBottomLeftCurve(30);
+      if (row == this.height - 1 && column == this.width - 1) item.addBottomRightCurve(30);
+    }
+    item.addToggleListener((state: boolean) => detectBingo(column, row, state, this));
     this.data[row][column] = item;
   }
 
@@ -118,6 +128,8 @@ export default class BingoCard {
         row[j].render(rowElement);
       }
     }
+
+    this.hasRendered = true;
   }
 
   toJSON(): SavedCard {
@@ -262,7 +274,7 @@ export class BingoCardItem {
   }
 
   private onLongHold(e: TouchEvent) {
-    Modal.showModal(this.name, this.description, this.overriddenReminder);
+    Modal.showModal(this.name, this.description, this.element, this.marked && !this.togglable, this.overriddenReminder);
   }
 
   public addToggleListener(callback: Function): void {
@@ -270,8 +282,14 @@ export class BingoCardItem {
   };
 
   protected onClick(e: MouseEvent) {
+    if (!e.isTrusted && e.bubbles && !e.cancelable) {
+      // This is treated as if it's from the Modal system requesting an unmark. People can spoof this, but for this purpose it does not matter
+      this.marked = false;
+      this.element.classList.remove("active");
+      this.listeners.forEach(listener => listener(false));
+    } else
     if (e.which === 3 || e.button === 2) {
-      Modal.showModal(this.name, this.description, this.overriddenReminder);
+      Modal.showModal(this.name, this.description, this.element, this.marked && !this.togglable, this.overriddenReminder);
     } else if (e.which === 1 || e.button === 0) {
       if (!this.togglable) return;
       this.marked = !this.marked;
@@ -280,6 +298,10 @@ export class BingoCardItem {
       console.log("a");
       this.listeners.forEach(listener => listener(this.marked));
     }
+  }
+
+  replace(item: BingoCardItem) {
+    this.element.parentElement!.replaceChild(item.element, this.element); // can i even do this??
   }
 }
 

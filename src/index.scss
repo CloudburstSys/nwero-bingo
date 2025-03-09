@@ -101,7 +101,6 @@ body {
   gap: 0.4rem;
   width: 450px;
   padding: 1.3rem;
-  min-height: 300px;
   position: absolute;
   //top: calc(50% - (300px / 2));
   //left: calc(50% - (450px / 2));
@@ -153,9 +152,33 @@ body {
   border-top: 3px solid var(--modal-border);
 }
 
-.modal-bottom > * {
+.modal-bottom > *, .modal-bingo-bottom > * {
   margin: 4px;
   padding: 2px;
+}
+
+.modal-bingo .modal-bottom {
+  display: none;
+}
+
+.modal-bingo-bottom {
+  display: none;
+  border-top: 3px solid var(--modal-border);
+}
+
+.modal-bingo .modal-bingo-bottom {
+  display: block;
+}
+
+.modal-unmark-prompt-btn {
+  appearance: none;
+  padding: 5px;
+  margin-top: 5px;
+  background-color: var(--card-bg-dark);
+  border: 3px solid var(--card-border);
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 5;
 }
 
 header {

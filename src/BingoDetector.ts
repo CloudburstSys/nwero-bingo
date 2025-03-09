@@ -13,8 +13,42 @@ import BingoCard, {
 (<any>globalThis).BingoDetectionVisualisation = false;
 
 export default async function detect(x: number, y: number, state: boolean, card: BingoCard) {
-  if (!state) return; // No use processing unmarks if we want bingos.
+  let counts = await getPossibleBingos(x, y, state, card);
+  if (!state) {
+    // Unmark if need be?
+    console.log(counts);
+    if ((<any>globalThis).BingoDetectionVisualisation) console.log(counts);
+    for (let direction in counts) {
+      if (counts[direction].length == 5) {
+        counts[direction].forEach((item) => {
+          item.item.togglable = true;
+          item.item.marked = true;
+          item.item.update(false);
+          item.item.removeClass("bingo");
+        });
+      }
+    }
 
+    card.data[y][x].marked = false;
+    card.data[y][x].update();
+  } else {
+    if ((<any>globalThis).BingoDetectionVisualisation) console.log(counts);
+    for (let direction in counts) {
+      if (counts[direction].length == 5) {
+        //localStorage.setItem("bingo-score", (localStorage.getItem("bingo-score") === null ? 1 : parseInt(localStorage.getItem("bingo-score")!) + 1).toString());
+        //document.getElementById("bingo-score")!.innerText = localStorage.getItem("bingo-score")!;
+        counts[direction].forEach((item) => {
+          item.item.togglable = false;
+          item.item.marked = true;
+          item.item.update(true);
+          item.item.addClass("bingo");
+        });
+      }
+    }
+  }
+}
+
+export async function getPossibleBingos(x: number, y: number, state: boolean, card: BingoCard) {
   // Check the surrounding 8 positions.
   // XXX
   // X*X
@@ -253,23 +287,7 @@ export default async function detect(x: number, y: number, state: boolean, card:
     }
   }
 
-  if ((<any>globalThis).BingoDetectionVisualisation) console.log(counts);
-  for (let direction in counts) {
-    if (counts[direction].length == 5) {
-      //localStorage.setItem("bingo-score", (localStorage.getItem("bingo-score") === null ? 1 : parseInt(localStorage.getItem("bingo-score")!) + 1).toString());
-      //document.getElementById("bingo-score")!.innerText = localStorage.getItem("bingo-score")!;
-      counts[direction].forEach((item) => {
-        item.item.togglable = false;
-        item.item.marked = true;
-        item.item.update(true);
-        item.item.addClass("bingo");
-      });
-    }
-  }
-}
-
-function generateNewPrompts() {
-
+  return counts;
 }
 
 const bingoDefs = {

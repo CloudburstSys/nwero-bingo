@@ -142,10 +142,10 @@ fetch("/data/schedule.json")
         );
 
         freeSpace = new BingoCardMultipleFreeSpaces(cardInfo.multipleFreeSpacesBehaviour, spaces);
-        freeSpace.update(document.body.classList.contains("dark") ? "dark" : "light");
+        freeSpace.update(false, document.body.classList.contains("dark") ? "dark" : "light");
 
         onClassChange(document.body, (body) => {
-          (freeSpace as BingoCardMultipleFreeSpaces).update(body.classList.contains("dark") ? "dark" : "light");
+          (freeSpace as BingoCardMultipleFreeSpaces).update(false, body.classList.contains("dark") ? "dark" : "light");
         });
         j++;
       } else if (freeSpacesForSpace.length == 1) {

@@ -1,10 +1,19 @@
 import Emote from "./Emote";
 
-export function showModal(prompt: string, description: string, reminderOverride?: string) {
+export function showModal(prompt: string, description: string, bingoPrompt: HTMLElement, showUnmarkButton: boolean, reminderOverride?: string, unmarkCallback?: Function) {
   Emote.convert(prompt).then((str) => (document.getElementsByClassName("modal-prompt")[0].innerHTML = str));
   Emote.convert(description).then((str) => (document.getElementsByClassName("modal-description")[0].innerHTML = str));
 
-  if (reminderOverride) {
+  document.getElementsByClassName("modal")[0]!.classList.remove("modal-bingo");
+
+  if (showUnmarkButton) {
+    document.getElementsByClassName("modal")[0]!.classList.add("modal-bingo");
+
+    document.getElementsByClassName("modal-unmark-prompt-btn")[0]!.addEventListener("click", async () => {
+      // TODO: Unmark and trigger bingo check
+      bingoPrompt.dispatchEvent(new Event("mousedown", {bubbles: true, cancelable: false}));
+    }, {once: true});
+  } else if (reminderOverride) {
     document.getElementsByClassName("modal-bottom")[0]!.querySelector("h3")!.innerHTML = "Dev note";
     Emote.convert(reminderOverride).then((str) => (
       document.getElementsByClassName("modal-bottom")[0]!.querySelector("div")!.innerHTML = `<span>${str}</span>`
