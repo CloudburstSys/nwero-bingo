@@ -1,17 +1,13 @@
 {
-  "2025-03-09": {
-    "name": "Deep Diving Conspiracy Theories w/ Mimi & Monii",
-    "description": "I believe in only one of these, and I'm not saying which. Guess. -Dev",
+  "2025-03-11": {
+    "name": "Neuro Stream",
+    "description": "did this before the schedule dropped lmao",
     "customBuckets": {
-      "topics": "collabs/conspiracy_mimi_monii/topics.json",
-      "partners": "collabs/conspiracy_mimi_monii/partners.json",
-      "neuro": "collabs/conspiracy_mimi_monii/neuro.json"
+      "neuro": "stream/solo/neuro.json"
     },
     "weights": {
-      "topics": 9,
-      "partners": 7,
-      "neuro": 8,
-      "chat": 0
+      "neuro": 21,
+      "chat": 3
     },
     "boardWidth": 5,
     "boardHeight": 5,
@@ -26,7 +22,7 @@
           "source": "https://discord.com/channels/574720535888396288/1308995951809138688/1308995951809138688"
         },
         "stretch": false,
-        "overrideReminder": "can't be bothered. busy re-adding bingo detection from subathon. sorry."
+        "overrideReminder": "can someone handle finding artworks for me please :neuroPray:"
       }
     ]
   }
