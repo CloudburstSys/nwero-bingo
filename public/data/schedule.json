@@ -3,7 +3,7 @@
     "name": "Neuro Stream",
     "description": "did this before the schedule dropped lmao",
     "customBuckets": {
-      "neuro": "stream/solo/neuro.json"
+      "neuro": "streams/solo/neuro.json"
     },
     "weights": {
       "neuro": 21,
