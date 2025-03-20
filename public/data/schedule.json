@@ -1,12 +1,16 @@
 {
-  "2025-03-13": {
-    "name": "Evil Stream",
-    "description": "making prompts for that monday collab will be hell.",
+  "2025-03-20": {
+    "name": "Disneyland Stream",
+    "description": ":LULE: ALEX ALREADY VISITED DISNEYLAND :LULE:",
     "customBuckets": {
-      "evil": "streams/solo/evil.json"
+      "disneyland": "collabs/disneyland/disneyland.json",
+      "partner": "collabs/disneyland/partner.json",
+      "twin": "collabs/disneyland/twin.json"
     },
     "weights": {
-      "evil": 21,
+      "disneyland": 7,
+      "partner": 7,
+      "twin": 7,
       "chat": 3
     },
     "boardWidth": 5,
