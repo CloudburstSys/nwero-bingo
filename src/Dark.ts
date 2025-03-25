@@ -3,7 +3,7 @@ let darkModeDefault =
   (window.matchMedia &&
     window.matchMedia("(prefers-color-scheme: dark)").matches &&
     (localStorage.getItem("theme") === "dark" || localStorage.getItem("theme") === null)) ||
-  localStorage.getItem("theme") === "dark";
+  localStorage.getItem("theme") === "dark" || true;
 let darkTheme = false;
 
 function switchTheme() {

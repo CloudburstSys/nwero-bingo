@@ -1,32 +1,61 @@
 {
-  "2025-03-20": {
-    "name": "Disneyland Stream",
-    "description": ":LULE: ALEX ALREADY VISITED DISNEYLAND :LULE:",
+  "2025-03-25": {
+    "name": "Evil's Birthday",
+    "description": "if the birthday isn't good i'm deleting this website. also forced evil theme, because why not",
     "customBuckets": {
-      "disneyland": "collabs/disneyland/disneyland.json",
-      "partner": "collabs/disneyland/partner.json",
-      "twin": "collabs/disneyland/twin.json"
+      "evil": "streams/one_offs/evil_birthday/evil.json",
+      "stream": "streams/one_offs/evil_birthday/stream.json",
+      "guest": "streams/one_offs/evil_birthday/guest.json"
     },
     "weights": {
-      "disneyland": 7,
-      "partner": 7,
-      "twin": 7,
+      "evil": 14,
+      "stream": 9,
+      "guest": 6,
       "chat": 3
     },
-    "boardWidth": 5,
-    "boardHeight": 5,
+    "boardWidth": 6,
+    "boardHeight": 6,
     "multipleFreeSpacesBehaviour": "theme",
     "freeSpaces": [
       {
-        "pos": [2, 2],
-        "src": "/assets/artworks/soul_evil_burger.png",
+        "pos": [1, 1],
+        "src": "/assets/artworks/soul_neuro_evil_pchan_space.jpg",
         "alt": "",
         "credit": {
-          "name": "food0606 (commissioner: soul1419)",
-          "source": "https://discord.com/channels/574720535888396288/1308995951809138688/1308995951809138688"
+          "name": "pchan (commissioner: soul1419)",
+          "source": "https://discord.com/channels/574720535888396288/1353793497853071370/1353793497853071370"
         },
-        "stretch": false,
-        "overrideReminder": "can someone handle finding artworks for me please :neuroPray:"
+        "stretch": true
+      },
+      {
+        "pos": [4, 1],
+        "src": "/assets/artworks/soul_neuro_evil_liquain_space.png",
+        "alt": "",
+        "credit": {
+          "name": "liquain (commissioner: soul1419)",
+          "source": "https://discord.com/channels/574720535888396288/1353649945005129768/1353649945005129768"
+        },
+        "stretch": true
+      },
+      {
+        "pos": [1, 4],
+        "src": "/assets/artworks/soul_neuro_evil_fians_space.jpg",
+        "alt": "",
+        "credit": {
+          "name": "fians (commissioner: soul1419)",
+          "source": "https://discord.com/channels/574720535888396288/1353740325960814783/1353740325960814783"
+        },
+        "stretch": true
+      },
+      {
+        "pos": [4, 4],
+        "src": "/assets/artworks/soul_neuro_evil_paccha_space.png",
+        "alt": "",
+        "credit": {
+          "name": "paccha (commissioner: soul1419)",
+          "source": "https://discord.com/channels/574720535888396288/1353429967400075355/1353429967400075355"
+        },
+        "stretch": true
       }
     ]
   }
