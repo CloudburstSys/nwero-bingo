@@ -11,8 +11,6 @@ import BingoCard, {
 } from "./BingoCard";
 
 (<any>globalThis).BingoDetectionVisualisation = false;
-let boardWidth = 6;
-let boardHeight = 6;
 
 export default async function detect(x: number, y: number, state: boolean, card: BingoCard) {
   let counts = await getPossibleBingos(x, y, state, card);
@@ -21,7 +19,7 @@ export default async function detect(x: number, y: number, state: boolean, card:
     console.log(counts);
     if ((<any>globalThis).BingoDetectionVisualisation) console.log(counts);
     for (let direction in counts) {
-      if (counts[direction].length == 6) {
+      if (counts[direction].length == 5) {
         counts[direction].forEach((item) => {
           item.item.togglable = true;
           item.item.marked = true;
@@ -36,7 +34,7 @@ export default async function detect(x: number, y: number, state: boolean, card:
   } else {
     if ((<any>globalThis).BingoDetectionVisualisation) console.log(counts);
     for (let direction in counts) {
-      if (counts[direction].length == 6) {
+      if (counts[direction].length == 5) {
         //localStorage.setItem("bingo-score", (localStorage.getItem("bingo-score") === null ? 1 : parseInt(localStorage.getItem("bingo-score")!) + 1).toString());
         //document.getElementById("bingo-score")!.innerText = localStorage.getItem("bingo-score")!;
         counts[direction].forEach((item) => {
@@ -130,7 +128,7 @@ export async function getPossibleBingos(x: number, y: number, state: boolean, ca
         if (dy == 0 && dx == 1) {
           if ((<any>globalThis).BingoDetectionVisualisation) console.log("line horizontal right");
           let ty = y + dy;
-          for (let tx = x+1; tx <= 5; tx++) {
+          for (let tx = x+1; tx <= 4; tx++) {
             let item = card.data[ty][tx];
             if ((<any>globalThis).BingoDetectionVisualisation) {
               console.log(`checking ${tx}, ${ty}`);
@@ -176,7 +174,7 @@ export async function getPossibleBingos(x: number, y: number, state: boolean, ca
         if (dx == 0 && dy == 1) {
           if ((<any>globalThis).BingoDetectionVisualisation) console.log("line vertical down");
           let tx = x + dx;
-          for (let ty = y+1; ty <= 5; ty++) {
+          for (let ty = y+1; ty <= 4; ty++) {
             let item = card.data[ty][tx];
             if ((<any>globalThis).BingoDetectionVisualisation) {
               console.log(`checking ${tx}, ${ty}`);
@@ -220,7 +218,7 @@ export async function getPossibleBingos(x: number, y: number, state: boolean, ca
         // Across - Down + Right \
         if (dy == 1 && dx == 1) {
           if ((<any>globalThis).BingoDetectionVisualisation) console.log("across down right");
-          for (let ty = y+1; ty <= 5; ty++) {
+          for (let ty = y+1; ty <= 4; ty++) {
             let item = card.data[ty][ty];
             if ((<any>globalThis).BingoDetectionVisualisation) {
               console.log(`checking ${ty}, ${ty}`);
@@ -242,8 +240,8 @@ export async function getPossibleBingos(x: number, y: number, state: boolean, ca
         // Across - Down + Left /
         if (dy == 1 && dx == -1) {
           if ((<any>globalThis).BingoDetectionVisualisation) console.log("across down left");
-          for (let ty = y+1; ty <= 5; ty++) {
-            let tx = 5 - ty;
+          for (let ty = y+1; ty <= 4; ty++) {
+            let tx = 4 - ty;
             let item = card.data[ty][tx];
             if ((<any>globalThis).BingoDetectionVisualisation) {
               console.log(`checking ${tx}, ${ty}`);
@@ -266,7 +264,7 @@ export async function getPossibleBingos(x: number, y: number, state: boolean, ca
         if (dy == -1 && dx == 1) {
           if ((<any>globalThis).BingoDetectionVisualisation) console.log("across up right");
           for (let ty = y-1; ty >= 0; ty--) {
-            let tx = 5 - ty;
+            let tx = 4 - ty;
             let item = card.data[ty][tx];
             if ((<any>globalThis).BingoDetectionVisualisation) {
               console.log(`checking ${tx}, ${ty}`);
