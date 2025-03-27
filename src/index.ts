@@ -11,13 +11,13 @@ let cardSaveInterval: number | null = null;
 
 // Remove old storage name
 window.localStorage.removeItem("board-state");
-/*UpdateChecker.init(() => {
+UpdateChecker.init(() => {
   // This gets executed if an update is detected.
   if(cardSaveInterval) clearInterval(cardSaveInterval);
   setTimeout(() => {
     window.localStorage.removeItem("card-state");
   }, 100);
-});*/
+});
 
 // Fetch schedule JSON
 fetch("/data/schedule.json")
