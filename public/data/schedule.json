@@ -1,16 +1,12 @@
 {
-  "2025-03-20": {
-    "name": "Disneyland Stream",
-    "description": ":LULE: ALEX ALREADY VISITED DISNEYLAND :LULE:",
+  "2025-03-27": {
+    "name": "Neuro Stream",
+    "description": "i'm thinking",
     "customBuckets": {
-      "disneyland": "collabs/disneyland/disneyland.json",
-      "partner": "collabs/disneyland/partner.json",
-      "twin": "collabs/disneyland/twin.json"
+      "neuro": "streams/solo/neuro.json"
     },
     "weights": {
-      "disneyland": 7,
-      "partner": 7,
-      "twin": 7,
+      "neuro": 21,
       "chat": 3
     },
     "boardWidth": 5,
@@ -19,14 +15,13 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/soul_evil_burger.png",
+        "src": "/assets/artworks/soul_neuro_evil_paccha_space.png",
         "alt": "",
         "credit": {
-          "name": "food0606 (commissioner: soul1419)",
-          "source": "https://discord.com/channels/574720535888396288/1308995951809138688/1308995951809138688"
+          "name": "paccha (commissioner: soul1419)",
+          "source": "https://discord.com/channels/574720535888396288/1353429967400075355/1353429967400075355"
         },
-        "stretch": false,
-        "overrideReminder": "can someone handle finding artworks for me please :neuroPray:"
+        "stretch": true
       }
     ]
   }
