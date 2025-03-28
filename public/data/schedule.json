@@ -1,12 +1,16 @@
 {
   "2025-03-27": {
-    "name": "Neuro Stream",
-    "description": "i'm thinking",
+    "name": "Twin Stream",
+    "description": "watch vedal forget to use the twin starting soon screen",
     "customBuckets": {
-      "neuro": "streams/solo/neuro.json"
+      "both": "streams/twin/duo.json",
+      "neuro": "streams/twin/neuro.json",
+      "evil": "streams/twin/evil.json"
     },
     "weights": {
-      "neuro": 21,
+      "neuro": 7,
+      "evil": 7,
+      "both": 7,
       "chat": 3
     },
     "boardWidth": 5,
