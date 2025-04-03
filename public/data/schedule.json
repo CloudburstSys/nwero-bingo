@@ -1,16 +1,12 @@
 {
-  "2025-03-28": {
-    "name": "Twin Stream",
-    "description": "watch vedal forget to use the twin starting soon screen",
+  "2025-04-03": {
+    "name": "Evil Stream",
+    "description": "eliv",
     "customBuckets": {
-      "both": "streams/twin/duo.json",
-      "neuro": "streams/twin/neuro.json",
-      "evil": "streams/twin/evil.json"
+      "evil": "streams/solo/evil.json"
     },
     "weights": {
-      "neuro": 7,
-      "evil": 7,
-      "both": 7,
+      "evil": 21,
       "chat": 3
     },
     "boardWidth": 5,
