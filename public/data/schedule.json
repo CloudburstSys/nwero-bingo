@@ -1,12 +1,16 @@
 {
-  "2025-04-03": {
-    "name": "Evil Stream",
-    "description": "eliv",
+  "2025-04-06": {
+    "name": "EXPERIMENTAL Twin Minecraft Stream",
+    "description": "very experimental, may go horribly wrong",
     "customBuckets": {
-      "evil": "streams/solo/evil.json"
+      "game": "streams/twin_mc/game.json",
+      "twin_collective": "streams/twin_mc/twin_collective.json",
+      "twin_individual": "streams/twin_mc/twins_individual.json"
     },
     "weights": {
-      "evil": 21,
+      "game": 7,
+      "twin_collective": 7,
+      "twin_individual": 7,
       "chat": 3
     },
     "boardWidth": 5,
