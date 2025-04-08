@@ -1,16 +1,38 @@
 {
-  "2025-04-06": {
-    "name": "EXPERIMENTAL Twin Minecraft Stream",
-    "description": "very experimental, may go horribly wrong",
+  "2025-04-08": {
+    "name": "Neuro Stream",
+    "description": "holy shit it's neuro",
     "customBuckets": {
-      "game": "streams/twin_mc/game.json",
-      "twin_collective": "streams/twin_mc/twin_collective.json",
-      "twin_individual": "streams/twin_mc/twins_individual.json"
+      "neuro": "streams/solo/neuro.json"
     },
     "weights": {
-      "game": 7,
-      "twin_collective": 7,
-      "twin_individual": 7,
+      "neuro": 21,
+      "chat": 3
+    },
+    "boardWidth": 5,
+    "boardHeight": 5,
+    "multipleFreeSpacesBehaviour": "theme",
+    "freeSpaces": [
+      {
+        "pos": [2, 2],
+        "src": "/assets/artworks/soul_neuro_evil_paccha_space.png",
+        "alt": "",
+        "credit": {
+          "name": "paccha (commissioner: soul1419)",
+          "source": "https://discord.com/channels/574720535888396288/1353429967400075355/1353429967400075355"
+        },
+        "stretch": true
+      }
+    ]
+  },
+  "2025-04-10": {
+    "name": "Evil Stream",
+    "description": "i set this up in advanced (8th), it better work",
+    "customBuckets": {
+      "evil": "streams/solo/evil.json"
+    },
+    "weights": {
+      "evil": 21,
       "chat": 3
     },
     "boardWidth": 5,
