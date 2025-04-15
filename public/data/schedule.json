@@ -1,16 +1,12 @@
 {
-  "2025-04-12": {
-    "name": "Chess w/ Filian + Friends",
-    "description": ":nwero: i hate this game i wanna play AC: Shadows",
+  "2025-04-15": {
+    "name": "Neuro Stream",
+    "description": ":nwero:",
     "customBuckets": {
-      "stream": "collabs/neuro_filian_chess/stream.json",
-      "neuro": "collabs/neuro_filian_chess/neuro.json",
-      "filian": "collabs/neuro_filian_chess/filian.json"
+      "neuro": "streams/solo/neuro.json"
     },
     "weights": {
-      "stream": 7,
-      "neuro": 9,
-      "filian": 5,
+      "neuro": 21,
       "chat": 3
     },
     "boardWidth": 5,
