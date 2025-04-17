@@ -1,12 +1,12 @@
 {
-  "2025-04-15": {
-    "name": "Neuro Stream",
-    "description": ":nwero:",
+  "2025-04-17": {
+    "name": "Evil Stream",
+    "description": "i am rushing this",
     "customBuckets": {
-      "neuro": "streams/solo/neuro.json"
+      "evil": "streams/solo/evil.json"
     },
     "weights": {
-      "neuro": 21,
+      "evil": 21,
       "chat": 3
     },
     "boardWidth": 5,
