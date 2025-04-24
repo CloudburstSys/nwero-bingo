@@ -1,12 +1,12 @@
 {
-  "2025-04-22": {
-    "name": "Neuro Stream",
-    "description": "evil 2.0 fumo when vedal",
+  "2025-04-24": {
+    "name": "Evil Stream",
+    "description": "i forgor lol",
     "customBuckets": {
-      "neuro": "streams/solo/neuro.json"
+      "evil": "streams/solo/evil.json"
     },
     "weights": {
-      "neuro": 21,
+      "evil": 21,
       "chat": 3
     },
     "boardWidth": 5,
