@@ -9,6 +9,7 @@ services:
     volumes:
       - ./public/data:/app/dist/data:ro
       - ./public/assets/artworks:/app/dist/assets/artworks:ro
+      - ./public/assets/emotes:/app/dist/assets/emotes:ro
 
 networks:
   proxy:
