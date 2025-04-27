@@ -1,12 +1,16 @@
 {
-  "2025-04-24": {
-    "name": "Evil Stream",
-    "description": "i forgor lol",
+  "2025-04-27": {
+    "name": "Plague Inc w/ Shylily",
+    "description": "umbrella played plague inc to make prompts for this btw",
     "customBuckets": {
-      "evil": "streams/solo/evil.json"
+      "evil": "collabs/shylily_plagueinc/evil.json",
+      "stream": "collabs/shylily_plagueinc/stream.json",
+      "shylily": "collabs/shylily_plagueinc/shylily.json"
     },
     "weights": {
-      "evil": 21,
+      "evil": 7,
+      "stream": 8,
+      "shylily": 6,
       "chat": 3
     },
     "boardWidth": 5,
