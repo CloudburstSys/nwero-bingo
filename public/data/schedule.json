@@ -1,16 +1,12 @@
 {
-  "2025-04-27": {
-    "name": "Plague Inc w/ Shylily",
-    "description": "umbrella played plague inc to make prompts for this btw",
+  "2025-04-29": {
+    "name": "Neuro Stream",
+    "description": "new prompts :LETSGO:",
     "customBuckets": {
-      "evil": "collabs/shylily_plagueinc/evil.json",
-      "stream": "collabs/shylily_plagueinc/stream.json",
-      "shylily": "collabs/shylily_plagueinc/shylily.json"
+      "neuro": "streams/solo/neuro.json"
     },
     "weights": {
-      "evil": 7,
-      "stream": 8,
-      "shylily": 6,
+      "neuro": 21,
       "chat": 3
     },
     "boardWidth": 5,
