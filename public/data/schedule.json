@@ -1,12 +1,16 @@
 {
-  "2025-05-01": {
-    "name": "Evil Stream",
-    "description": "call me vedal cos i forgor evil :aware:",
+  "2025-05-06": {
+    "name": "Michi Meets the Twins",
+    "description": "i wrote this all on my phone im die",
     "customBuckets": {
-      "evil": "streams/solo/evil.json"
+      "twins": "collabs/michi_meets_twins/twins.json",
+      "michi": "collabs/michi_meets_twins/michi.json",
+      "camila": "collabs/michi_meets_twins/camila.json"
     },
     "weights": {
-      "evil": 21,
+      "twins": 7,
+      "michi": 7,
+      "camila": 7,
       "chat": 3
     },
     "boardWidth": 5,
