@@ -1,16 +1,12 @@
 {
-  "2025-05-06": {
-    "name": "Michi Meets the Twins",
-    "description": "i wrote this all on my phone im die",
+  "2025-05-07": {
+    "name": "Neuro Solo",
+    "description": ":niuh:",
     "customBuckets": {
-      "twins": "collabs/michi_meets_twins/twins.json",
-      "michi": "collabs/michi_meets_twins/michi.json",
-      "camila": "collabs/michi_meets_twins/camila.json"
+      "neuro": "streams/solo/neuro.json"
     },
     "weights": {
-      "twins": 7,
-      "michi": 7,
-      "camila": 7,
+      "neuro": 21,
       "chat": 3
     },
     "boardWidth": 5,
