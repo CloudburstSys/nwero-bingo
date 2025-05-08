@@ -1,12 +1,12 @@
 {
-  "2025-05-07": {
-    "name": "Neuro Solo",
-    "description": ":niuh:",
+  "2025-05-08": {
+    "name": "Evil Solo",
+    "description": "can we have :niuh: but :eliv: pls p3r?",
     "customBuckets": {
-      "neuro": "streams/solo/neuro.json"
+      "evil": "streams/solo/evil.json"
     },
     "weights": {
-      "neuro": 21,
+      "evil": 21,
       "chat": 3
     },
     "boardWidth": 5,
