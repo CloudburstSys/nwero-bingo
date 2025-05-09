@@ -1,12 +1,16 @@
 {
-  "2025-05-08": {
-    "name": "Evil Solo",
-    "description": "can we have :niuh: but :eliv: pls p3r?",
+  "2025-05-09": {
+    "name": "Laimu & Neuro Play Geoguessr",
+    "description": "can't wait for the lamu emote (low quality Laimu like :nwero: )",
     "customBuckets": {
-      "evil": "streams/solo/evil.json"
+      "stream": "collabs/laimu_neuro_geoguessr/stream.json",
+      "neuro": "collabs/laimu_neuro_geoguessr/neuro.json",
+      "laimu": "collabs/laimu_neuro_geoguessr/laimu.json"
     },
     "weights": {
-      "evil": 21,
+      "stream": 8,
+      "neuro": 7,
+      "laimu": 6,
       "chat": 3
     },
     "boardWidth": 5,
