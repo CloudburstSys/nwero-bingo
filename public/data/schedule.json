@@ -1,16 +1,38 @@
 {
-  "2025-05-09": {
-    "name": "Laimu & Neuro Play Geoguessr",
-    "description": "can't wait for the lamu emote (low quality Laimu like :nwero: )",
+  "2025-05-13": {
+    "name": "Neuro Solo",
+    "description": "imagine automating bingo sheets, couldn't be me",
     "customBuckets": {
-      "stream": "collabs/laimu_neuro_geoguessr/stream.json",
-      "neuro": "collabs/laimu_neuro_geoguessr/neuro.json",
-      "laimu": "collabs/laimu_neuro_geoguessr/laimu.json"
+      "neuro": "stream/solo/neuro.json"
     },
     "weights": {
-      "stream": 8,
-      "neuro": 7,
-      "laimu": 6,
+      "neuro": 21,
+      "chat": 3
+    },
+    "boardWidth": 5,
+    "boardHeight": 5,
+    "multipleFreeSpacesBehaviour": "theme",
+    "freeSpaces": [
+      {
+        "pos": [2, 2],
+        "src": "/assets/artworks/soul_neuro_evil_paccha_space.png",
+        "alt": "",
+        "credit": {
+          "name": "paccha (commissioner: soul1419)",
+          "source": "https://discord.com/channels/574720535888396288/1353429967400075355/1353429967400075355"
+        },
+        "stretch": true
+      }
+    ]
+  },
+  "2025-05-15": {
+    "name": "Evil Solo",
+    "description": "... except for when i do both neuro and evil at the same time",
+    "customBuckets": {
+      "evil": "stream/solo/evil.json"
+    },
+    "weights": {
+      "evil": 21,
       "chat": 3
     },
     "boardWidth": 5,
