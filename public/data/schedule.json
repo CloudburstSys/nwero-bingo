@@ -3,7 +3,7 @@
     "name": "Neuro Solo",
     "description": "imagine automating bingo sheets, couldn't be me",
     "customBuckets": {
-      "neuro": "stream/solo/neuro.json"
+      "neuro": "streams/solo/neuro.json"
     },
     "weights": {
       "neuro": 21,
@@ -29,7 +29,7 @@
     "name": "Evil Solo",
     "description": "... except for when i do both neuro and evil at the same time",
     "customBuckets": {
-      "evil": "stream/solo/evil.json"
+      "evil": "streams/solo/evil.json"
     },
     "weights": {
       "evil": 21,
