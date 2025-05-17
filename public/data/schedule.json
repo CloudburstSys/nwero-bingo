@@ -1,38 +1,16 @@
 {
-  "2025-05-13": {
-    "name": "Neuro Solo",
-    "description": "imagine automating bingo sheets, couldn't be me",
+  "2025-05-17": {
+    "name": "Mega + Neuro play Sims 4",
+    "description": "another \"set up while outside\" bingo today, hopefully nothing is weird",
     "customBuckets": {
-      "neuro": "streams/solo/neuro.json"
+      "stream": "collabs/mega_neuro_sims/stream.json",
+      "mega": "collabs/mega_neuro_sims/mega.json",
+      "neuro": "collabs/mega_neuro_sims/neuro.json"
     },
     "weights": {
-      "neuro": 21,
-      "chat": 3
-    },
-    "boardWidth": 5,
-    "boardHeight": 5,
-    "multipleFreeSpacesBehaviour": "theme",
-    "freeSpaces": [
-      {
-        "pos": [2, 2],
-        "src": "/assets/artworks/soul_neuro_evil_paccha_space.png",
-        "alt": "",
-        "credit": {
-          "name": "paccha (commissioner: soul1419)",
-          "source": "https://discord.com/channels/574720535888396288/1353429967400075355/1353429967400075355"
-        },
-        "stretch": true
-      }
-    ]
-  },
-  "2025-05-15": {
-    "name": "Evil Solo",
-    "description": "... except for when i do both neuro and evil at the same time",
-    "customBuckets": {
-      "evil": "streams/solo/evil.json"
-    },
-    "weights": {
-      "evil": 21,
+      "stream": 7,
+      "mega": 7,
+      "neuro": 7,
       "chat": 3
     },
     "boardWidth": 5,
