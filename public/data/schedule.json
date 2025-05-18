@@ -1,17 +1,15 @@
 {
-  "2025-05-17": {
-    "name": "Mega + Neuro play Sims 4",
-    "description": "another \"set up while outside\" bingo today, hopefully nothing is weird",
+  "2025-05-18": {
+    "name": "Comedy Night",
+    "description": "this almost didn't work. thanks to the programming channel, absolute lifesavers",
     "customBuckets": {
-      "stream": "collabs/mega_neuro_sims/stream.json",
-      "mega": "collabs/mega_neuro_sims/mega.json",
-      "neuro": "collabs/mega_neuro_sims/neuro.json"
+      "joke": "streams/one_offs/comedy_night/joke.json",
+      "neuro": "streams/one_offs/comedy_night/neuro.json"
     },
     "weights": {
-      "stream": 7,
-      "mega": 7,
-      "neuro": 7,
-      "chat": 3
+      "joke": 11,
+      "neuro": 11,
+      "chat": 2
     },
     "boardWidth": 5,
     "boardHeight": 5,
