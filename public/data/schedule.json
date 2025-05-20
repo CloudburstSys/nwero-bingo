@@ -1,15 +1,13 @@
 {
-  "2025-05-18": {
-    "name": "Comedy Night",
-    "description": "this almost didn't work. thanks to the programming channel, absolute lifesavers",
+  "2025-05-20": {
+    "name": "Neuro Stream",
+    "description": "can stuff stop breaking for more than 5 minutes please thanks",
     "customBuckets": {
-      "joke": "streams/one_offs/comedy_night/joke.json",
-      "neuro": "streams/one_offs/comedy_night/neuro.json"
+      "neuro": "streams/solo/neuro.json"
     },
     "weights": {
-      "joke": 11,
-      "neuro": 11,
-      "chat": 2
+      "neuro": 21,
+      "chat": 3
     },
     "boardWidth": 5,
     "boardHeight": 5,
