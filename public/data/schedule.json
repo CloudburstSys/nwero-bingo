@@ -1,12 +1,12 @@
 {
-  "2025-05-20": {
-    "name": "Neuro Stream",
-    "description": "can stuff stop breaking for more than 5 minutes please thanks",
+  "2025-05-22": {
+    "name": "Evil Stream",
+    "description": "now with 100% less scuff!",
     "customBuckets": {
-      "neuro": "streams/solo/neuro.json"
+      "evil": "streams/solo/evil.json"
     },
     "weights": {
-      "neuro": 21,
+      "evil": 21,
       "chat": 3
     },
     "boardWidth": 5,
