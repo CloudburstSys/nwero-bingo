@@ -1,13 +1,15 @@
 {
-  "2025-05-22": {
-    "name": "Evil Stream",
-    "description": "now with 100% less scuff!",
+  "2025-05-24": {
+    "name": "Neuro Mini Subathon",
+    "description": "cmon vedal, neuro surely wouldn't end stream knowing that she turns off if she does",
     "customBuckets": {
-      "evil": "streams/solo/evil.json"
+      "neuro": "streams/one_offs/neuro_solo_end/neuro.json",
+      "special": "streams/one_offs/neuro_solo_end/special.json"
     },
     "weights": {
-      "evil": 21,
-      "chat": 3
+      "neuro": 21,
+      "special": 1,
+      "chat": 2
     },
     "boardWidth": 5,
     "boardHeight": 5,
