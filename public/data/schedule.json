@@ -1,35 +1,5 @@
 {
-  "2025-05-26": {
-    "name": "Your advice, Answered by Megalodon and Evil",
-    "description": "can't wait for the weirdest advice ever",
-    "customBuckets": {
-      "stream": "collabs/mega_evil_advice/stream.json",
-      "mega": "collabs/mega_evil_advice/mega.json",
-      "evil": "collabs/mega_evil_advice/evil.json"
-    },
-    "weights": {
-      "stream": 7,
-      "mega": 7,
-      "evil": 7,
-      "chat": 3
-    },
-    "boardWidth": 5,
-    "boardHeight": 5,
-    "multipleFreeSpacesBehaviour": "theme",
-    "freeSpaces": [
-      {
-        "pos": [2, 2],
-        "src": "/assets/artworks/soul_neuro_evil_paccha_space.png",
-        "alt": "",
-        "credit": {
-          "name": "paccha (commissioner: soul1419)",
-          "source": "https://discord.com/channels/574720535888396288/1353429967400075355/1353429967400075355"
-        },
-        "stretch": true
-      }
-    ]
-  },
-  "2025-05-27": {
+  "2025-06-03": {
     "name": "Neuro stream",
     "description": ":nwero:",
     "customBuckets": {
@@ -37,32 +7,6 @@
     },
     "weights": {
       "neuro": 21,
-      "chat": 3
-    },
-    "boardWidth": 5,
-    "boardHeight": 5,
-    "multipleFreeSpacesBehaviour": "theme",
-    "freeSpaces": [
-      {
-        "pos": [2, 2],
-        "src": "/assets/artworks/soul_neuro_evil_paccha_space.png",
-        "alt": "",
-        "credit": {
-          "name": "paccha (commissioner: soul1419)",
-          "source": "https://discord.com/channels/574720535888396288/1353429967400075355/1353429967400075355"
-        },
-        "stretch": true
-      }
-    ]
-  },
-  "2025-05-29": {
-    "name": "Evil stream",
-    "description": ":eliv:",
-    "customBuckets": {
-      "evil": "streams/solo/evil.json"
-    },
-    "weights": {
-      "evil": 21,
       "chat": 3
     },
     "boardWidth": 5,
