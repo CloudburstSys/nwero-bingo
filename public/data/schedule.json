@@ -1,42 +1,16 @@
 {
-  "2025-06-04": {
-    "name": "Neuro & Minikomew Minecraft",
-    "description": "ai and cat play block game",
+  "2025-06-07": {
+    "name": "Neuro & Shylily Room Review",
+    "description": "i wonder how many people didn't submit to avoid being shamed",
     "customBuckets": {
-      "stream": "collabs/neuro_mini_minecraft/stream.json",
-      "minikomew": "collabs/neuro_mini_minecraft/minikomew.json",
-      "neuro": "collabs/neuro_mini_minecraft/neuro.json"
+      "stream": "collabs/shylily_neuro_room_review/stream.json",
+      "shylily": "collabs/shylily_neuro_room_review/shylily.json",
+      "neuro": "collabs/shylily_neuro_room_review/neuro.json"
     },
     "weights": {
       "stream": 7,
-      "minikomew": 7,
+      "shylily": 7,
       "neuro": 7,
-      "chat": 3
-    },
-    "boardWidth": 5,
-    "boardHeight": 5,
-    "multipleFreeSpacesBehaviour": "theme",
-    "freeSpaces": [
-      {
-        "pos": [2, 2],
-        "src": "/assets/artworks/soul_neuro_evil_paccha_space.png",
-        "alt": "",
-        "credit": {
-          "name": "paccha (commissioner: soul1419)",
-          "source": "https://discord.com/channels/574720535888396288/1353429967400075355/1353429967400075355"
-        },
-        "stretch": true
-      }
-    ]
-  },
-  "2025-06-05": {
-    "name": "Evil stream",
-    "description": ":ewiv:",
-    "customBuckets": {
-      "evil": "streams/solo/evil.json"
-    },
-    "weights": {
-      "evil": 21,
       "chat": 3
     },
     "boardWidth": 5,
