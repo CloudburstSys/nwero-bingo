@@ -1,16 +1,16 @@
 {
-  "2025-06-07": {
-    "name": "Neuro & Shylily Room Review",
-    "description": "i wonder how many people didn't submit to avoid being shamed",
+  "2025-06-09": {
+    "name": "Dev Stream",
+    "description": "HOLY SHIT IT'S REAL WE ALL THOUGHT NEUROTIC NEURONS MADE IT UP THE DEV STREAM IS REA-",
     "customBuckets": {
-      "stream": "collabs/shylily_neuro_room_review/stream.json",
-      "shylily": "collabs/shylily_neuro_room_review/shylily.json",
-      "neuro": "collabs/shylily_neuro_room_review/neuro.json"
+      "stream": "streams/one_offs/rare_dev/stream.json",
+      "vedal": "streams/one_offs/rare_dev/vedal.json",
+      "twin": "streams/one_offs/rare_dev/twin.json"
     },
     "weights": {
-      "stream": 7,
-      "shylily": 7,
-      "neuro": 7,
+      "stream": 8,
+      "vedal": 7,
+      "twin": 6,
       "chat": 3
     },
     "boardWidth": 5,
