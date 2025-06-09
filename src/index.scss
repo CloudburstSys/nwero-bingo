@@ -57,6 +57,28 @@ body.hiyori.dark {
   --header-bg: #141414 !important;
 }
 
+body.vedal {
+  --body-bg: #97d091;
+  --header-bg: #589f5c;
+  --modal-bg: #abdda6;
+  --modal-border: #8dc986;
+  --card-bg-light: #abdda6;
+  --card-bg-dark: #81c07a;
+  --card-bg-active: #f58796;
+  --card-border: #589f5c;
+}
+
+body.dark.vedal {
+  --body-bg: #5d8059;
+  --header-bg: #294d2b;
+  --modal-bg: #628060;
+  --modal-border: #3f593c;
+  --card-bg-light: #628060;
+  --card-bg-dark: #3c5939;
+  --card-bg-active: #5e0813;
+  --card-border: #294d2b;
+}
+
 body {
   color: var(--text-color);
   background-color: var(--body-bg);
