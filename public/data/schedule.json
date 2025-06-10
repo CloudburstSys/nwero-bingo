@@ -1,16 +1,12 @@
 {
-  "2025-06-09": {
-    "name": "Dev Stream",
-    "description": "HOLY SHIT IT'S REAL WE ALL THOUGHT NEUROTIC NEURONS MADE IT UP THE DEV STREAM IS REA-",
+  "2025-06-10": {
+    "name": "Neuro Stream",
+    "description": "almost had to hallucinate this one",
     "customBuckets": {
-      "stream": "streams/one_offs/rare_dev/stream.json",
-      "vedal": "streams/one_offs/rare_dev/vedal.json",
-      "twin": "streams/one_offs/rare_dev/twin.json"
+      "neuro": "streams/solo/neuro.json",
     },
     "weights": {
-      "stream": 8,
-      "vedal": 7,
-      "twin": 6,
+      "neuro": 21,
       "chat": 3
     },
     "boardWidth": 5,
