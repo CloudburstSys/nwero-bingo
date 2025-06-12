@@ -1,12 +1,12 @@
 {
-  "2025-06-10": {
-    "name": "Neuro Stream",
-    "description": "almost had to hallucinate this one",
+  "2025-06-12": {
+    "name": "Evil Stream",
+    "description": "no hallucinations of bingo this time",
     "customBuckets": {
-      "neuro": "streams/solo/neuro.json"
+      "evil": "streams/solo/evil.json"
     },
     "weights": {
-      "neuro": 21,
+      "evil": 21,
       "chat": 3
     },
     "boardWidth": 5,
