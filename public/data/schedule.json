@@ -1,12 +1,16 @@
 {
-  "2025-06-12": {
-    "name": "Evil Stream",
-    "description": "no hallucinations of bingo this time",
+  "2025-06-13": {
+    "name": "Neuro helps Lucy rizz AI friends",
+    "description": "mfw all friends unavailable so have to outsource to character ai",
     "customBuckets": {
-      "evil": "streams/solo/evil.json"
+      "stream": "collabs/neuro_lucy_ai/stream.json",
+      "lucy": "collabs/neuro_lucy_ai/lucy.json",
+      "neuro": "collabs/neuro_lucy_ai/neuro.json"
     },
     "weights": {
-      "evil": 21,
+      "stream": 7,
+      "lucy": 7,
+      "neuro": 7,
       "chat": 3
     },
     "boardWidth": 5,
