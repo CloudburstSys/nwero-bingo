@@ -1,16 +1,12 @@
 {
-  "2025-06-13": {
-    "name": "Neuro helps Lucy rizz AI friends",
-    "description": "mfw all friends unavailable so have to outsource to character ai",
+  "2025-06-17": {
+    "name": "Neuro Stream",
+    "description": "will the free space artwork ever change...",
     "customBuckets": {
-      "stream": "collabs/neuro_lucy_ai/stream.json",
-      "lucy": "collabs/neuro_lucy_ai/lucy.json",
-      "neuro": "collabs/neuro_lucy_ai/neuro.json"
+      "neuro": "streams/solo/neuro.json"
     },
     "weights": {
-      "stream": 7,
-      "lucy": 7,
-      "neuro": 7,
+      "neuro": 21,
       "chat": 3
     },
     "boardWidth": 5,
