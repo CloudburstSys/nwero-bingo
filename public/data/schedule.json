@@ -1,12 +1,12 @@
 {
-  "2025-06-17": {
-    "name": "Neuro Stream",
-    "description": "will the free space artwork ever change...",
+  "2025-06-19": {
+    "name": "Evil works in fastfood Stream",
+    "description": "evil got fired and had to go work mcdonalds ):",
     "customBuckets": {
-      "neuro": "streams/solo/neuro.json"
+      "evil": "streams/one_offs/evil_fastfood/evil.json"
     },
     "weights": {
-      "neuro": 21,
+      "evil": 21,
       "chat": 3
     },
     "boardWidth": 5,
@@ -15,13 +15,13 @@
     "freeSpaces": [
       {
         "pos": [2, 2],
-        "src": "/assets/artworks/soul_neuro_evil_paccha_space.png",
+        "src": "/assets/artworks/soul_evil_burger.png",
         "alt": "",
         "credit": {
-          "name": "paccha (commissioner: soul1419)",
-          "source": "https://discord.com/channels/574720535888396288/1353429967400075355/1353429967400075355"
+          "name": "food0606 (commissioner: soul1419)",
+          "source": "https://discord.com/channels/574720535888396288/1308995951809138688/1308995951809138688"
         },
-        "stretch": true
+        "stretch": false
       }
     ]
   }
